@@ -1,26 +1,40 @@
 import React from 'react';
-import logo from './logo.svg';
+import {Component} from 'react';
 import './App.css';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {Connexion} from "./pages/Connexion";
+import {Inscription} from "./pages/Inscription";
+import {Erreur} from "./pages/Erreur";
+import {Dashboard} from "./pages/Dashboard";
+import {Menu} from "./pages/Menu";
+import {Questionnaire} from "./pages/Questionnaire";
+import {Cours} from "./Cours";
+import {Accueil} from "./pages/Accueil";
+import {Container} from "react-bootstrap";
+import {BarreNavigation} from "./components/BarreNavigation";
 
-function App() {
+class App extends Component {
+  render(){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <React.Fragment>
+        <Container>
+          <BarreNavigation/>
+            <Router>
+              <switch>
+                <Route exact path = "/" component = {Connexion} />
+                <Route  path = "/inscription" component = {Inscription} />
+                <Route  path = "/accueil" component = {Accueil} />
+                <Route  path = "/dashboard" component= {Dashboard} />
+                <Route  path = "/menu" component = {Menu} />
+                <Route  path = "/questionnaire" component = {Questionnaire} />
+                <Route  path = "/cours" component= {Cours}/>
+                <Route path = "/erreur" component= {Erreur}/>
+              </switch>
+            </Router>
+        </Container>
+      </React.Fragment>
   );
+  }
 }
 
 export default App;
