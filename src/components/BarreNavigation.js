@@ -1,6 +1,7 @@
 import React from "react";
 import {Nav, Navbar} from "react-bootstrap";
 import styled from "styled-components";
+import {HashRouter as Router, Link} from "react-router-dom";
 
 const Styles = styled.div`
     .navbar {
@@ -15,18 +16,23 @@ const Styles = styled.div`
             color: red;
             }
         }
+        
+    .p{
+        color : white;
+        &:hover: red;
+    }
     `;
 
 export const BarreNavigation = () => (
     <Styles>
         <Navbar expand="lg">
-            <Navbar.Brand href="/">UML Challenge</Navbar.Brand>
+            <Navbar.Brand><Router><Link to="/">UML Challenge</Link></Router></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav"/>
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto">
-                    <Nav.Item><Nav.Link href="/accueil">Accueil</Nav.Link></Nav.Item>
-                    <Nav.Item><Nav.Link href="/cours">Cours</Nav.Link></Nav.Item>
-                    <Nav.Item><Nav.Link href="/dashboard">Dashboard</Nav.Link></Nav.Item>
+                    <Nav.Item><Nav.Link><Router><Link to="/accueil">Accueil</Link></Router></Nav.Link></Nav.Item>
+                    <Nav.Item><Nav.Link><Router><Link to="/cours" >Cours</Link></Router></Nav.Link></Nav.Item>
+                    <Nav.Item><Nav.Link><Router><Link to="/dashboard" >Dashboard</Link></Router></Nav.Link></Nav.Item>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

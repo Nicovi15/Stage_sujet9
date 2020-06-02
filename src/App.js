@@ -1,7 +1,7 @@
 import React from 'react';
 import {Component} from 'react';
 import './App.css';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {HashRouter as Router, Link, Route, Switch} from 'react-router-dom';
 import {Connexion} from "./pages/Connexion";
 import {Inscription} from "./pages/Inscription";
 import {Erreur} from "./pages/Erreur";
@@ -31,6 +31,7 @@ class App extends Component {
                 <Route path = "/erreur" component= {Erreur}/>
               </switch>
             </Router>
+
         </Container>
       </React.Fragment>
   );
