@@ -1,18 +1,30 @@
 import React, {Component} from 'react'
 import axios from 'axios';
 
+function Resultat(props) {
+    const reussite = props.reussite;
+    if (reussite) {
+        return <h6>Votre compte a été créé, vous pouvez maintenant vous connecter.</h6>
+    }
+    return <></>;
+}
+
+
+
 export default class Inscription extends Component{
 
     constructor(props) {
         super(props);
 
+
         this.state = {
-            pseudo : "",
-            nom : "",
-            prenom : "",
-            mdp : "",
-            mdp_confirm : "",
-            erreur : "",
+            pseudo: "",
+            nom: "",
+            prenom: "",
+            mdp: "",
+            mdp_confirm: "",
+            erreur: "",
+            r : false,
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,13 +45,20 @@ export default class Inscription extends Component{
                 prenom : this.state.prenom,
                 email : this.state.email,
                 mdp : this.state.mdp,
-            }
-            ).then((response) => {
+            },
+            {withCredentials: true}
+            ).then(response => {
             if ( response.data.error ) {
                 console.log(response.data.error) // I show error here
             }
             else {
                 console.log(response.data);
+                if(response.data.status === "Succes") console.log("yes "+response.data);
+                    //this.handleSuccessfulAuth(response.data.user);
+                    //this.props.history.push("/");
+                    this.setState({
+                        r : true,
+                    });
             }
         })
         event.preventDefault();
@@ -50,6 +69,7 @@ export default class Inscription extends Component{
             [event.target.name]: event.target.value
         })
     }
+
 
     render() {
         return (
@@ -65,6 +85,9 @@ export default class Inscription extends Component{
 
                     <button type="submit">S'inscrire</button>
                 </form>
+
+                <Resultat reussite={this.state.r} />
+
 
             </div>
         );
