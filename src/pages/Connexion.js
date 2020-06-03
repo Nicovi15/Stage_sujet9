@@ -1,9 +1,18 @@
-import React from 'react'
+import React, {Component} from 'react'
+import {HashRouter as Router, Link, Route, Switch} from 'react-router-dom';
+export default class Connexion extends Component {
 
-export const Connexion = () => (
+    constructor(props) {
+        super(props);
+    }
 
-    <div>
-        <h1>Page permettant de se connecter</h1>
-    </div>
-
-)
+    render() {
+        return(
+            <div>
+                <h1> Connexion </h1>
+                <h1>Status : {this.props.loggedInStatus}</h1>
+               <Route>Pas de compte ? <Link to="/inscription">Inscrivez-vous !</Link></Route>
+            </div>
+        );
+    }
+}
