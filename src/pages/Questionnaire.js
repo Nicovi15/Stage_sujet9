@@ -1,9 +1,20 @@
-import React from 'react'
+import React, {Component} from 'react'
 
-export const Questionnaire = () => (
+export default class Questionnaire extends Component {
 
-    <div>
-        <h1>Page où se trouve un questionnaire</h1>
-    </div>
 
-)
+    constructor(props) {
+        super(props);
+
+
+    }
+
+
+    render() {
+        return (
+            <div>
+                <h1>C'est la page d'un questionnaire</h1>
+            </div>
+        );
+    }
+}

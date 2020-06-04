@@ -1,9 +1,22 @@
-import React from 'react'
+import React, {Component} from 'react'
 
-export const Accueil = () => (
+export default class Accueil extends Component {
 
-    <div>
-        <h1>C'est l'accueil</h1>
-    </div>
 
-)
+    constructor(props) {
+        super(props);
+
+
+    }
+
+
+    render() {
+        return (
+            <div>
+                <h1>C'est l'accueil</h1>
+            </div>
+        );
+    }
+}
+
+

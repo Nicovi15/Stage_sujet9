@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {HashRouter as Router, Link, Route, Switch} from 'react-router-dom';
+import {Button} from 'react-bootstrap'
 import axios from "axios";
 
 function Resultat(props) {
@@ -10,6 +11,15 @@ function Resultat(props) {
     return <></>;
 }
 
+function Echec(props) {
+    const echec = props.echec;
+    if (echec) {
+        return <h6>Login ou mot de passe incorrect.</h6>
+    }
+    return <></>;
+}
+
+
 export default class Connexion extends Component {
 
     constructor(props) {
@@ -19,6 +29,7 @@ export default class Connexion extends Component {
             mdp: "",
             erreur: "",
             r : false,
+            echec : false,
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -42,18 +53,24 @@ export default class Connexion extends Component {
             {withCredentials: true}
         ).then(response => {
             if ( response.data.error ) {
-                console.log(response.data.error) // I show error here
+                //console.log(response.data);
+                this.setState({
+                    echec : true,
+                });
             }
             else {
                 console.log(response.data);
                 if(response.data.status === "Succes"){
                     console.log("yes "+response.data);
                     this.handleSuccessfulAuth(response.data.user);
+                    this.setState({
+                        r : true,
+                    });
+                }
+                else{
                 }
                 //this.props.history.push("/");
-                this.setState({
-                    r : true,
-                });
+
             }
         })
         event.preventDefault();
@@ -75,24 +92,23 @@ export default class Connexion extends Component {
         });
         this.props.handleLogout();
     }
-
+    //<h1>Status:{this.props.loggedInStatus}</h1>
+    //<button onClick={()=>this.handleLogoutClick()}>Se déconnecter</button>
     render() {
         return(
             <div>
                 <h1> Connexion </h1>
-                <h1>Status : {this.props.loggedInStatus}</h1>
+
                 <form onSubmit={this.handleSubmit}>
-                    <input type="text" name ="pseudo" placeholder="Entrez vote pseudo" value={this.state.pseudo} onChange={this.handleChange} required /> <br/>
-                    <input type="password" name ="mdp" placeholder="Entrez vote mot de passe" value={this.state.mdp} onChange={this.handleChange} required /> <br/>
-
-                    <button type="submit">Se connecter</button>
+                    <p>Login : <br/><input type="text" name ="pseudo" placeholder="Entrez vote pseudo" value={this.state.pseudo} onChange={this.handleChange} required /></p>
+                    <p>Mot de passe : <br/><input type="password" name ="mdp" placeholder="Entrez vote mot de passe" value={this.state.mdp} onChange={this.handleChange} required /></p>
+                    <Button type="submit">Se connecter</Button>
                 </form>
-
+                <Echec echec={this.state.echec}/>
                 <Resultat reussite={this.state.r} />
+                <br/>
                 <Route>Pas de compte ? <Link to="/inscription">Inscrivez-vous !</Link></Route>
                 <br/>
-                <button onClick={()=>this.handleLogoutClick()}>Se déconnecter</button>
-
             </div>
         );
     }

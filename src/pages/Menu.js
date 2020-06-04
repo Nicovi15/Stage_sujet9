@@ -1,9 +1,20 @@
-import React from 'react'
+import React, {Component} from 'react'
 
-export const Menu = () => (
+export default class Menu extends Component {
 
-    <div>
-        <h1>Page où se trouve le menu permettant de sélectionner un questionnaire</h1>
-    </div>
 
-)
+    constructor(props) {
+        super(props);
+
+
+    }
+
+
+    render() {
+        return (
+            <div>
+                <h1>C'est la page où se trouve les menus des questionnaires</h1>
+            </div>
+        );
+    }
+}

@@ -1,13 +1,15 @@
-import React from "react";
+import React, { Component } from "react";
 import { Nav, Navbar } from "react-bootstrap";
+import { Button } from 'react-bootstrap'
 import styled from "styled-components";
-import { HashRouter as Router, Link } from "react-router-dom";
+import { HashRouter as Router, Link, Route, Redirect } from "react-router-dom";
 import 'antd/dist/antd.css';
 import { Menu } from 'antd';
-import {
-    HomeOutlined, BookOutlined, DashboardOutlined, SettingOutlined, LoginOutlined} from '@ant-design/icons';
+import { HomeOutlined, BookOutlined, DashboardOutlined, SettingOutlined, LoginOutlined } from '@ant-design/icons';
+import axios from "axios";
 
 const { SubMenu } = Menu;
+
 /*
 const Styles = styled.div`
     .navbar {
@@ -27,77 +29,123 @@ const Styles = styled.div`
         color : white;
         &:hover: red;
     }
-    `;
-    */
+    `;*/
 
-export const BarreNavigation = () => (
+function Resultat(props) {
+    const reussite = props.reussite;
+    if (reussite === "LOGGED_IN") {
+        return <h6>Connecté</h6>
+    }
+    else
+        return <></>;
+}
 
-    /*
-    <Styles>
-        <Navbar expand="lg">
-            <Navbar.Brand><Router><Link to="/">UML Challenge</Link></Router></Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-            <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="ml-auto">
-                    <Nav.Item><Nav.Link><Router><Link to="/accueil">Accueil</Link></Router></Nav.Link></Nav.Item>
-                    <Nav.Item><Nav.Link><Router><Link to="/cours" >Cours</Link></Router></Nav.Link></Nav.Item>
-                    <Nav.Item><Nav.Link><Router><Link to="/dashboard" >Dashboard</Link></Router></Nav.Link></Nav.Item>
-                </Nav>
-            </Navbar.Collapse>
-        </Navbar>
-    </Styles>
-    
+function Bgestion(props) {
+    const logged = props.logged;
+    const admin = props.admin;
+    if (logged === "LOGGED_IN" && admin === "1") {
+        return <Menu.Item><Router><Link to="/gestion">Gestionnaire de question</Link></Router></Menu.Item>
+    }
+    else
+        return <></>;
+}
 
+function Bdashboard(props) {
+    const logged = props.logged;
+    if (logged === "LOGGED_IN") {
+        return (<>
+            <Menu.Item><Router><Link to="/menu" >Questionnaires</Link></Router></Menu.Item>);
+            <Menu.Item><Router><Link to="/dashboard" >Dashboard</Link></Router></Menu.Item>
+        </>);
+    }
+    else
+        return <Menu.Item ><Router><Link to="/inscription" >S'inscrire</Link></Router></Menu.Item>;
+}
 
-
-       <Menu.Item >
-            Accueil
-        </Menu.Item>
-    */
-
-
-
-    <Menu mode="horizontal">
-
-
-
-        <Menu.Item key="accueil" icon={<HomeOutlined />}>
-            <Router><Link to="/accueil">Accueil</Link></Router>
-        </Menu.Item>
-
-        <Menu.Item key="cours" icon={<BookOutlined />}>
-            <Router><Link to="/cours" >Cours</Link></Router>
-        </Menu.Item>
-
-        
-        <SubMenu icon={<SettingOutlined />} title="Navigation Three - Submenu">
-            <Menu.ItemGroup title="Item 1">
-                <Menu.Item key="setting:1">Option 1</Menu.Item>
-                <Menu.Item key="setting:2">Option 2</Menu.Item>
-            </Menu.ItemGroup>
-            <Menu.ItemGroup title="Item 2">
-                <Menu.Item key="setting:3">Option 3</Menu.Item>
-                <Menu.Item key="setting:4">Option 4</Menu.Item>
-            </Menu.ItemGroup>
-        </SubMenu>
-
-        <Menu.Item key="dashboard" icon={<DashboardOutlined />}>
-            <Router><Link to="/dashboard" >Dashboard</Link></Router>
-        </Menu.Item>
+function Bconnecter(props) {
+    const logged = props.logged;
+    if (logged === "NOT_LOGGED_IN") {
+        return <Menu.Item><Router><Link to="/" ><Button>Se connecter</Button></Link></Router></Menu.Item>
+    }
+    else
+        return <Menu.Item><Button onClick={() => props.handleLogoutClick()}>Se déconnecter</Button></Menu.Item>;
+}
 
 
 
-        <Menu.Item key="alipay">
-            <a href="https://arche.univ-lorraine.fr/" target="_blank" rel="noopener noreferrer">
-                Accès à Arche
+export default class BarreNavigation extends Component {
+
+
+    constructor(props) {
+        super(props);
+
+
+        this.handleLogoutClick = this.handleLogoutClick.bind(this);
+    }
+
+
+    handleLogoutClick() {
+        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/deconnexion.php", { withCredentials: true }).then(response => {
+        });
+        this.props.handleLogout();
+    }
+
+    render() {
+      return(
+
+            <Menu mode="horizontal">
+
+                <Bgestion logged={this.props.loggedInStatus} admin={this.props.user.admin} />
+
+                <Menu.Item key="accueil" icon={<HomeOutlined />}>
+                    <Router><Link to="/accueil">Accueil</Link></Router>
+                </Menu.Item>
+
+                <Menu.Item key="cours" icon={<BookOutlined />}>
+                    <Router><Link to="/cours" >Cours</Link></Router>
+                </Menu.Item>
+
+
+                <SubMenu icon={<SettingOutlined />} title="Navigation Three - Submenu">
+                    <Menu.ItemGroup title="Item 1">
+                        <Menu.Item key="setting:1">Option 1</Menu.Item>
+                        <Menu.Item key="setting:2">Option 2</Menu.Item>
+                    </Menu.ItemGroup>
+                    <Menu.ItemGroup title="Item 2">
+                        <Menu.Item key="setting:3">Option 3</Menu.Item>
+                        <Menu.Item key="setting:4">Option 4</Menu.Item>
+                    </Menu.ItemGroup>
+                </SubMenu>
+
+                <Menu.Item key="dashboard" icon={<DashboardOutlined />}>
+                    <Router><Link to="/dashboard" >Dashboard</Link></Router>
+                </Menu.Item>
+
+
+
+                <Menu.Item key="alipay">
+                    <a href="https://arche.univ-lorraine.fr/" target="_blank" rel="noopener noreferrer">
+                        Accès à Arche
           </a>
-        </Menu.Item>
+                </Menu.Item>
 
-        <Menu.Item key="connexion" icon={<LoginOutlined />}>
-            <Router><Link to="./">Connexion</Link></Router>
-        </Menu.Item>
+                <Menu.Item key="connexion" icon={<LoginOutlined />}>
+                    <Router><Link to="./">Connexion</Link></Router>
+                </Menu.Item>
 
+                <Bdashboard logged={this.props.loggedInStatus} />
+                <Bconnecter logged={this.props.loggedInStatus} handleLogoutClick={this.handleLogoutClick} />
+
+
+            </Menu>
+
+
+
+        );
         
-    </Menu>
+    }
+}
 
-)
+
+
+
