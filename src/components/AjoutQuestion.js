@@ -40,6 +40,8 @@ export default class AjoutQuestion extends Component {
         return (
             <div>
                 <h1>Ajout</h1>
+
+
             </div>
         );
     }
