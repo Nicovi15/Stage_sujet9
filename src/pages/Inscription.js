@@ -82,6 +82,7 @@ export default class Inscription extends Component{
            this.setState({
                confirm : false,
            });
+           event.preventDefault();
            return false;
        }
 

@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import {HashRouter as Router, Link, Redirect} from "react-router-dom";
 import AjoutQuestion from "../components/AjoutQuestion";
 import {Menu} from "antd";
-import {Button} from "react-bootstrap";
+import {Button} from "antd";
+import 'antd/dist/antd.css';
 
 function Bajout(props) {
 
