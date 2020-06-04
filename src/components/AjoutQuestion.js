@@ -79,7 +79,6 @@ export default class AjoutQuestion extends Component {
         super(props);
 
         this.state = {
-            value : "",
             libelle : "",
             nb_br : 1,
             BRep1 : "",
@@ -91,7 +90,7 @@ export default class AjoutQuestion extends Component {
             MRep2 : "",
             MRep3 : "",
             MRep4 : "",
-            theme : "",
+            theme:[],
             themes : {},
             difficulte : "",
         }
@@ -100,18 +99,18 @@ export default class AjoutQuestion extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    componentDidMount() {
-        axios.get(`https://devweb.iutmetz.univ-lorraine.fr/~cazzoli2u/quizzuml/getTheme.php`)
+    async componentDidMount(){
+        var theme=[];
+        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~cazzoli2u/quizzuml/getTheme.php")
             .then(res => {
-                const themes = res.data;
-                console.log("themes", themes);
-                this.setState({
-                    themes : themes,
-                })
-            });
-
-
-
+                // console.log(res);
+                // console.log(res.data);
+                res.data.map(donne =>{
+                    theme.push(donne.libelle);
+                });
+                this.setState({theme});
+            })
+        //console.log(this.state.theme);
     }
 
     handleSubmit(event){
@@ -143,7 +142,6 @@ export default class AjoutQuestion extends Component {
                     <p>Labelle : <br/><input type="text" name ="libelle" placeholder="Entrez une question" value={this.state.libelle} onChange={this.handleChange} required />  </p>
                     <p>Nombre de bonnes réponses : <br/>
                         <select name="nb_br" value={this.state.nb_br} style={{ width: 120 }} onChange={this.handleChange}>
-                            <option  value="0">0</option>
                             <option  value="1">1</option>
                             <option  value="2">2</option>
                             <option  value="3">3</option>
@@ -161,7 +159,22 @@ export default class AjoutQuestion extends Component {
                         </select>
                     </p>
                     <ListeChampMR nbr={this.state.nb_mr} value={this.state} onChange ={this.handleChange} />
-                    <ListeTheme themes={this.state.themes}/>
+
+                    <p>Thème : <br/>
+                        <select name="themes" value={this.state.themes} style={{ width: 120 }} onChange={this.handleChange}>
+                            {this.state.theme.map(theme => <option key={theme} value={theme}>{theme}</option>)}
+                        </select>
+                    </p>
+
+                    <p>Difficulté : <br/>
+                        <select name="difficulte" value={this.state.difficulte} style={{ width: 120 }} onChange={this.handleChange}>
+                            <option  value="1">1</option>
+                            <option  value="2">2</option>
+                            <option  value="3">3</option>
+                            <option  value="4">4</option>
+                            <option  value="5">5</option>
+                        </select>
+                    </p>
 
                     <br/>
                     <button  type="submit">Valider l'ajout de la question</button>

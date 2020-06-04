@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {HashRouter as Router, Link, Route, Switch} from 'react-router-dom';
+import {HashRouter as Router, Link, Redirect, Route, Switch} from 'react-router-dom';
 import {Button} from 'react-bootstrap'
 import axios from "axios";
 
@@ -95,6 +95,11 @@ export default class Connexion extends Component {
     //<h1>Status:{this.props.loggedInStatus}</h1>
     //<button onClick={()=>this.handleLogoutClick()}>Se déconnecter</button>
     render() {
+        if (this.props.loggedInStatus === "LOGGED_IN") {
+            //Affichage de la redirection
+            return <Redirect to='/dashboard'/>;
+        }
+
         return(
             <div>
                 <h1> Connexion </h1>
