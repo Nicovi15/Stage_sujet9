@@ -54,8 +54,8 @@ function Bdashboard(props) {
     const logged = props.logged;
     if (logged === "LOGGED_IN") {
         return (<>
-            <Menu.Item><Router><Link to="/menu" >Questionnaires</Link></Router></Menu.Item>);
-            <Menu.Item><Router><Link to="/dashboard" >Dashboard</Link></Router></Menu.Item>
+            <Router><Link to="/menu" >Questionnaires</Link></Router>);
+            <Router><Link to="/dashboard" >Dashboard</Link></Router>
         </>);
     }
     else
@@ -65,7 +65,7 @@ function Bdashboard(props) {
 function Bconnecter(props) {
     const logged = props.logged;
     if (logged === "NOT_LOGGED_IN") {
-        return <Menu.Item><Router><Link to="/" ><Button>Se connecter</Button></Link></Router></Menu.Item>
+        return <Router><Link to="/" ><Button>Se connecter</Button></Link></Router>
     }
     else
         return <Menu.Item><Button onClick={() => props.handleLogoutClick()}>Se déconnecter</Button></Menu.Item>;
@@ -95,7 +95,7 @@ export default class BarreNavigation extends Component {
 
             <Menu mode="horizontal">
 
-                <Bgestion logged={this.props.loggedInStatus} admin={this.props.user.admin} />
+               
 
                 <Menu.Item key="accueil" icon={<HomeOutlined />}>
                     <Router><Link to="/accueil">Accueil</Link></Router>
@@ -103,10 +103,13 @@ export default class BarreNavigation extends Component {
 
                 <Menu.Item key="cours" icon={<BookOutlined />}>
                     <Router><Link to="/cours" >Cours</Link></Router>
-                </Menu.Item>
+              </Menu.Item>
 
+              <Menu.Item>
+                  <Bgestion logged={this.props.loggedInStatus} admin={this.props.user.admin} />
+              </Menu.Item>
 
-                <SubMenu icon={<SettingOutlined />} title="Navigation Three - Submenu">
+              {/*<SubMenu icon={<SettingOutlined />} title="Navigation Three - Submenu">
                     <Menu.ItemGroup title="Item 1">
                         <Menu.Item key="setting:1">Option 1</Menu.Item>
                         <Menu.Item key="setting:2">Option 2</Menu.Item>
@@ -115,10 +118,10 @@ export default class BarreNavigation extends Component {
                         <Menu.Item key="setting:3">Option 3</Menu.Item>
                         <Menu.Item key="setting:4">Option 4</Menu.Item>
                     </Menu.ItemGroup>
-                </SubMenu>
+                </SubMenu>*/}
 
                 <Menu.Item key="dashboard" icon={<DashboardOutlined />}>
-                    <Router><Link to="/dashboard" >Dashboard</Link></Router>
+                  <Bdashboard logged={this.props.loggedInStatus} />
                 </Menu.Item>
 
 
@@ -126,15 +129,19 @@ export default class BarreNavigation extends Component {
                 <Menu.Item key="alipay">
                     <a href="https://arche.univ-lorraine.fr/" target="_blank" rel="noopener noreferrer">
                         Accès à Arche
-          </a>
-                </Menu.Item>
+                    </a>
+              </Menu.Item>
+
+              <Menu.Item key="connexion" icon={<LoginOutlined />}>
+                  <Bconnecter logged={this.props.loggedInStatus} handleLogoutClick={this.handleLogoutClick} />
+              </Menu.Item>
 
                 <Menu.Item key="connexion" icon={<LoginOutlined />}>
-                    <Router><Link to="./">Connexion</Link></Router>
+                  <Bconnecter logged={this.props.loggedInStatus} handleLogoutClick={this.handleLogoutClick} />
                 </Menu.Item>
 
-                <Bdashboard logged={this.props.loggedInStatus} />
-                <Bconnecter logged={this.props.loggedInStatus} handleLogoutClick={this.handleLogoutClick} />
+                
+                
 
 
             </Menu>
