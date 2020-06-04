@@ -1,9 +1,20 @@
-import React from 'react'
+import React, {Component} from 'react'
 
-export const Cours = () => (
+export default class Cours extends Component {
 
-    <div>
-        <h1>Page où se trouve les cours</h1>
-    </div>
 
-)
+    constructor(props) {
+        super(props);
+
+
+    }
+
+
+    render() {
+        return (
+            <div>
+                <h1>C'est la page où se trouve les cours</h1>
+            </div>
+        );
+    }
+}

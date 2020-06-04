@@ -6,13 +6,14 @@ import axios from "axios";
 import Connexion from "./pages/Connexion";
 import Inscription from "./pages/Inscription";
 import {Erreur} from "./pages/Erreur";
-import {Dashboard} from "./pages/Dashboard";
-import {Menu} from "./pages/Menu";
-import {Questionnaire} from "./pages/Questionnaire";
-import {Cours} from "./Cours";
-import {Accueil} from "./pages/Accueil";
+import Dashboard from "./pages/Dashboard";
+import Menu from "./pages/Menu";
+import Questionnaire from "./pages/Questionnaire";
+import Cours from "./Cours";
+import Accueil from "./pages/Accueil";
+import GestionQ from "./pages/GestionQ";
 import {Container} from "react-bootstrap";
-import {BarreNavigation} from "./components/BarreNavigation";
+import BarreNavigation from "./components/BarreNavigation";
 
 class App extends Component {
 
@@ -70,13 +71,20 @@ class App extends Component {
   return (
       <React.Fragment>
         <Container>
-          <BarreNavigation/>
+          <BarreNavigation
+              loggedInStatus = {this.state.loggedInStatus}
+              user = {this.state.user}
+              handleLogout={this.handleLogout} l
+          />
             <Router>
               <Switch>
                 <Route
                     exact path = "/"
                     render={props => (
-                      <Connexion {... props} handleLogin={this.handleLogin} handleLogout={this.handleLogout} loggedInStatus = {this.state.loggedInStatus} />
+                      <Connexion {... props}
+                                 handleLogin={this.handleLogin}
+                                 handleLogout={this.handleLogout}
+                                 loggedInStatus = {this.state.loggedInStatus} />
                     )}
                 />
                 <Route  path = "/inscription" component = {Inscription} />
@@ -84,7 +92,20 @@ class App extends Component {
                 <Route
                     path = "/dashboard"
                     render={props => (
-                        <Dashboard {... props} handleLogin={this.handleLogin} handleLogout={this.handleLogout} user={this.state.user} loggedInStatus = {this.state.loggedInStatus} />
+                        <Dashboard {... props}
+                                   handleLogin={this.handleLogin}
+                                   handleLogout={this.handleLogout}
+                                   user={this.state.user}
+                                   loggedInStatus = {this.state.loggedInStatus} />
+                    )}
+                />
+                <Route
+                    exact path = "/gestion"
+                    render={props => (
+                        <GestionQ {... props}
+                                   handleLogin={this.handleLogin}
+                                   handleLogout={this.handleLogout} l
+                                   loggedInStatus = {this.state.loggedInStatus} />
                     )}
                 />
                 <Route  path = "/menu" component = {Menu} />
