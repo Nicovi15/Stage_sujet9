@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { HashRouter as Router, Link, Route, Redirect } from "react-router-dom";
 import 'antd/dist/antd.css';
 import { Menu } from 'antd';
-import { HomeOutlined, BookOutlined, DashboardOutlined, SettingOutlined, LoginOutlined } from '@ant-design/icons';
+import { HomeOutlined, BookOutlined, DashboardOutlined, SettingOutlined, LoginOutlined, CheckCircleOutlined, FormOutlined } from '@ant-design/icons';
 import axios from "axios";
 
 const { SubMenu } = Menu;
@@ -50,26 +50,55 @@ function Bgestion(props) {
         return <></>;
 }
 
+function Binscrip(props) {
+    const logged = props.logged;
+    if (!(logged === "LOGGED_IN")) {
+        return (<>
+            <Router><Link to="/inscription" >S'inscrire</Link></Router>;
+
+        </>);
+    }
+    else
+        return <></>;
+    
+}
+
 function Bdashboard(props) {
     const logged = props.logged;
     if (logged === "LOGGED_IN") {
         return (<>
             <Router><Link to="/menu" >Questionnaires</Link></Router>);
+           
+        </>);
+    }
+    else
+        return <></>;
+
+}
+
+function Bdashboard2(props) {
+    const logged = props.logged;
+    if (logged === "LOGGED_IN") {
+        return (<>
+            
             <Router><Link to="/dashboard" >Dashboard</Link></Router>
         </>);
     }
     else
-        return <Menu.Item ><Router><Link to="/inscription" >S'inscrire</Link></Router></Menu.Item>;
+        return <></>;
 }
+
+
 
 function Bconnecter(props) {
     const logged = props.logged;
     if (logged === "NOT_LOGGED_IN") {
-        return <Router><Link to="/" ><Button>Se connecter</Button></Link></Router>
+        return <Router><Link to="/" >Se connecter</Link></Router>
     }
     else
-        return <Menu.Item><Button onClick={() => props.handleLogoutClick()}>Se déconnecter</Button></Menu.Item>;
+        return <Menu.Item onClick={() => props.handleLogoutClick()}>Se déconnecter</Menu.Item>;
 }
+
 
 
 
@@ -120,9 +149,17 @@ export default class BarreNavigation extends Component {
                     </Menu.ItemGroup>
                 </SubMenu>*/}
 
-                <Menu.Item key="dashboard" icon={<DashboardOutlined />}>
+              <Menu.Item key="dashboard" icon={<CheckCircleOutlined />}>
                   <Bdashboard logged={this.props.loggedInStatus} />
-                </Menu.Item>
+              </Menu.Item>
+
+              <Menu.Item key="dashboard2" icon={<DashboardOutlined />}>
+                  <Bdashboard2 logged={this.props.loggedInStatus} />
+              </Menu.Item>
+
+              <Menu.Item key="inscrip" icon={<FormOutlined />}>
+                  <Binscrip logged={this.props.loggedInStatus} />
+              </Menu.Item>
 
 
 
