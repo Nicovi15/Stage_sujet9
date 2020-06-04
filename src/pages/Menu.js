@@ -9,15 +9,21 @@ export default class Menu extends Component {
             theme:[],
             difficulte:[1,2,3]
         };
+
     }
 
-    componentDidMount() {
-      axios.get(`https://devweb.iutmetz.univ-lorraine.fr/~cazzoli2u/quizzuml/getTheme.php`)
+    async componentDidMount(){
+      var theme=[];
+      await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~cazzoli2u/quizzuml/getTheme.php")
          .then(res => {
-           console.log('Salut');
-           console.log(res);
-           console.log(res.data);
+           // console.log(res);
+           // console.log(res.data);
+           res.data.map(donne =>{
+             theme.push(donne.libelle);
+           });
+           this.setState({theme});
          })
+         //console.log(this.state.theme);
      }
 
 
@@ -26,7 +32,7 @@ export default class Menu extends Component {
             <div>
                 <h1>C'est la page où se trouve les menus des questionnaires</h1>
                 <ul>
-                  {this.state.difficulte.map(difficulte => <li>{difficulte}</li>)}
+                  {this.state.theme.map(theme => <li key={theme} >{theme}</li>)}
                 </ul>
 
           </div>
