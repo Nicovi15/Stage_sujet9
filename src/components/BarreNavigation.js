@@ -132,9 +132,7 @@ export default class BarreNavigation extends Component {
                     </a>
               </Menu.Item>
 
-              <Menu.Item key="connexion" icon={<LoginOutlined />}>
-                  <Bconnecter logged={this.props.loggedInStatus} handleLogoutClick={this.handleLogoutClick} />
-              </Menu.Item>
+
 
                 <Menu.Item key="connexion" icon={<LoginOutlined />}>
                   <Bconnecter logged={this.props.loggedInStatus} handleLogoutClick={this.handleLogoutClick} />
