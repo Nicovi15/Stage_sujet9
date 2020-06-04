@@ -1,5 +1,24 @@
 import React, {Component} from 'react'
-import {Redirect} from "react-router-dom";
+import {HashRouter as Router, Link, Redirect} from "react-router-dom";
+import AjoutQuestion from "../components/AjoutQuestion";
+import {Menu} from "antd";
+import {Button} from "react-bootstrap";
+
+function Bajout(props) {
+
+    if (!props.ajoutQ) {
+        return <Button onClick={props.onClick}>Ajouter une question</Button>
+    } else
+        return <Button onClick={props.onClick}>Annuler</Button>
+}
+
+function Ajout(props){
+
+    if(props.ajout)
+        return <AjoutQuestion/>;
+    else return <></>;
+}
+
 
 export default class GestionQ extends Component {
 
@@ -7,7 +26,18 @@ export default class GestionQ extends Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            ajoutQ: false,
+        }
 
+
+        this.handleChangeAjouQ = this.handleChangeAjouQ.bind(this);
+    }
+
+    handleChangeAjouQ(){
+        this.setState({
+            ajoutQ : !this.state.ajoutQ,
+        })
     }
 
 
@@ -19,7 +49,9 @@ export default class GestionQ extends Component {
 
         return (
             <div>
-                <h1>C'est la page reservé aux admins permettant de gérer les questions</h1>
+                <h1>Gestionnaire des questions</h1>
+                <Ajout ajout={this.state.ajoutQ} />
+                <Bajout ajoutQ={this.state.ajoutQ} onClick={this.handleChangeAjouQ}/>
             </div>
         );
     }
