@@ -3,7 +3,28 @@ import {Redirect} from "react-router-dom";
 import 'antd/dist/antd.css';
 import axios from "axios";
 import { Select, Button } from 'antd';
+import ModifRep from "./ModifRep";
 const { Option } = Select;
+
+
+function Bmodif(props) {
+
+    if (!props.modif) {
+        return <Button onClick={props.onClick}>Modifier</Button>
+    } else
+        return <> <Button onClick={props.onClick}>Annuler</Button> </>
+}
+
+function Modif(props){
+    if(props.modif)
+        return <ModifRep
+            num_quest ={props.num_quest}
+            num_rep = {props.num_rep}
+            libelle = {props.libelle}
+            valeur = {props.valeur}
+        />;
+    else return <></>;
+}
 
 
 export default class AffichRep extends Component {
@@ -13,8 +34,17 @@ export default class AffichRep extends Component {
         super(props);
 
         this.state = {
+            modifier :false,
         }
 
+        this.handleChangeModif = this.handleChangeModif.bind(this);
+
+    }
+
+    handleChangeModif(){
+        this.setState({
+            modifier : !this.state.modifier,
+        })
     }
 
     render() {
@@ -25,9 +55,20 @@ export default class AffichRep extends Component {
 
         return (
             <>
-                <td>{this.props.num_rep}</td>
-                <td>{this.props.libelle}</td>
-                <td>{this.props.valeur}</td>
+                <tr>
+                    <td>{this.props.num_rep}</td>
+                    <td>{this.props.libelle}</td>
+                    <td>{this.props.valeur}</td>
+                    <td><Bmodif modif={this.state.modifier} onClick={this.handleChangeModif}/></td>
+                </tr>
+                <tr>
+                    <Modif
+                        modif={this.state.modifier}
+                        num_rep = {this.props.num_rep}
+                        libelle = {this.props.libelle}
+                        valeur = {this.props.valeur}
+                    />
+                </tr>
             </>
         );
     }

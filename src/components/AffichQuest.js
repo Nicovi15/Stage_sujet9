@@ -4,6 +4,7 @@ import 'antd/dist/antd.css';
 import axios from "axios";
 import { Select, Button } from 'antd';
 import AffichRep from "./AffichRep";
+import ModifQuestion from "./ModifQuestion";
 const { Option } = Select;
 
 function Brep(props) {
@@ -14,6 +15,27 @@ function Brep(props) {
         return <Button onClick={props.onClick}>Cacher les reps.</Button>
 }
 
+function Bmodif(props) {
+
+    if (!props.modif) {
+        return <Button onClick={props.onClick}>Modifier</Button>
+    } else
+        return <> <Button onClick={props.onClick}>Annuler</Button> </>
+}
+
+function Modif(props){
+    if(props.modif)
+        return <ModifQuestion
+            num_quest ={props.num_quest}
+            libelle={props.libelle}
+            nb_bonnerep={props.nb_bonnerep}
+            nb_mauvaiserep={props.nb_mauvaiserep}
+            difficulte = {props.difficulte}
+            theme = {props.theme}
+        />;
+    else return <></>;
+}
+
 function ListeRep(props){
     if(props.afficheRep)
         return<table border="1px">
@@ -21,13 +43,14 @@ function ListeRep(props){
                 <td>Num Rep</td>
                 <td>Libelle</td>
                 <td>Valeur</td>
+                <td>Modifier</td>
             </tr>
-            {props.reponses.map(rep => <tr><AffichRep key={rep.num_rep}
+            {props.reponses.map(rep => <AffichRep key={rep.num_rep}
                                                            num_rep={rep.num_rep}
                                                            libelle={rep.libelle}
                                                            valeur={rep.valeur}
 
-            /></tr>)}
+            />)}
         </table>;
     else return <></>
 }
@@ -42,10 +65,24 @@ export default class AffichQuest extends Component {
         this.state = {
             reponses : [],
             afficheRep : false,
+            modifier :false,
+
         }
 
         this.afficheRep = this.afficheRep.bind(this);
+        this.handleChangeModif = this.handleChangeModif.bind(this);
+        this.handleDeleteB = this.handleDeleteB.bind(this);
 
+    }
+
+    handleChangeModif(){
+        this.setState({
+            modifier : !this.state.modifier,
+        })
+    }
+
+    handleDeleteB(){
+        console.log(this.props.num_quest)
     }
 
     async componentDidMount(){
@@ -93,7 +130,20 @@ export default class AffichQuest extends Component {
                         <ListeRep afficheRep={this.state.afficheRep} reponses={this.state.reponses}/>
                         <Brep rep={this.state.afficheRep} onClick={this.afficheRep} />
                     </td>
+                    <td><Bmodif modif={this.state.modifier} onClick={this.handleChangeModif}/></td>
+                    <td><Button onClick={this.handleDeleteB}>Supprimer</Button></td>
 
+                </tr>
+                <tr>
+                    <Modif
+                        modif={this.state.modifier}
+                        num_quest ={this.props.num_quest}
+                        libelle={this.props.libelle}
+                        nb_bonnerep={this.props.nb_bonnerep}
+                        nb_mauvaiserep={this.props.nb_mauvaiserep}
+                        difficulte = {this.props.difficulte}
+                        theme = {this.props.theme}
+                    />
                 </tr>
             </>
         );

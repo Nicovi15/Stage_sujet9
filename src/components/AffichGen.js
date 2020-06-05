@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Redirect} from "react-router-dom";
 import 'antd/dist/antd.css';
 import axios from "axios";
-import { Select, Button } from 'antd';
+import { Select, Button, Table } from 'antd';
 import AffichQuest from "./AffichQuest";
 import { Radio } from 'antd';
 import { Checkbox } from 'antd';
@@ -24,17 +24,16 @@ export default class AffichGen extends Component {
             checkedList: [],
             indeterminate: true,
             checkAll: false,
-
         }
-
     }
 
     onChange2 = checkedList => {
         this.setState({
-            checkedList,
             indeterminate: !!checkedList.length && checkedList.length < this.state.theme.length,
             checkAll: checkedList.length === this.state.theme.length,
+            checkedList,
         });
+        console.log(this.state.checkedList);
     };
 
     onCheckAllChange = e => {
@@ -43,7 +42,12 @@ export default class AffichGen extends Component {
             indeterminate: false,
             checkAll: e.target.checked,
         });
+        console.log(this.state);
     };
+
+    chargerQuest(){
+
+    }
 
     async componentDidMount(){
         var questions=[];
@@ -109,6 +113,8 @@ export default class AffichGen extends Component {
                         <td>Num Thème</td>
                         <td>Thème</td>
                         <td>Réponses</td>
+                        <td>Modifier</td>
+                        <td>Supprimer</td>
 
                     </tr>
                     {this.state.questions.map(question => <AffichQuest key={question.num_quest}
