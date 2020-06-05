@@ -14,6 +14,14 @@ function Brep(props) {
         return <Button onClick={props.onClick}>Cacher les reps.</Button>
 }
 
+function Bmodif(props) {
+
+    if (!props.modif) {
+        return <Button onClick={props.onClick}>Modifier</Button>
+    } else
+        return <> <Button onClick={props.onClick}>Annuler</Button> </>
+}
+
 function ListeRep(props){
     if(props.afficheRep)
         return<table border="1px">
@@ -21,6 +29,7 @@ function ListeRep(props){
                 <td>Num Rep</td>
                 <td>Libelle</td>
                 <td>Valeur</td>
+                <td>Modifier</td>
             </tr>
             {props.reponses.map(rep => <tr><AffichRep key={rep.num_rep}
                                                            num_rep={rep.num_rep}
@@ -42,10 +51,19 @@ export default class AffichQuest extends Component {
         this.state = {
             reponses : [],
             afficheRep : false,
+            modifier :false,
+
         }
 
         this.afficheRep = this.afficheRep.bind(this);
+        this.handleChangeModif = this.handleChangeModif.bind(this);
 
+    }
+
+    handleChangeModif(){
+        this.setState({
+            modifier : !this.state.modifier,
+        })
     }
 
     async componentDidMount(){
@@ -93,6 +111,7 @@ export default class AffichQuest extends Component {
                         <ListeRep afficheRep={this.state.afficheRep} reponses={this.state.reponses}/>
                         <Brep rep={this.state.afficheRep} onClick={this.afficheRep} />
                     </td>
+                    <td><Bmodif modif={this.state.modifier} onClick={this.handleChangeModif}/></td>
 
                 </tr>
             </>
