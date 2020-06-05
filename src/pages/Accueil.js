@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import 
+import "../design/accueil.scss"
 
 export default class Accueil extends Component {
 

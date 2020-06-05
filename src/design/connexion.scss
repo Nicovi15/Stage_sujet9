@@ -1,0 +1,20 @@
+body{
+  background-image: linear-gradient(white 40% , #08A0E7 200% );
+  #connexion{
+    display: flex;
+    position: absolute;
+    margin: auto;
+
+
+    h1{
+      text-align: center;margin: auto;
+      font-family: Arial;
+    }
+
+    form{
+      align: center;
+      padding-top: 200px;
+      margin: auto;
+    }
+  }
+}

@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {HashRouter as Router, Link, Redirect, Route, Switch} from 'react-router-dom';
 import {Button} from 'react-bootstrap'
 import axios from "axios";
+import "../design/connexion.scss"
 
 function Resultat(props) {
     const reussite = props.reussite;
@@ -101,7 +102,7 @@ export default class Connexion extends Component {
         }
 
         return(
-            <div>
+            <div id={"connexion"}>
                 <h1> Connexion </h1>
 
                 <form onSubmit={this.handleSubmit}>
