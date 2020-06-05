@@ -22,6 +22,7 @@ body {
         input{
           margin: auto;
           width: 100%;
+          min-width: 120px;
         }
       }
 
@@ -29,6 +30,7 @@ body {
       Button{
         margin: auto;
         width: 50%;
+        min-width: 120px;
       }
 
     }

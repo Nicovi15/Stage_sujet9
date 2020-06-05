@@ -1,35 +1,12 @@
 import React, { Component } from "react";
-import { Nav, Navbar } from "react-bootstrap";
-import { Button } from 'react-bootstrap'
-import styled from "styled-components";
 import { HashRouter as Router, Link, Route, Redirect } from "react-router-dom";
 import 'antd/dist/antd.css';
 import { Menu } from 'antd';
 import { HomeOutlined, BookOutlined, DashboardOutlined, SettingOutlined, LoginOutlined, CheckCircleOutlined, FormOutlined, DiffOutlined } from '@ant-design/icons';
 import axios from "axios";
+import '../design/barreNavigation.scss'
 
 const { SubMenu } = Menu;
-
-/*
-const Styles = styled.div`
-    .navbar {
-    background-color: black;
-    align: center;
-    }
-
-    .navbar-brand, .navbar-nav .nav-link {
-        color: white;
-
-        &:hover{
-            color: red;
-            }
-        }
-
-    .p{
-        color : white;
-        &:hover: red;
-    }
-    `;*/
 
 function Resultat(props) {
     const reussite = props.reussite;
