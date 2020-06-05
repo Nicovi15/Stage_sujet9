@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {HashRouter as Router, Link, Redirect} from "react-router-dom";
 import AjoutQuestion from "../components/AjoutQuestion";
+import AffichGen from "../components/AffichGen";
 import {Menu} from "antd";
 import {Button} from "antd";
 import 'antd/dist/antd.css';
@@ -53,6 +54,8 @@ export default class GestionQ extends Component {
                 <h1>Gestionnaire des questions</h1>
                 <Ajout ajout={this.state.ajoutQ} />
                 <Bajout ajoutQ={this.state.ajoutQ} onClick={this.handleChangeAjouQ}/>
+                <br/>
+                <AffichGen/>
             </div>
         );
     }

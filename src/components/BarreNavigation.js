@@ -16,15 +16,15 @@ const Styles = styled.div`
     background-color: black;
     align: center;
     }
-    
+
     .navbar-brand, .navbar-nav .nav-link {
         color: white;
-        
+
         &:hover{
             color: red;
             }
         }
-        
+
     .p{
         color : white;
         &:hover: red;
@@ -34,7 +34,7 @@ const Styles = styled.div`
 function Resultat(props) {
     const reussite = props.reussite;
     if (reussite === "LOGGED_IN") {
-        return <h6>Connecté</h6>
+        return <h6>ConnectÃ©</h6>
     }
     else
         return <></>;
@@ -54,21 +54,21 @@ function Binscrip(props) {
     const logged = props.logged;
     if (!(logged === "LOGGED_IN")) {
         return (<>
-            <Router><Link to="/inscription" ><FormOutlined />S'inscrire</Link></Router>;
+            <Router><Link to="/inscription" ><FormOutlined />S'inscrire</Link></Router>
 
         </>);
     }
     else
         return <></>;
-    
+
 }
 
 function Bdashboard(props) {
     const logged = props.logged;
     if (logged === "LOGGED_IN") {
         return (<>
-            <Router><Link to="/menu" ><CheckCircleOutlined />Questionnaires</Link></Router>);
-           
+            <Router><Link to="/menu" ><CheckCircleOutlined />Questionnaires</Link></Router>
+
         </>);
     }
     else
@@ -80,7 +80,7 @@ function Bdashboard2(props) {
     const logged = props.logged;
     if (logged === "LOGGED_IN") {
         return (<>
-            
+
             <Router><Link to="/dashboard" > <DashboardOutlined /> Dashboard</Link></Router>
         </>);
     }
@@ -96,7 +96,7 @@ function Bconnecter(props) {
         return <Router><Link to="/" ><LoginOutlined />Se connecter</Link></Router>
     }
     else
-        return <Menu.Item onClick={() => props.handleLogoutClick()}>Se déconnecter</Menu.Item>;
+        return <Menu.Item onClick={() => props.handleLogoutClick()}>Se dÃ©connecter</Menu.Item>;
 }
 
 
@@ -124,7 +124,7 @@ export default class BarreNavigation extends Component {
 
             <Menu mode="horizontal">
 
-               
+
 
                 <Menu.Item key="accueil" icon={<HomeOutlined />}>
                     <Router><Link to="/accueil">Accueil</Link></Router>
@@ -165,7 +165,7 @@ export default class BarreNavigation extends Component {
 
                 <Menu.Item key="">
                     <a href="https://arche.univ-lorraine.fr/" target="_blank" rel="noopener noreferrer">
-                        Accès à Arche
+                        AccÃ¨s Ã  Arche
                     </a>
               </Menu.Item>
 
@@ -175,8 +175,8 @@ export default class BarreNavigation extends Component {
                   <Bconnecter logged={this.props.loggedInStatus} handleLogoutClick={this.handleLogoutClick} />
                 </Menu.Item>
 
-                
-                
+
+
 
 
             </Menu>
@@ -184,7 +184,7 @@ export default class BarreNavigation extends Component {
 
 
         );
-        
+
     }
 }
 
