@@ -67,7 +67,7 @@ function Bdashboard(props) {
     const logged = props.logged;
     if (logged === "LOGGED_IN") {
         return (<>
-            <Router><Link to="/menu" >Questionnaires</Link></Router>);
+            <Router><Link to="/menu" ><CheckCircleOutlined />Questionnaires</Link></Router>);
            
         </>);
     }
@@ -81,7 +81,7 @@ function Bdashboard2(props) {
     if (logged === "LOGGED_IN") {
         return (<>
             
-            <Router><Link to="/dashboard" >Dashboard</Link></Router>
+            <Router><Link to="/dashboard" > <DashboardOutlined /> Dashboard</Link></Router>
         </>);
     }
     else
@@ -149,11 +149,11 @@ export default class BarreNavigation extends Component {
                     </Menu.ItemGroup>
                 </SubMenu>*/}
 
-              <Menu.Item key="dashboard" icon={<CheckCircleOutlined />}>
+              <Menu.Item key="dashboard">
                   <Bdashboard logged={this.props.loggedInStatus} />
               </Menu.Item>
 
-              <Menu.Item key="dashboard2" icon={<DashboardOutlined />}>
+              <Menu.Item key="dashboard2">
                   <Bdashboard2 logged={this.props.loggedInStatus} />
               </Menu.Item>
 
