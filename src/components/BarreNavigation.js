@@ -54,7 +54,7 @@ function Binscrip(props) {
     const logged = props.logged;
     if (!(logged === "LOGGED_IN")) {
         return (<>
-            <Router><Link to="/inscription" >S'inscrire</Link></Router>;
+            <Router><Link to="/inscription" ><FormOutlined />S'inscrire</Link></Router>;
 
         </>);
     }
@@ -93,7 +93,7 @@ function Bdashboard2(props) {
 function Bconnecter(props) {
     const logged = props.logged;
     if (logged === "NOT_LOGGED_IN") {
-        return <Router><Link to="/" >Se connecter</Link></Router>
+        return <Router><Link to="/" ><LoginOutlined />Se connecter</Link></Router>
     }
     else
         return <Menu.Item onClick={() => props.handleLogoutClick()}>Se déconnecter</Menu.Item>;
@@ -157,13 +157,13 @@ export default class BarreNavigation extends Component {
                   <Bdashboard2 logged={this.props.loggedInStatus} />
               </Menu.Item>
 
-              <Menu.Item key="inscrip" icon={<FormOutlined />}>
+              <Menu.Item key="inscrip" >
                   <Binscrip logged={this.props.loggedInStatus} />
               </Menu.Item>
 
 
 
-                <Menu.Item key="alipay">
+                <Menu.Item key="">
                     <a href="https://arche.univ-lorraine.fr/" target="_blank" rel="noopener noreferrer">
                         Accès à Arche
                     </a>
@@ -171,7 +171,7 @@ export default class BarreNavigation extends Component {
 
 
 
-                <Menu.Item key="connexion" icon={<LoginOutlined />}>
+                <Menu.Item key="connexion">
                   <Bconnecter logged={this.props.loggedInStatus} handleLogoutClick={this.handleLogoutClick} />
                 </Menu.Item>
 
