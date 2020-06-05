@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios';
 import {Button} from 'react-bootstrap'
+import '../design/inscrption.scss'
 
 function Resultat(props) {
     const reussite = props.reussite;
@@ -97,7 +98,8 @@ export default class Inscription extends Component{
 
     render() {
         return (
-            <div>
+            <div id={"inscription"}>
+                <br/>
                 <h1>Inscription</h1>
                 <br/>
                 <form onSubmit={this.handleSubmit}>
@@ -108,6 +110,7 @@ export default class Inscription extends Component{
                     <p>Mot de passe : <br/><input type="password" name ="mdp" placeholder="Entrez vote mot de passe" value={this.state.mdp} onChange={this.handleChange} required /> </p>
                     <p>Confirmer votre mot de passe : <br/><input type="password" name ="mdp_confirm" placeholder="Entrez vote mot de passe" value={this.state.mdp_confirm} onChange={this.handleChange} required /> </p>
                     <Confirm confirm = {this.state.confirm}/>
+                    <br/>
                     <Button  type="submit">S'inscrire</Button>
                 </form>
 
