@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { HashRouter as Router, Link, Route, Redirect } from "react-router-dom";
 import 'antd/dist/antd.css';
 import { Menu } from 'antd';
-import { HomeOutlined, BookOutlined, DashboardOutlined, SettingOutlined, LoginOutlined, CheckCircleOutlined, FormOutlined } from '@ant-design/icons';
+import { HomeOutlined, BookOutlined, DashboardOutlined, SettingOutlined, LoginOutlined, CheckCircleOutlined, FormOutlined, DiffOutlined } from '@ant-design/icons';
 import axios from "axios";
 
 const { SubMenu } = Menu;
@@ -16,15 +16,15 @@ const Styles = styled.div`
     background-color: black;
     align: center;
     }
-    
+
     .navbar-brand, .navbar-nav .nav-link {
         color: white;
-        
+
         &:hover{
             color: red;
             }
         }
-        
+
     .p{
         color : white;
         &:hover: red;
@@ -44,7 +44,7 @@ function Bgestion(props) {
     const logged = props.logged;
     const admin = props.admin;
     if (logged === "LOGGED_IN" && admin === "1") {
-        return <Menu.Item><Router><Link to="/gestion">Gestionnaire de question</Link></Router></Menu.Item>
+        return <Router><Link to="/gestion"> <DiffOutlined />Gestionnaire de question</Link></Router>
     }
     else
         return <></>;
@@ -60,7 +60,7 @@ function Binscrip(props) {
     }
     else
         return <></>;
-    
+
 }
 
 function Bdashboard(props) {
@@ -68,7 +68,7 @@ function Bdashboard(props) {
     if (logged === "LOGGED_IN") {
         return (<>
             <Router><Link to="/menu" ><CheckCircleOutlined />Questionnaires</Link></Router>
-           
+
         </>);
     }
     else
@@ -80,7 +80,7 @@ function Bdashboard2(props) {
     const logged = props.logged;
     if (logged === "LOGGED_IN") {
         return (<>
-            
+
             <Router><Link to="/dashboard" > <DashboardOutlined /> Dashboard</Link></Router>
         </>);
     }
@@ -124,7 +124,7 @@ export default class BarreNavigation extends Component {
 
             <Menu mode="horizontal">
 
-               
+
 
                 <Menu.Item key="accueil" icon={<HomeOutlined />}>
                     <Router><Link to="/accueil">Accueil</Link></Router>
@@ -177,8 +177,8 @@ export default class BarreNavigation extends Component {
                   <Bconnecter logged={this.props.loggedInStatus} handleLogoutClick={this.handleLogoutClick} />
                 </Menu.Item>
 
-                
-                
+
+
 
 
             </Menu>
@@ -186,7 +186,7 @@ export default class BarreNavigation extends Component {
 
 
         );
-        
+
     }
 }
 
