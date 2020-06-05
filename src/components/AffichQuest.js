@@ -4,6 +4,7 @@ import 'antd/dist/antd.css';
 import axios from "axios";
 import { Select, Button } from 'antd';
 import AffichRep from "./AffichRep";
+import AjoutQuestion from "./AjoutQuestion";
 const { Option } = Select;
 
 function Brep(props) {
@@ -20,6 +21,12 @@ function Bmodif(props) {
         return <Button onClick={props.onClick}>Modifier</Button>
     } else
         return <> <Button onClick={props.onClick}>Annuler</Button> </>
+}
+
+function Modif(props){
+    if(props.modif)
+        return <AjoutQuestion/>;
+    else return <></>;
 }
 
 function ListeRep(props){
@@ -113,6 +120,9 @@ export default class AffichQuest extends Component {
                     </td>
                     <td><Bmodif modif={this.state.modifier} onClick={this.handleChangeModif}/></td>
 
+                </tr>
+                <tr>
+                    <Modif ajout={this.state.modifier} />
                 </tr>
             </>
         );
