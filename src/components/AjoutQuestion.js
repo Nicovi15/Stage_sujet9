@@ -49,27 +49,24 @@ function ListeChampMR(props) {
     else return <></>
 }
 
-function optionTheme(props){
-    return <option  value={props.libelle}>{props.libelle}</option>
+function Resultat(props) {
+    const reussite = props.reussite;
+    if (reussite) {
+        return <h6>La question, ainsi que ses réponses ont été ajoutées à la base de données.</h6>
+    }
+    return <></>;
 }
 
-function ListeTheme(props){
-    /*
-            const themes = props.themes;
-            const listItems = themes.map((number) =>
-                // Correct ! La clé doit être spécifiée dans le tableau.
-                <option  key={number.num_theme} value={number.libelle}>{number.libelle}</option>);
+function Echec(props) {
+    const echec = props.echec;
+    if (echec) {
+        return <h6>La question existe déjà.</h6>
+    }
+    else{
+        return <></>;
+    }
 
-            return <>
-                <p>Thème : <br/>
-                    <select name="nb_br"  style={{ width: 120 }} >
-                        {listItems}
-                    </select>
-                </p> </>
-                */
-            return <></>
-        }
-
+}
 
 
 export default class AjoutQuestion extends Component {
@@ -80,19 +77,21 @@ export default class AjoutQuestion extends Component {
 
         this.state = {
             libelle : "",
-            nb_br : 1,
+            nb_br : "1",
             BRep1 : "",
             BRep2 : "",
             BRep3 : "",
             BRep4 : "",
-            nb_mr : 1,
+            nb_mr : "1",
             MRep1 : "",
             MRep2 : "",
             MRep3 : "",
             MRep4 : "",
-            theme:[],
-            themes : {},
-            difficulte : "",
+            themes:[],
+            theme : "",
+            difficulte : 1,
+            reussite : false,
+            echec : false,
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -100,29 +99,81 @@ export default class AjoutQuestion extends Component {
     }
 
     async componentDidMount(){
-        var theme=[];
+        var themes=[];
         await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~cazzoli2u/quizzuml/getTheme.php")
             .then(res => {
                 // console.log(res);
                 // console.log(res.data);
                 res.data.map(donne =>{
-                    theme.push(donne.libelle);
+                    themes.push(donne.libelle);
                 });
-                this.setState({theme});
+                this.setState({themes},);
+                this.setState({theme : this.state.themes[0]},)
             })
         //console.log(this.state.theme);
     }
 
     handleSubmit(event){
-        console.log(this.state)
+        //console.log(this.state)
+        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/ajoutQuestion.php",
+            {
+                libelle : this.state.libelle,
+                nb_bonnerep : this.state.nb_br,
+                brep1 : this.state.BRep1,
+                brep2 : this.state.BRep2,
+                brep3 : this.state.BRep3,
+                brep4 : this.state.BRep4,
+                nb_mauvaiserep : this.state.nb_mr,
+                mrep1 : this.state.MRep1,
+                mrep2 : this.state.MRep2,
+                mrep3 : this.state.MRep3,
+                mrep4 : this.state.MRep4,
+                difficulte : this.state.difficulte,
+                theme : this.state.theme,
+            },
+            {withCredentials: true}
+        ).then(response => {
+            if ( response.data.error ) {
+                console.log(response.data.error)
+                this.setState({
+                    echec : true,
+                })
+            }
+            else {
+                console.log(response.data);
+                if(response.data.status === "Succes") console.log("yes "+response.data);
+                //this.handleSuccessfulAuth(response.data.user);
+                //this.props.history.push("/");
+                this.setState({
+                    libelle : "",
+                    nb_br : "1",
+                    BRep1 : "",
+                    BRep2 : "",
+                    BRep3 : "",
+                    BRep4 : "",
+                    nb_mr : "1",
+                    MRep1 : "",
+                    MRep2 : "",
+                    MRep3 : "",
+                    MRep4 : "",
+                    theme : "",
+                    difficulte : 1,
+                    reussite : true,
+                });
+            }
+        })
         event.preventDefault();
     }
 
     handleChange(event){
-        console.log("value ",event.target.value);
-        console.log("name ",event.target.name);
+        //console.log("value ",event.target.value);
+        //console.log("name ",event.target.name);
         this.setState({
             [event.target.name]: event.target.value
+        })
+        this.setState({
+            reussite : false,
+            echec : false,
         })
     }
 
@@ -161,8 +212,8 @@ export default class AjoutQuestion extends Component {
                     <ListeChampMR nbr={this.state.nb_mr} value={this.state} onChange ={this.handleChange} />
 
                     <p>Thème : <br/>
-                        <select name="themes" value={this.state.themes} style={{ width: 120 }} onChange={this.handleChange}>
-                            {this.state.theme.map(theme => <option key={theme} value={theme}>{theme}</option>)}
+                        <select name="theme" value={this.state.theme} style={{ width: 120 }} onChange={this.handleChange}>
+                            {this.state.themes.map(theme => <option key={theme} value={theme}>{theme}</option>)}
                         </select>
                     </p>
 
@@ -178,6 +229,9 @@ export default class AjoutQuestion extends Component {
 
                     <br/>
                     <button  type="submit">Valider l'ajout de la question</button>
+                    <br/>
+                    <Resultat reussite={this.state.reussite} />
+                    <Echec echec={this.state.echec} />
                 </form>
                 <br/>
 
