@@ -1,7 +1,10 @@
 import React, {Component} from 'react'
 import {HashRouter as Router, Link, Redirect, Route, Switch} from 'react-router-dom';
 import {Button} from 'react-bootstrap'
+//import 'antd/dist/antd.css';
+//import { Button } from 'antd';
 import axios from "axios";
+
 import "../design/connexion.scss"
 
 function Resultat(props) {
@@ -103,17 +106,25 @@ export default class Connexion extends Component {
 
         return(
             <div id={"connexion"}>
-                <h1> Connexion </h1>
+                <h1> Se Connecter </h1>
 
                 <form onSubmit={this.handleSubmit}>
-                    <p>Login : <br/><input type="text" name ="pseudo" placeholder="Entrez vote pseudo" value={this.state.pseudo} onChange={this.handleChange} required /></p>
-                    <p>Mot de passe : <br/><input type="password" name ="mdp" placeholder="Entrez vote mot de passe" value={this.state.mdp} onChange={this.handleChange} required /></p>
-                    <Button type="submit">Se connecter</Button>
+                    <p id={"pconnex"}>Login : <br/><input type="text" name ="pseudo" placeholder="Entrez vote pseudo" value={this.state.pseudo} onChange={this.handleChange} required /></p>
+
+                    <p id={"pconnex"}>Mot de passe : <br/><input type="password" name ="mdp" placeholder="Entrez vote mot de passe" value={this.state.mdp} onChange={this.handleChange} required /></p>
+                    <br/>
+                    <Button  type="submit">Se connecter</Button>
+
                 </form>
                 <Echec echec={this.state.echec}/>
                 <Resultat reussite={this.state.r} />
                 <br/>
-                <Route>Pas de compte ? <Link to="/inscription">Inscrivez-vous !</Link></Route>
+                <p id={"pdc"}>
+                    <Route>Pas de compte ? <Link to="/inscription">Inscrivez-vous !</Link></Route>
+                </p>
+
+
+
                 <br/>
             </div>
         );

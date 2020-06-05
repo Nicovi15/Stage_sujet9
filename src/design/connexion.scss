@@ -1,20 +1,41 @@
-body{
-  background-image: linear-gradient(white 40% , #08A0E7 200% );
-  #connexion{
-    display: flex;
-    position: absolute;
+body {
+  background-image: linear-gradient(white 40%, #08A0E7 200%);
+
+  #connexion {
     margin: auto;
+    width: 50%;
 
-
-    h1{
-      text-align: center;margin: auto;
+    h1 {
+      padding-top: 10%;
+      text-align: center;
+      margin: auto;
       font-family: Arial;
     }
 
-    form{
-      align: center;
-      padding-top: 200px;
+    form {
+      display:flex;
+      flex-direction: column;
       margin: auto;
+
+      #pconnex{
+        margin: auto;
+        input{
+          margin: auto;
+          width: 100%;
+        }
+      }
+
+
+      Button{
+        margin: auto;
+        width: 50%;
+      }
+
+    }
+    #pdc{
+
+      text-align: center;
+
     }
   }
 }
