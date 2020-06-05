@@ -34,7 +34,7 @@ const Styles = styled.div`
 function Resultat(props) {
     const reussite = props.reussite;
     if (reussite === "LOGGED_IN") {
-        return <h6>Connecté</h6>
+        return <h6>ConnectÃ©</h6>
     }
     else
         return <></>;
@@ -54,7 +54,7 @@ function Binscrip(props) {
     const logged = props.logged;
     if (!(logged === "LOGGED_IN")) {
         return (<>
-            <Router><Link to="/inscription" ><FormOutlined />S'inscrire</Link></Router>;
+            <Router><Link to="/inscription" ><FormOutlined />S'inscrire</Link></Router>
 
         </>);
     }
@@ -67,7 +67,7 @@ function Bdashboard(props) {
     const logged = props.logged;
     if (logged === "LOGGED_IN") {
         return (<>
-            <Router><Link to="/menu" ><CheckCircleOutlined />Questionnaires</Link></Router>);
+            <Router><Link to="/menu" ><CheckCircleOutlined />Questionnaires</Link></Router>
            
         </>);
     }
@@ -96,7 +96,7 @@ function Bconnecter(props) {
         return <Router><Link to="/" ><LoginOutlined />Se connecter</Link></Router>
     }
     else
-        return <Menu.Item onClick={() => props.handleLogoutClick()}>Se déconnecter</Menu.Item>;
+        return <Menu.Item onClick={() => props.handleLogoutClick()}>Se dÃ©connecter</Menu.Item>;
 }
 
 
@@ -157,17 +157,19 @@ export default class BarreNavigation extends Component {
                   <Bdashboard2 logged={this.props.loggedInStatus} />
               </Menu.Item>
 
-              <Menu.Item key="inscrip" >
-                  <Binscrip logged={this.props.loggedInStatus} />
-              </Menu.Item>
+
 
 
 
                 <Menu.Item key="">
                     <a href="https://arche.univ-lorraine.fr/" target="_blank" rel="noopener noreferrer">
-                        Accès à Arche
+                        AccÃ¨s Ã  Arche
                     </a>
               </Menu.Item>
+
+                <Menu.Item key="inscrip" >
+                    <Binscrip logged={this.props.loggedInStatus} />
+                </Menu.Item>
 
 
 
