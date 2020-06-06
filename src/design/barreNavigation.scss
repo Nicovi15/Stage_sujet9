@@ -1,9 +1,21 @@
 #menu{
-  display: flex;
-  width: 100%;
+  //display: inline-block;
+  width: 80%;
+  padding-bottom: 50px;
+  #menug{
+    margin-left: 20%;
+    width: 50%;
+    display: flex;
+    position: absolute;
+    left: 0;
+  }
   #menud{
+    margin-right: 20%;
+    max-width: 50%;
+    width: 100%;
     display: flex;
     position: absolute;
     right: 0;
+    justify-content: flex-end;
   }
 }
