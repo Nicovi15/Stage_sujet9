@@ -70,7 +70,7 @@ class App extends Component {
   render(){
   return (
       <React.Fragment>
-        <Container>
+        <div>
           <BarreNavigation
               loggedInStatus = {this.state.loggedInStatus}
               user = {this.state.user}
@@ -115,7 +115,7 @@ class App extends Component {
               </Switch>
             </Router>
 
-        </Container>
+        </div>
       </React.Fragment>
   );
   }
