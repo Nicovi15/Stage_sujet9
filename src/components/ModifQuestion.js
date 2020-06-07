@@ -81,7 +81,7 @@ export default class ModifQuestion extends Component {
     }
 
     handleSubmit(event){
-        //console.log(this.state)
+        console.log(this.state)
         axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/modifQuestion.php",
             {
                 num_quest : this.state.num_quest,
@@ -118,6 +118,7 @@ export default class ModifQuestion extends Component {
                     difficulte : 1,
                     reussite : true,
                 });
+                this.props.reloadQuest();
             }
         })
         event.preventDefault();

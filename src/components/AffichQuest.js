@@ -32,6 +32,7 @@ function Modif(props){
             nb_mauvaiserep={props.nb_mauvaiserep}
             difficulte = {props.difficulte}
             theme = {props.theme}
+            reloadQuest={props.reloadQuest}
         />;
     else return <></>;
 }
@@ -75,6 +76,7 @@ export default class AffichQuest extends Component {
 
     }
 
+
     handleChangeModif(){
         this.setState({
             modifier : !this.state.modifier,
@@ -83,6 +85,26 @@ export default class AffichQuest extends Component {
 
     handleDeleteB(){
         console.log(this.props.num_quest)
+        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/supprQuestion.php",
+            {
+                num_quest : this.props.num_quest,
+            },
+            {withCredentials: true}
+        ).then(response => {
+            if ( response.data.error ) {
+                console.log(response.data.error)
+                this.setState({
+                    echec : true,
+                })
+            }
+            else {
+                console.log(response.data);
+                if(response.data.status === "Succes") console.log("yes "+response.data);
+                //this.handleSuccessfulAuth(response.data.user);
+                //this.props.history.push("/");
+                this.props.reloadQuest();
+            }
+        });
     }
 
     async componentDidMount(){
@@ -143,6 +165,7 @@ export default class AffichQuest extends Component {
                         nb_mauvaiserep={this.props.nb_mauvaiserep}
                         difficulte = {this.props.difficulte}
                         theme = {this.props.theme}
+                        reloadQuest={this.props.reloadQuest}
                     />
                 </tr>
             </>

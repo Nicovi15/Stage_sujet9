@@ -25,6 +25,22 @@ export default class AffichGen extends Component {
             indeterminate: true,
             checkAll: false,
         }
+        this.reloadQuest = this.reloadQuest.bind(this);
+
+    }
+
+    reloadQuest (){
+        var questions=[];
+        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getquestions.php")
+            .then(res => {
+                // console.log(res);
+                // console.log(res.data);
+                res.data.map(donne =>{
+                    questions.push(donne);
+                });
+                this.setState({questions},);
+                console.log(this.state);
+            })
     }
 
     onChange2 = checkedList => {
@@ -125,6 +141,7 @@ export default class AffichGen extends Component {
                                                                        difficulte={question.difficulte}
                                                                        num_theme={question.num_theme}
                                                                        theme={question.theme}
+                                                                       reloadQuest={this.reloadQuest}
                     />)}
 
                 </table>
