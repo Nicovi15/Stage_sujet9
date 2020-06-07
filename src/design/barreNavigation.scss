@@ -1,22 +1,26 @@
-#menu{
-  //display: inline-block;
-  width: 100%;
-  padding-bottom: 50px;
-  #menug{
-    margin-left: 17%;
-    width: 41%;
+#menuaff{
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
+  display: flex;
+  position: absolute;
+
+
+
+
+  #partieD3{
+
     display: flex;
-    position: absolute;
-    left: 0;
-    justify-content: flex-start;
+    right:0;
+    justify-self: flex-end;
   }
-  #menud{
-    margin-right: 17%;
-    max-width: 25%;
+
+  #partieD0{
+
+  }
+
+  .spacer{
+    flex-grow:1;
     width: 100%;
-    display: flex;
-    position: absolute;
-    right: 0;
-    justify-content: flex-end;
   }
 }

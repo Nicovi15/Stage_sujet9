@@ -14,6 +14,7 @@ import Accueil from "./pages/Accueil";
 import GestionQ from "./pages/GestionQ";
 import {Container} from "react-bootstrap";
 import BarreNavigation from "./components/BarreNavigation";
+import './design/app.scss'
 
 class App extends Component {
 
@@ -70,12 +71,13 @@ class App extends Component {
   render(){
   return (
       <React.Fragment>
-        <div>
+        <div id={"menu"}>
           <BarreNavigation
               loggedInStatus = {this.state.loggedInStatus}
               user = {this.state.user}
               handleLogout={this.handleLogout} l
           />
+        </div>
             <Router>
               <Switch>
                 <Route
@@ -115,7 +117,7 @@ class App extends Component {
               </Switch>
             </Router>
 
-        </div>
+
       </React.Fragment>
   );
   }
