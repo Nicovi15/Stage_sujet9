@@ -2,9 +2,13 @@ import React, {Component} from 'react'
 import axios from 'axios';
 import { Radio } from 'antd';
 import { Checkbox } from 'antd';
-
+import 'antd/dist/antd.css';
+import { Tabs, Button } from 'antd';
+import {FireOutlined } from '@ant-design/icons';
+import QCMQuestion from "../components/QCMQuestion";
+import {HashRouter as Router, Link} from "react-router-dom";
 const CheckboxGroup = Checkbox.Group;
-
+const { TabPane } = Tabs;
 export default class Menu extends Component {
 
 
@@ -57,31 +61,18 @@ export default class Menu extends Component {
         return (
             <div>
                 <h1>C'est la page où se trouve les menus des questionnaires</h1>
-                <ul>
-
-                </ul>
-
-                <Radio.Group onChange={this.onChange} defaultValue="a">
-                  {this.state.theme.map(theme => <Radio.Button value={theme}>{theme}</Radio.Button>)}
-                </Radio.Group>
-
-                <div>
-                  <div className="site-checkbox-all-wrapper">
-                    <Checkbox
-                      indeterminate={this.state.indeterminate}
-                      onChange={this.onCheckAllChange}
-                      checked={this.state.checkAll}
-                    >
-                      Tout selectionner
-                    </Checkbox>
-                  </div>
-                  <br />
-                  <CheckboxGroup
-                    options={this.state.theme}
-                    value={this.state.checkedList}
-                    onChange={this.onChange2}
-                  />
-              </div>
+                <Tabs defaultActiveKey="1" >
+                    {this.state.theme.map(the => <TabPane tab={the} key={the}>
+                        <h2>Questionnaire {the}</h2>
+                        <ul >
+                            <li> <Router><Link to={"/questionnaire/"+the+"/1"}><Button type="primary" icon={<FireOutlined />}>Difficulté Niveau 1</Button></Link></Router></li> <br/><br/>
+                            <li> <Router><Link to={"/questionnaire/"+the+"/2"}><Button type="primary" icon={<><FireOutlined/><FireOutlined/></>}>Difficulté Niveau 2</Button></Link></Router></li><br/><br/>
+                            <li> <Router><Link to={"/questionnaire/"+the+"/3"}><Button type="primary" icon={<><FireOutlined/><FireOutlined/><FireOutlined /> </>}>Difficulté Niveau 3</Button></Link></Router></li><br/><br/>
+                            <li> <Router><Link to={"/questionnaire/"+the+"/4"}><Button type="primary" icon={<><FireOutlined /><FireOutlined /><FireOutlined /><FireOutlined /> </>}>Difficulté Niveau 4</Button></Link></Router></li><br/><br/>
+                            <li> <Router><Link to={"/questionnaire/"+the+"/5"}><Button type="primary" icon={<><FireOutlined /><FireOutlined /><FireOutlined /><FireOutlined /><FireOutlined /> </>}>Difficulté Niveau 5</Button></Link></Router></li><br/><br/>
+                        </ul>
+                    </TabPane>)}
+                </Tabs>
           </div>
         );
     }

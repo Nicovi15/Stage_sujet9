@@ -25,6 +25,30 @@ function shuffle(array) {
     return array;
 }
 
+function Resultat(props) {
+    if (!props.actif) {
+        if(props.res) return <p>Correct !</p>
+        else return <p>Faux !</p>
+    }
+    return <></>;
+}
+
+function Correction(props) {
+    if (!props.actif) {
+        if(!props.res) return <div>Correction :
+            <ul>
+                {props.reponses.map(rep =>{
+                    return <li>{rep.label}</li>
+                })}
+
+            </ul>
+
+        </div>
+
+    }
+    return <></>;
+}
+
 
 export default class QCMQuestion extends Component {
 
@@ -39,6 +63,7 @@ export default class QCMQuestion extends Component {
             checkAll: false,
             nb_br_checked : 0,
             nb_mr_checked : 0,
+            res:false,
         }
 
         this.onChange = this.onChange.bind(this);
@@ -65,8 +90,14 @@ export default class QCMQuestion extends Component {
         });
         console.log(this.props.info.nb_bonnerep);
         console.log(nb_br_c);
-        if((nb_br_c == this.props.info.nb_bonnerep) && (nb_mr_c == 0)) return true;
-        else return false;
+        if((nb_br_c == this.props.info.nb_bonnerep) && (nb_mr_c == 0)){
+            this.setState({res:true});
+            return true;
+        }
+        else {
+            this.setState({res:false});
+            return false;
+        }
 
     }
 
@@ -97,12 +128,14 @@ export default class QCMQuestion extends Component {
     render() {
         return (
             <div>
-                <p>{this.state.info.libelle}</p>
+                <p>N°{this.props.index+1}) {this.state.info.libelle}</p>
+                <Resultat actif={this.props.actif} res={this.state.res}/>
                 <Checkbox.Group
                     options={this.state.reponses}
                     onChange={this.onChange}
                     disabled={!this.props.actif}
                 />
+                <Correction actif={this.props.actif} res={this.state.res} reponses={this.state.reponses}/>
             </div>
         );
     }

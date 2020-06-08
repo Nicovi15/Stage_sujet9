@@ -96,7 +96,7 @@ export default class Questionnaire extends Component {
             <div>
                 <h1>C'est la page d'un questionnaire</h1>
                 <div>
-                    {this.state.qchoisies.map(question => <QCMQuestion info={question.question} index={question.index} setRes={this.setRes} actif={this.state.actif}/>)}
+                    {this.state.qchoisies.map(question => <><QCMQuestion info={question.question} index={question.index} setRes={this.setRes} actif={this.state.actif}/><br/></>)}
                 </div>
                 <button onClick={this.verif} >Verifier</button>
                 <Resultat actif={this.state.actif} res={this.state.br}/>
