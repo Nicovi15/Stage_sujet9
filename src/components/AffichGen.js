@@ -21,13 +21,41 @@ export default class AffichGen extends Component {
             questions : [],
             theme:[],
             difficulte:[1,2,3],
-            checkedList: [],
+            checkedValues: [],
             indeterminate: true,
             checkAll: false,
         }
         this.reloadQuest = this.reloadQuest.bind(this);
+        this.onChange = this.onChange.bind(this);
+        this.reloadQuest2 = this.reloadQuest2.bind(this);
+        this.affiState = this.affiState.bind(this);
 
     }
+
+    affiState (){
+        console.log(this.state);
+        this.reloadQuest2();
+    }
+
+    reloadQuest2 (){
+        var questions=[];
+        console.log(this.state.checkedList);
+        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getquestions2.php",{
+            list : this.state.checkedValues,
+            checkAll: this.state.checkAll,
+        })
+            .then(res => {
+                // console.log(res);
+                 console.log(res.data);
+                res.data.map(donne =>{
+                    questions.push(donne);
+                });
+                this.setState({questions},);
+                console.log(this.state);
+            })
+    }
+
+
 
     reloadQuest (){
         var questions=[];
@@ -52,13 +80,27 @@ export default class AffichGen extends Component {
         console.log(this.state.checkedList);
     };
 
+    onChange(checkedValues) {
+        this.setState({
+            indeterminate: !!checkedValues.length && checkedValues.length < this.state.theme.length,
+            checkAll: checkedValues.length === this.state.theme.length,
+            checkedValues,
+        });
+        //this.reloadQuest2();
+
+
+    }
+
     onCheckAllChange = e => {
+
         this.setState({
             checkedList: e.target.checked ? this.state.theme : [],
             indeterminate: false,
             checkAll: e.target.checked,
         });
-        console.log(this.state);
+
+        //console.log(this.state);
+        //console.log(this.state.checkedValues);
     };
 
     chargerQuest(){
@@ -112,11 +154,11 @@ export default class AffichGen extends Component {
                             Tout selectionner
                         </Checkbox>
                     </div>
-                    <CheckboxGroup
+                    <Checkbox.Group
                         options={this.state.theme}
-                        value={this.state.checkedList}
-                        onChange={this.onChange2}
+                        onChange={this.onChange}
                     />
+                    <button onClick={this.affiState}>Rechercher</button>
                 </div>
                 <br />
                 <table border="1px" >
