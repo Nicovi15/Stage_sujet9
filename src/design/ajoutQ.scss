@@ -1,0 +1,49 @@
+#ajoutQ{
+
+  margin: auto;
+
+  form{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    overflow-y: auto ;
+
+    table{
+      thead{
+
+      }
+      tbody{
+        tr{
+
+        }
+        td{
+          text-align: center;
+
+          input{
+            height:30px;
+            border:1px solid black;
+          }
+
+          select{
+            height:30px;
+            width: 100%;
+          }
+
+        }
+      }
+    }
+
+    .items{
+      padding-right: 20px;
+      margin: auto;
+
+      p{
+        text-align: center;
+
+      }
+
+
+    }
+
+  }
+}

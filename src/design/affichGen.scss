@@ -1,6 +1,9 @@
 #affichGen{
-  width: 80%;
+
   margin:auto;
+  overflow: auto;
+  padding-bottom: 50px;
+
 
   .chbox{
     margin: auto;
@@ -10,31 +13,55 @@
   table{
     width: 100%;
     display: block;
-    max-height: calc(100vh - 250px - 150px );
+
+    border-radius: 7px;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    max-height: calc(100vh - 240px - 150px );
+
     background-color: white;
     margin:auto;
 
     overflow: auto;
 
     thead {
+
+      border-color: grey ;
+      tr{
+        border-color: grey;
+
+      }
       tr:nth-child(1) th{
         position: sticky;
-        top: 0;
         z-index: 20;
         background-color: white;
         text-align: center;
+
+
+      }
+      th{
+        border-left: none;
+        top: 0px;
+
+
       }
 
 
 
       th:nth-child(2){
-        width: 500px;
+        width:100%;
       }
 
     }
     tbody{
       td{
+
+        border-top:none;
+       border-color: gray;
         text-align: center;
+        border-left: none ;
+
       }
 
     }
