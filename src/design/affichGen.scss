@@ -10,7 +10,7 @@
   table{
     width: 100%;
     display: block;
-    max-height: 600px;
+    max-height: calc(100vh - 250px - 150px );
     background-color: white;
     margin:auto;
 
