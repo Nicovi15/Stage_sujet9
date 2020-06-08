@@ -26,17 +26,6 @@ function shuffle(array) {
 }
 
 
-function ChoixRep(props){
-
-        return <label>
-            <input
-                name="isGoing"
-                type="checkbox"
-                checked={this.state.isGoing}
-                onChange={this.handleInputChange} />{}
-        </label>
-}
-
 export default class QCMQuestion extends Component {
 
 
@@ -50,11 +39,10 @@ export default class QCMQuestion extends Component {
             checkAll: false,
             nb_br_checked : 0,
             nb_mr_checked : 0,
-
-
         }
 
         this.onChange = this.onChange.bind(this);
+        this.verif = this.verif.bind(this);
 
     }
 
@@ -64,9 +52,21 @@ export default class QCMQuestion extends Component {
             /*indeterminate: !!checkedValues.length && checkedValues.length < this.state.theme.length,
             checkAll: checkedValues.length === this.state.theme.length,*/
             checkedValues,
-        });
+        },()=>this.props.setRes(this.props.index, this.verif()));
         //this.reloadQuest2();
+    }
 
+    verif(){
+        var nb_br_c = 0;
+        var nb_mr_c = 0;
+        this.state.checkedValues.map(donne =>{
+            if(donne.valeur == "mauvaise") nb_mr_c++;
+            else if (donne.valeur == "bonne") nb_br_c++;
+        });
+        console.log(this.props.info.nb_bonnerep);
+        console.log(nb_br_c);
+        if((nb_br_c == this.props.info.nb_bonnerep) && (nb_mr_c == 0)) return true;
+        else return false;
 
     }
 
@@ -101,6 +101,7 @@ export default class QCMQuestion extends Component {
                 <Checkbox.Group
                     options={this.state.reponses}
                     onChange={this.onChange}
+                    disabled={!this.props.actif}
                 />
             </div>
         );

@@ -3,6 +3,14 @@ import axios from "axios";
 import AffichQuest from "../components/AffichQuest";
 import QCMQuestion from "../components/QCMQuestion";
 
+function Resultat(props) {
+    if (!props.actif) {
+        return <h6>Résultat : {props.res}/3</h6>
+    }
+    return <></>;
+}
+
+
 export default class Questionnaire extends Component {
 
 
@@ -11,11 +19,31 @@ export default class Questionnaire extends Component {
         this.state={
             questions : [],
             qchoisies : [],
-
-
+            actif : true,
+            br : 0,
         }
 
+        this.setRes = this.setRes.bind(this);
+        this.verif = this.verif.bind(this);
+    }
 
+    setRes(index,res){
+        {this.state.qchoisies.map(question => {
+            if(index === question.index){
+                question.res = res;
+            }
+        })};
+        //console.log(this.state);
+    }
+
+    verif(){
+        var br=0;
+        {this.state.qchoisies.map(question => {
+            if(question.res) br ++;
+        })};
+        this.setState({actif : false,
+        br : br});
+        console.log(this.state);
     }
 
     async componentDidMount(){
@@ -59,7 +87,7 @@ export default class Questionnaire extends Component {
         this.setState({qchoisies});
 
 
-        //console.log(this.state.theme);
+        console.log(this.state);
     }
 
 
@@ -68,8 +96,10 @@ export default class Questionnaire extends Component {
             <div>
                 <h1>C'est la page d'un questionnaire</h1>
                 <div>
-                    {this.state.qchoisies.map(question => <QCMQuestion info={question.question} index={question.index}/>)}
+                    {this.state.qchoisies.map(question => <QCMQuestion info={question.question} index={question.index} setRes={this.setRes} actif={this.state.actif}/>)}
                 </div>
+                <button onClick={this.verif} >Verifier</button>
+                <Resultat actif={this.state.actif} res={this.state.br}/>
             </div>
         );
     }
