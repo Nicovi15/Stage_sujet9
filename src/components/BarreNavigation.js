@@ -108,7 +108,7 @@ function Menaff(props) {
                 </Menu.Item>
 
 
-                <Menu.Item id={"partieD"} onClick={props.deconnecter}><Router><Link to="/connexion"><LoginOutlined/>Se
+                <Menu.Item id={"partieD"} onClick={props.deconnecter}><Router><Link to="/"><LoginOutlined/>Se
                     déconnecter</Link></Router></Menu.Item>
 
 

@@ -8,7 +8,7 @@ const { Option } = Select;
 function Resultat(props) {
     const reussite = props.reussite;
     if (reussite) {
-        return <h6>La question, ainsi que ses réponses ont été ajoutées à la base de données.</h6>
+        return <h6>La question a été modifiée.</h6>
     }
     return <></>;
 }
@@ -103,19 +103,6 @@ export default class ModifQuestion extends Component {
                 //this.handleSuccessfulAuth(response.data.user);
                 //this.props.history.push("/");
                 this.setState({
-                    libelle : "",
-                    nb_br : "1",
-                    BRep1 : "",
-                    BRep2 : "",
-                    BRep3 : "",
-                    BRep4 : "",
-                    nb_mr : "1",
-                    MRep1 : "",
-                    MRep2 : "",
-                    MRep3 : "",
-                    MRep4 : "",
-                    theme : "",
-                    difficulte : 1,
                     reussite : true,
                 });
                 this.props.reloadQuest();

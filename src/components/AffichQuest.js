@@ -50,6 +50,9 @@ function ListeRep(props){
                                                            num_rep={rep.num_rep}
                                                            libelle={rep.libelle}
                                                            valeur={rep.valeur}
+                                                           num_quest={props.num_quest}
+                                                           reloadRep={props.reloadRep}
+
 
             />)}
         </table>;
@@ -73,7 +76,24 @@ export default class AffichQuest extends Component {
         this.afficheRep = this.afficheRep.bind(this);
         this.handleChangeModif = this.handleChangeModif.bind(this);
         this.handleDeleteB = this.handleDeleteB.bind(this);
+        this.reloadRep = this.reloadRep.bind(this);
 
+    }
+
+    reloadRep(){
+        var reponses=[];
+        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getreponses.php",{
+            num_quest : this.props.num_quest
+        })
+            .then(res => {
+                // console.log(res);
+                // console.log(res.data);
+                res.data.map(donne =>{
+                    reponses.push(donne);
+                });
+                this.setState({reponses},);
+                console.log(this.state);
+            })
     }
 
 
@@ -85,26 +105,30 @@ export default class AffichQuest extends Component {
 
     handleDeleteB(){
         console.log(this.props.num_quest)
-        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/supprQuestion.php",
-            {
-                num_quest : this.props.num_quest,
-            },
-            {withCredentials: true}
-        ).then(response => {
-            if ( response.data.error ) {
-                console.log(response.data.error)
-                this.setState({
-                    echec : true,
-                })
-            }
-            else {
-                console.log(response.data);
-                if(response.data.status === "Succes") console.log("yes "+response.data);
-                //this.handleSuccessfulAuth(response.data.user);
-                //this.props.history.push("/");
-                this.props.reloadQuest();
-            }
-        });
+        if(window.confirm(("Voulez vraiment supprimer la question n°" + this.props.num_quest+" ?"))){
+            axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/supprQuestion.php",
+                {
+                    num_quest : this.props.num_quest,
+                },
+                {withCredentials: true}
+            ).then(response => {
+                if ( response.data.error ) {
+                    console.log(response.data.error)
+                    this.setState({
+                        echec : true,
+                    })
+                }
+                else {
+                    console.log(response.data);
+                    if(response.data.status === "Succes") console.log("yes "+response.data);
+                    //this.handleSuccessfulAuth(response.data.user);
+                    //this.props.history.push("/");
+                    this.props.reloadQuest();
+                }
+            });
+
+
+        }
     }
 
     async componentDidMount(){
@@ -149,7 +173,11 @@ export default class AffichQuest extends Component {
                     <td>{this.props.theme}</td>
                     <td>
 
-                        <ListeRep afficheRep={this.state.afficheRep} reponses={this.state.reponses}/>
+                        <ListeRep afficheRep={this.state.afficheRep}
+                                  reponses={this.state.reponses}
+                                  num_quest={this.props.num_quest}
+                                  reloadRep={this.reloadRep}
+                        />
                         <Brep rep={this.state.afficheRep} onClick={this.afficheRep} />
                     </td>
                     <td><Bmodif modif={this.state.modifier} onClick={this.handleChangeModif}/></td>

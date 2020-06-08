@@ -8,7 +8,7 @@ const { Option } = Select;
 function Resultat(props) {
     const reussite = props.reussite;
     if (reussite) {
-        return <h6>La question, ainsi que ses réponses ont été ajoutées à la base de données.</h6>
+        return <h6>La réponse a été modifiée.</h6>
     }
     return <></>;
 }
@@ -16,7 +16,7 @@ function Resultat(props) {
 function Echec(props) {
     const echec = props.echec;
     if (echec) {
-        return <h6>La question existe déjà.</h6>
+        return <h6>La réponse existe déjà.</h6>
     }
     else{
         return <></>;
@@ -45,6 +45,7 @@ export default class ModifRep extends Component {
                 num_rep : this.props.num_rep,
                 libelle : this.props.libelle,
                 valeur : this.props.valeur,
+                num_quest : this.props.num_quest,
             }
         );
 
@@ -52,13 +53,12 @@ export default class ModifRep extends Component {
     }
 
     handleSubmit(event){
-        //console.log(this.state)
+        console.log(this.state)
         axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/modifRep.php",
             {
+                num_rep : this.state.num_rep,
                 num_quest : this.state.num_quest,
                 libelle : this.state.libelle,
-                difficulte : this.state.difficulte,
-                theme : this.state.theme,
             },
             {withCredentials: true}
         ).then(response => {
@@ -74,21 +74,9 @@ export default class ModifRep extends Component {
                 //this.handleSuccessfulAuth(response.data.user);
                 //this.props.history.push("/");
                 this.setState({
-                    libelle : "",
-                    nb_br : "1",
-                    BRep1 : "",
-                    BRep2 : "",
-                    BRep3 : "",
-                    BRep4 : "",
-                    nb_mr : "1",
-                    MRep1 : "",
-                    MRep2 : "",
-                    MRep3 : "",
-                    MRep4 : "",
-                    theme : "",
-                    difficulte : 1,
                     reussite : true,
                 });
+                this.props.reloadRep();
             }
         })
         event.preventDefault();
@@ -106,8 +94,6 @@ export default class ModifRep extends Component {
         })
     }
 
-    handleChangeB
-
     render() {
         if (this.props.loggedInStatus === "NOT_LOGGED_IN") {
             //Affichage de la redirection
@@ -124,9 +110,6 @@ export default class ModifRep extends Component {
                     </p>
                     <p>Labelle : <br/><input type="text" name ="libelle" placeholder="Entrez une question" value={this.state.libelle} onChange={this.handleChange} required />  </p>
                     <p>Valeur : <br/><input disabled={true} type="text" value={this.state.valeur} r/>  </p>
-
-
-
                     <br/>
                     <button  type="submit">Valider la modification</button>
                     <br/>

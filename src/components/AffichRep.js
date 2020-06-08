@@ -22,6 +22,7 @@ function Modif(props){
             num_rep = {props.num_rep}
             libelle = {props.libelle}
             valeur = {props.valeur}
+            reloadRep={props.reloadRep}
         />;
     else return <></>;
 }
@@ -67,6 +68,8 @@ export default class AffichRep extends Component {
                         num_rep = {this.props.num_rep}
                         libelle = {this.props.libelle}
                         valeur = {this.props.valeur}
+                        num_quest ={this.props.num_quest}
+                        reloadRep={this.props.reloadRep}
                     />
                 </tr>
             </>
