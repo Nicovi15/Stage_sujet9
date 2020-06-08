@@ -1,0 +1,44 @@
+#affichGen{
+  width: 80%;
+  margin:auto;
+
+  .chbox{
+    margin: auto;
+
+  }
+
+  table{
+    width: 100%;
+    display: block;
+    max-height: 600px;
+    background-color: white;
+    margin:auto;
+
+    overflow: auto;
+
+    thead {
+      tr:nth-child(1) th{
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background-color: white;
+        text-align: center;
+      }
+
+
+
+      th:nth-child(2){
+        width: 500px;
+      }
+
+    }
+    tbody{
+      td{
+        text-align: center;
+      }
+
+    }
+
+
+  }
+}
