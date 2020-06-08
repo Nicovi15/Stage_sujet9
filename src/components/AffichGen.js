@@ -183,7 +183,7 @@ export default class AffichGen extends Component {
                                                                        difficulte={question.difficulte}
                                                                        num_theme={question.num_theme}
                                                                        theme={question.theme}
-                                                                       reloadQuest={this.reloadQuest}
+                                                                       reloadQuest={this.reloadQuest2}
                     />)}
 
                 </table>

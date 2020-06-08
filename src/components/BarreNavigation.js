@@ -183,7 +183,7 @@ export default class BarreNavigation extends Component {
         return (
 
             <Menaff logged={this.props.loggedInStatus} admin={this.props.user.admin}
-                    deconnecter={this.props.handleLogout}/>
+                    deconnecter={this.handleLogoutClick}/>
 
 
         );
