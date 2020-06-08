@@ -57,14 +57,14 @@ function Menaff(props) {
 
                 <li className={"spacer"}></li>
 
-                <Menu.Item id={"partieD"} key="arche">
+                <Menu.Item  key="arche">
                     <a href="https://arche.univ-lorraine.fr/" target="_blank" rel="noopener noreferrer">
                         Accès à Arche
                     </a>
                 </Menu.Item>
 
 
-                <Menu.Item id={"partieD"} onClick={props.deconnecter}><Router><Link to="/connexion"><LoginOutlined/>Se
+                <Menu.Item onClick={props.deconnecter}><Router><Link to="/"><LoginOutlined/>Se
                     déconnecter</Link></Router>
                 </Menu.Item>
 
@@ -79,37 +79,38 @@ function Menaff(props) {
             <Menu id={"menuaff"} mode="horizontal">
 
 
-                <Menu.Item id={"partieD"} key="accueil" icon={<HomeOutlined/>}>
+                <Menu.Item  key="accueil" icon={<HomeOutlined/>}>
                     <Router><Link to="/accueil">Accueil</Link></Router>
                 </Menu.Item>
 
-                <Menu.Item id={"partieD"} key="cours" icon={<BookOutlined/>}>
+                <Menu.Item  key="cours" icon={<BookOutlined/>}>
                     <Router><Link to="/cours">Cours</Link></Router>
                 </Menu.Item>
 
 
-                <Menu.Item id={"partieD"} key="gestion">
+                <Menu.Item  key="gestion">
                     <Router><Link to="/gestion"> <DiffOutlined/>Gestionnaire de question</Link></Router>
                 </Menu.Item>
 
-                <Menu.Item id={"partieD"} key="dashboard">
+                <Menu.Item  key="dashboard">
                     <Router><Link to="/menu"><CheckCircleOutlined/>Questionnaires</Link></Router>
                 </Menu.Item>
 
-                <Menu.Item id={"partieD"} key="dashboard2">
+                <Menu.Item  key="dashboard2">
                     <Router><Link to="/dashboard"> <DashboardOutlined/> Dashboard</Link></Router>
                 </Menu.Item>
 
                 <li className={"spacer"}></li>
-                <Menu.Item id={"partieD"} key="arche">
+                <Menu.Item  key="arche">
                     <a href="https://arche.univ-lorraine.fr/" target="_blank" rel="noopener noreferrer">
                         Accès à Arche
                     </a>
                 </Menu.Item>
 
 
-                <Menu.Item id={"partieD"} onClick={props.deconnecter}><Router><Link to="/"><LoginOutlined/>Se
-                    déconnecter</Link></Router></Menu.Item>
+                <Menu.Item  onClick={props.deconnecter}><Router><Link to="/"><LoginOutlined/>Se
+                    déconnecter</Link></Router>
+                </Menu.Item>
 
 
             </Menu>
@@ -127,25 +128,25 @@ function Menaff(props) {
                     <Router><Link to="/accueil">Accueil</Link></Router>
                 </Menu.Item>
 
-                <Menu.Item id={"partieD0"} key="cours" icon={<BookOutlined/>}>
+                <Menu.Item  key="cours" icon={<BookOutlined/>}>
                     <Router><Link to="/cours">Cours</Link></Router>
                 </Menu.Item>
 
 
                 <li class={"spacer"}></li>
 
-                <Menu.Item id={"partieD1"} key="arche">
+                <Menu.Item  key="arche">
                     <a href="https://arche.univ-lorraine.fr/" target="_blank" rel="noopener noreferrer">
                         Accès à Arche
                     </a>
                 </Menu.Item>
 
-                <Menu.Item id={"partieD2"} key="inscrip">
+                <Menu.Item  key="inscrip">
                     <Router><Link to="/inscription"><FormOutlined/>S'inscrire</Link></Router>
                 </Menu.Item>
 
 
-                <Menu.Item id={"partieD3"} key="connexion">
+                <Menu.Item  key="connexion">
                     <Router><Link to="/"><LoginOutlined/>Se connecter</Link></Router>
                 </Menu.Item>
 

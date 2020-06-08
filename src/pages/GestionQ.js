@@ -6,6 +6,7 @@ import {Menu} from "antd";
 import {Button} from "antd";
 import 'antd/dist/antd.css';
 
+
 function Bajout(props) {
 
     if (!props.ajoutQ) {

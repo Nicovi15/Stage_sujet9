@@ -3,6 +3,7 @@ import {Redirect} from "react-router-dom";
 import 'antd/dist/antd.css';
 import axios from "axios";
 import { Select, Button } from 'antd';
+import '../design/gestionQ.scss'
 const { Option } = Select;
 
 

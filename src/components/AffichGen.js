@@ -6,6 +6,7 @@ import { Select, Button, Table } from 'antd';
 import AffichQuest from "./AffichQuest";
 import { Radio } from 'antd';
 import { Checkbox } from 'antd';
+import '../design/affichGen.scss'
 
 const CheckboxGroup = Checkbox.Group;
 const { Option } = Select;
@@ -141,12 +142,12 @@ export default class AffichGen extends Component {
         }
 
         return (
-            <div>
+            <div id={"affichGen"}>
                 <h1>Bases des questions</h1>
 
-                <div>
+                <div id={"selection"}>
                     <div className="site-checkbox-all-wrapper">
-                        <Checkbox
+                        <Checkbox  class={"chbox"}
                             indeterminate={this.state.indeterminate}
                             onChange={this.onCheckAllChange}
                             checked={this.state.checkAll}
@@ -161,30 +162,42 @@ export default class AffichGen extends Component {
                     <button onClick={this.affiState}>Rechercher</button>
                 </div>
                 <br />
-                <table border="1px" >
-                    <tr>
-                        <td>Num question</td>
-                        <td>Libelle</td>
-                        <td>Nb Bonnes Réponses</td>
-                        <td>Nb Mauvaises Réponses</td>
-                        <td>Difficulté</td>
-                        <td>Num Thème</td>
-                        <td>Thème</td>
-                        <td>Réponses</td>
-                        <td>Modifier</td>
-                        <td>Supprimer</td>
 
+                <table border="1px">
+                    <thead >
+                    <tr>
+                        <th>Num question</th>
+                        <th>Libelle</th>
+                        <th>Nb Bonnes Réponses</th>
+                        <th>Nb Mauvaises Réponses</th>
+                        <th>Difficulté</th>
+                        <th>Num Thème</th>
+                        <th>Thème</th>
+                        <th>Réponses</th>
+                        <th>Modifier</th>
+                        <th>Supprimer</th>
                     </tr>
-                    {this.state.questions.map(question => <AffichQuest key={question.num_quest}
-                                                                       num_quest={question.num_quest}
-                                                                       libelle={question.libelle}
-                                                                       nb_bonnerep={question.nb_bonnerep}
-                                                                       nb_mauvaiserep={question.nb_mauvaiserep}
-                                                                       difficulte={question.difficulte}
-                                                                       num_theme={question.num_theme}
-                                                                       theme={question.theme}
-                                                                       reloadQuest={this.reloadQuest2}
-                    />)}
+
+                    </thead>
+                    <tbody>
+
+
+
+                        {this.state.questions.map(question => <AffichQuest key={question.num_quest}
+                                                                           num_quest={question.num_quest}
+                                                                           libelle={question.libelle}
+                                                                           nb_bonnerep={question.nb_bonnerep}
+                                                                           nb_mauvaiserep={question.nb_mauvaiserep}
+                                                                           difficulte={question.difficulte}
+                                                                           num_theme={question.num_theme}
+                                                                           theme={question.theme}
+                                                                           reloadQuest={this.reloadQuest2}/>)}
+
+
+
+
+
+                </tbody>
 
                 </table>
 
