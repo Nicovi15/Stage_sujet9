@@ -143,7 +143,7 @@ export default class AffichGen extends Component {
 
         return (
             <div id={"affichGen"}>
-                <h1>Bases des questions</h1>
+                <h1>Liste des questions</h1>
 
                 <div id={"selection"}>
                     <div className="site-checkbox-all-wrapper">

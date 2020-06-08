@@ -1,49 +1,65 @@
-#ajoutQ{
+#ajoutQ {
 
   margin: auto;
 
-  form{
+  form {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    overflow-y: auto ;
+    overflow-y: auto;
 
-    table{
-      thead{
+    table {
+      //border: 1px solid black;
+      width: 100%;
+      display: block;
 
-      }
-      tbody{
-        tr{
 
-        }
-        td{
-          text-align: center;
-
-          input{
-            height:30px;
-            border:1px solid black;
-          }
-
-          select{
-            height:30px;
-            width: 100%;
-          }
-
-        }
-      }
-    }
-
-    .items{
-      padding-right: 20px;
-      margin: auto;
-
-      p{
+      thead {
         text-align: center;
+        //border: 1px solid black;
 
       }
 
+      tbody {
 
+        tr :nth-child(3) td{
+          text-align: inherit;
+          //border-color: deeppink;
+        }
+
+        tr {
+          //text-align: center;
+          //border: 1px solid black;
+          width: 100%;
+
+
+
+          td {
+            padding-right: 25px;
+            padding-left: 25px;
+            vertical-align: top;
+            //text-align: center;
+
+            //border: 1px solid black;
+
+
+            input {
+
+              height: 30px;
+              //border: 1px solid black;
+            }
+
+            select {
+
+              height: 30px;
+              width: 100%;
+            }
+
+          }
+        }
+
+
+      }
     }
-
   }
 }
