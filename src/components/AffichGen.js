@@ -112,7 +112,7 @@ export default class AffichGen extends Component {
         var questions=[];
         await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getquestions.php")
             .then(res => {
-                // console.log(res);
+                 console.log(res);
                 // console.log(res.data);
                 res.data.map(donne =>{
                     questions.push(donne);

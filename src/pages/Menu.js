@@ -6,7 +6,9 @@ import 'antd/dist/antd.css';
 import { Tabs, Button } from 'antd';
 import {FireOutlined } from '@ant-design/icons';
 import QCMQuestion from "../components/QCMQuestion";
-import {HashRouter as Router, Link} from "react-router-dom";
+import {HashRouter as Router, Link, Route, Switch} from "react-router-dom";
+import Questionnaire from "./Questionnaire";
+import TaskDetails from "../components/TaskDetails";
 const CheckboxGroup = Checkbox.Group;
 const { TabPane } = Tabs;
 export default class Menu extends Component {
@@ -65,12 +67,23 @@ export default class Menu extends Component {
                     {this.state.theme.map(the => <TabPane tab={the} key={the}>
                         <h2>Questionnaire {the}</h2>
                         <ul >
-                            <li> <Router><Link to={"/questionnaire/"+the+"/1"}><Button type="primary" icon={<FireOutlined />}>Difficulté Niveau 1</Button></Link></Router></li> <br/><br/>
-                            <li> <Router><Link to={"/questionnaire/"+the+"/2"}><Button type="primary" icon={<><FireOutlined/><FireOutlined/></>}>Difficulté Niveau 2</Button></Link></Router></li><br/><br/>
-                            <li> <Router><Link to={"/questionnaire/"+the+"/3"}><Button type="primary" icon={<><FireOutlined/><FireOutlined/><FireOutlined /> </>}>Difficulté Niveau 3</Button></Link></Router></li><br/><br/>
-                            <li> <Router><Link to={"/questionnaire/"+the+"/4"}><Button type="primary" icon={<><FireOutlined /><FireOutlined /><FireOutlined /><FireOutlined /> </>}>Difficulté Niveau 4</Button></Link></Router></li><br/><br/>
-                            <li> <Router><Link to={"/questionnaire/"+the+"/5"}><Button type="primary" icon={<><FireOutlined /><FireOutlined /><FireOutlined /><FireOutlined /><FireOutlined /> </>}>Difficulté Niveau 5</Button></Link></Router></li><br/><br/>
+                            <li> <Router><Link to={"/questionnaire/"+the+"/1"}><Button type="primary" icon={<FireOutlined />}>Difficulté Niveau 1</Button></Link><Switch>
+                                <Route path="/questionnaire/:id/:dif" children={<TaskDetails/>} />
+                            </Switch></Router></li> <br/><br/>
+                            <li> <Router><Link to={"/questionnaire/"+the+"/2"}><Button type="primary" icon={<><FireOutlined/><FireOutlined/></>}>Difficulté Niveau 2</Button></Link><Switch>
+                                <Route path="/:id/:dif" children={<Questionnaire />} />
+                            </Switch></Router></li><br/><br/>
+                            <li> <Router><Link to={"/questionnaire/"+the+"/3"}><Button type="primary" icon={<><FireOutlined/><FireOutlined/><FireOutlined /> </>}>Difficulté Niveau 3</Button></Link><Switch>
+                                <Route path="/:id/:dif" children={<Questionnaire />} />
+                            </Switch></Router></li><br/><br/>
+                            <li> <Router><Link to={"/questionnaire/"+the+"/4"}><Button type="primary" icon={<><FireOutlined /><FireOutlined /><FireOutlined /><FireOutlined /> </>}>Difficulté Niveau 4</Button></Link><Switch>
+                                <Route path="/:id/:dif" children={<Questionnaire/>} />
+                            </Switch></Router></li><br/><br/>
+                            <li> <Router><Link to={"/questionnaire/"+the+"/5"}><Button type="primary" icon={<><FireOutlined /><FireOutlined /><FireOutlined /><FireOutlined /><FireOutlined /> </>}>Difficulté Niveau 5</Button></Link><Switch>
+                                <Route path="/:id/:dif" children={<Questionnaire />} />
+                            </Switch></Router></li><br/><br/>
                         </ul>
+
                     </TabPane>)}
                 </Tabs>
           </div>

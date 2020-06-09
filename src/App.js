@@ -11,6 +11,7 @@ import Menu from "./pages/Menu";
 import Questionnaire from "./pages/Questionnaire";
 import Cours from "./Cours";
 import Accueil from "./pages/Accueil";
+import TaskDetails from "./components/TaskDetails";
 import GestionQ from "./pages/GestionQ";
 import {Container} from "react-bootstrap";
 import BarreNavigation from "./components/BarreNavigation";
@@ -113,7 +114,7 @@ class App extends Component {
                             )}
                         />
                         <Route path="/menu" component={Menu}/>
-                        <Route path="/questionnaire" component={Questionnaire}/>
+                        <Route path="/questionnaire/:id/:dif" render={props=> (<TaskDetails user={this.state.user}/>)}/>
                         <Route path="/cours" component={Cours}/>
                         <Route path="/erreur" component={Erreur}/>
                     </Switch>
