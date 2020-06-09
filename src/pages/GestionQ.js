@@ -5,6 +5,7 @@ import AffichGen from "../components/AffichGen";
 import {Menu} from "antd";
 import {Button} from "antd";
 import 'antd/dist/antd.css';
+import "../design/gestionQ.scss"
 
 
 function Bajout(props) {
@@ -51,12 +52,12 @@ export default class GestionQ extends Component {
         }
 
         return (
-            <div>
-                <h1>Gestionnaire des questions</h1>
+            <div id={"gestionQ"}>
+
                 <Ajout ajout={this.state.ajoutQ} />
                 <Bajout ajoutQ={this.state.ajoutQ} onClick={this.handleChangeAjouQ}/>
-                <br/>
                 <AffichGen/>
+
             </div>
         );
     }
