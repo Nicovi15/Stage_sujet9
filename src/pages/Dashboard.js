@@ -1,11 +1,13 @@
 import React, {Component} from 'react'
 import {Redirect} from 'react-router-dom'
 import HistoQCM from "../components/HistoQCM";
+import DashboardAdmin from "../components/DashboardAdmin";
 
 
 function DashboardContent(props) {
-    if(props.user.admin === "1")return <></>
-    else return <><HistoQCM user={props.user}/></>
+    if(props.user.admin === "1")return <><DashboardAdmin/></>
+    else return <><h3>Historique des QCM</h3>
+        <HistoQCM user={props.user}/></>
 }
 
 export default class Dashboard extends Component {

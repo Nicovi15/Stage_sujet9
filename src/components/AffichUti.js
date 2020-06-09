@@ -5,59 +5,78 @@ import axios from "axios";
 import { Select, Button, Table } from 'antd';
 import AffichQuest from "./AffichQuest";
 import { Radio } from 'antd';
+import AffichU from "./AffichU";
 import { Checkbox } from 'antd';
 import '../design/affichGen.scss'
-import AffichHistoQ from "./AffichHistoQ";
 
 const CheckboxGroup = Checkbox.Group;
 const { Option } = Select;
 
 
-export default class HistoQCM extends Component {
+export default class AffichUti extends Component {
 
 
     constructor(props) {
         super(props);
 
         this.state = {
-            questionnaires : [],
+            utilisateurs : [],
             theme:[],
             difficulte:[1,2,3],
             checkedValues: [],
             indeterminate: true,
             checkAll: false,
         }
+        this.reloadQuest = this.reloadQuest.bind(this);
         this.onChange = this.onChange.bind(this);
-        this.reloadHisto2 = this.reloadHisto2.bind(this);
+        this.reloadQuest2 = this.reloadQuest2.bind(this);
         this.affiState = this.affiState.bind(this);
 
     }
 
     affiState (){
         console.log(this.state);
-        this.reloadHisto2();
+        this.reloadQuest2();
     }
 
-    reloadHisto2 (){
-        var questionnaires=[];
-        console.log(this.state.checkedList);
-        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/gethistoeleve.php",{
-            num_uti : this.props.user.num_uti,
-            list : this.state.checkedValues,
-            checkAll: this.state.checkAll,
-        })
+    reloadQuest2 (){
+        var utilisateurs=[];
+        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~cazzoli2u/quizzuml/getUtilisateurs.php")
             .then(res => {
                 console.log(res);
                 // console.log(res.data);
                 res.data.map(donne =>{
-                    questionnaires.push(donne);
+                    utilisateurs.push(donne);
                 });
-                this.setState({questionnaires},);
+                this.setState({utilisateurs},);
                 console.log(this.state);
             })
     }
 
 
+
+    reloadQuest (){
+        var questions=[];
+        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getquestions.php")
+            .then(res => {
+                // console.log(res);
+                // console.log(res.data);
+                res.data.map(donne =>{
+                    questions.push(donne);
+                });
+                this.setState({questions},);
+                console.log(this.state);
+            })
+    }
+
+    onChange2 = checkedList => {
+        this.setState({
+            indeterminate: !!checkedList.length && checkedList.length < this.state.theme.length,
+            checkAll: checkedList.length === this.state.theme.length,
+            checkedList,
+        });
+        console.log(this.state.checkedList);
+    };
 
     onChange(checkedValues) {
         this.setState({
@@ -87,6 +106,18 @@ export default class HistoQCM extends Component {
     }
 
     async componentDidMount(){
+        var utilisateurs=[];
+        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~cazzoli2u/quizzuml/getUtilisateurs.php")
+            .then(res => {
+                console.log(res);
+                // console.log(res.data);
+                res.data.map(donne =>{
+                    utilisateurs.push(donne);
+                });
+                this.setState({utilisateurs},);
+                console.log(this.state);
+            })
+
         var theme=[];
         await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~cazzoli2u/quizzuml/getTheme.php")
             .then(res => {
@@ -97,24 +128,6 @@ export default class HistoQCM extends Component {
                 });
                 this.setState({theme});
             })
-
-        var questionnaires=[];
-        await axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/gethistoeleve.php",{
-            num_uti : this.props.user.num_uti,
-            list : this.state.checkedValues,
-            checkAll: true,
-        })
-            .then(res => {
-                console.log(res);
-                // console.log(res.data);
-                res.data.map(donne =>{
-                    questionnaires.push(donne);
-                });
-                this.setState({questionnaires},);
-                console.log(this.state);
-            })
-
-
         //console.log(this.state.theme);
     }
 
@@ -127,9 +140,11 @@ export default class HistoQCM extends Component {
 
         return (
             <div id={"affichGen"}>
-                <div id={"selection"}>
+                <h4>Liste des utilisateurs</h4>
+
+                {/*<div id={"selection"}>
                     <div className="site-checkbox-all-wrapper">
-                        <Checkbox class={"chbox"}
+                        <Checkbox  class={"chbox"}
                                    indeterminate={this.state.indeterminate}
                                    onChange={this.onCheckAllChange}
                                    checked={this.state.checkAll}
@@ -143,16 +158,18 @@ export default class HistoQCM extends Component {
                     />
                     <button onClick={this.affiState}>Rechercher</button>
                 </div>
-                <br />
+                <br />*/}
 
                 <table border="1px" >
                     <thead  >
                     <tr>
-                        <th>N° Questionnaire</th>
-                        <th>Date</th>
-                        <th>Thème</th>
-                        <th>Difficulté</th>
-                        <th>Score</th>
+                        <th>Num uti</th>
+                        <th>Pseudo</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Email</th>
+                        <th>Historiques QCM</th>
+                        <th>Supprimer</th>
                     </tr>
 
                     </thead>
@@ -160,14 +177,15 @@ export default class HistoQCM extends Component {
 
 
 
-                    {this.state.questionnaires.map(question => <AffichHistoQ key={question.id_qn}
-                                                                             id_qn={question.id_qn}
-                                                                             difficulte={question.difficulte}
-                                                                             num_theme={question.num_theme}
-                                                                             theme={question.theme}
-                                                                             date={question.date}
-                                                                             score={question.score}
-                                                                       reloadQuest={this.reloadHisto2}/>)}
+                    {this.state.utilisateurs.map(uti => <AffichU key={uti.num_uti}
+                                                                       num_uti={uti.num_uti}
+                                                                       pseudo={uti.pseudo}
+                                                                       nom={uti.nom}
+                                                                       prenom={uti.prenom}
+                                                                       email={uti.email}
+                                                                       user={uti}
+                                                                       reloadQuest={this.reloadQuest2}/>)}
+
 
 
 
