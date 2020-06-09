@@ -78,7 +78,7 @@ function ListeChampMR(props) {
 function Resultat(props) {
     const reussite = props.reussite;
     if (reussite) {
-        return <h6>La question, ainsi que ses réponses ont été ajoutées à la base de données.</h6>
+        return <h6>Un nouveau contrôle est prévu.</h6>
     }
     return <></>;
 }
@@ -184,7 +184,6 @@ export default class AjoutControle extends Component {
         })
     }
 
-    handleChangeB
 
     render() {
         if (this.props.loggedInStatus === "NOT_LOGGED_IN") {
@@ -197,8 +196,6 @@ export default class AjoutControle extends Component {
                 <h1>Prévoir un controle</h1>
                 <br/>
                 <form onSubmit={this.handleSubmit}>
-
-
                     <table>
                         <thead>
                         <tr>
@@ -207,7 +204,6 @@ export default class AjoutControle extends Component {
                             <th>Durée (en min)</th>
                             <th>Date et Heure</th>
                             <th>Valider</th>
-
                         </tr>
                         </thead>
                         <tbody>

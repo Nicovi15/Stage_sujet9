@@ -70,14 +70,12 @@ export default class AffichQuest extends Component {
             reponses : [],
             afficheRep : false,
             modifier :false,
-
         }
 
         this.afficheRep = this.afficheRep.bind(this);
         this.handleChangeModif = this.handleChangeModif.bind(this);
         this.handleDeleteB = this.handleDeleteB.bind(this);
         this.reloadRep = this.reloadRep.bind(this);
-
     }
 
     reloadRep(){
