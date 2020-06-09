@@ -9,7 +9,7 @@ import {Erreur} from "./pages/Erreur";
 import Dashboard from "./pages/Dashboard";
 import Menu from "./pages/Menu";
 import Questionnaire from "./pages/Questionnaire";
-import Cours from "./Cours";
+import Cours from "./pages/Cours";
 import Accueil from "./pages/Accueil";
 import TaskDetails from "./components/TaskDetails";
 import GestionQ from "./pages/GestionQ";
