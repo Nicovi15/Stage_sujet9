@@ -3,36 +3,48 @@ import axios from 'axios'
 
 class DropZone extends Component {
 
+    UPLOAD_ENDPOINT = 'https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/upload.php';
     constructor(props) {
         super(props);
-        this.state = {
-            pdf: ''
+        this.state ={
+            file:null
         }
+        this.onSubmit = this.onSubmit.bind(this)
+        this.onChange = this.onChange.bind(this)
+        this.uploadFile = this.uploadFile.bind(this)
     }
+    async onSubmit(e){
+        e.preventDefault()
+        let res = await this.uploadFile(this.state.file);
+        console.log(res.data);
+    }
+    onChange(e) {
+        this.setState({file:e.target.files[0]})
+    }
+    async uploadFile(file){
 
-    onChange(e){
-        let files=e.target.files
-        console.warn("data file", files)
 
-        let reader = new FileReader();
-        reader.readAsDataURL(files[0]);
+        const formData = new FormData();
 
-        reader.onload=(e)=>{
-            console.warn("pdf data", e.target.result)
-        }
+        formData.append('avatar',file)
+
+        return  await axios.post(this.UPLOAD_ENDPOINT, formData,{
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        });
     }
 
     render() {
         return (
-            <div onSubmit={this.onFormSubmit}>
-                <h1>Dropzone pdf</h1>
-                <input type="file" name="file" onChange={(e) => this.onChange(e)}/>
-            </div>
-        );
+            <form onSubmit={ this.onSubmit }>
+                <h1> React File Upload Example</h1>
+                <input type="file" onChange={ this.onChange } />
+                <button type="submit">Upload File</button>
+            </form>
+        )
     }
+
 }
 
-
 export default DropZone;
-
-
