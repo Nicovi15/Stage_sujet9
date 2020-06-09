@@ -1,5 +1,12 @@
 import React, {Component} from 'react'
 import {Redirect} from 'react-router-dom'
+import HistoQCM from "../components/HistoQCM";
+
+
+function DashboardContent(props) {
+    if(props.user.admin === "1")return <></>
+    else return <><HistoQCM user={props.user}/></>
+}
 
 export default class Dashboard extends Component {
 
@@ -17,9 +24,9 @@ export default class Dashboard extends Component {
         //<h1>Status:{this.props.loggedInStatus}</h1>
         return (
             <div>
-                <h1>Dashboard de l'étudiant une fois qu'il est connecté</h1>
-
+                <h1>Dashboard</h1>
                 <h2>Bienvenue {this.props.user.pseudo}</h2>
+                <DashboardContent user={this.props.user} />
 
             </div>
         );

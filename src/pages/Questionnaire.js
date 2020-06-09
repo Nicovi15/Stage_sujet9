@@ -8,7 +8,7 @@ import {Button} from 'antd';
 
 function Resultat(props) {
     if (!props.actif) {
-        return <h6>Résultat : {props.res}/3</h6>
+        return <h6>Résultat : {props.res}/10</h6>
     }
     return <></>;
 }
@@ -31,6 +31,7 @@ export default class Questionnaire extends Component {
             actif : true,
             br : 0,
             commencer: false,
+            test: false,
         };
 
 
@@ -130,6 +131,7 @@ export default class Questionnaire extends Component {
                 // console.log(res.data);
 
                 });
+        this.setState({test:true,});
     }
 
     async componentDidMount(){
@@ -147,7 +149,7 @@ export default class Questionnaire extends Component {
                 <div>
                     {this.state.qchoisies.map(question => <><QCMQuestion info={question.question} index={question.index} setRes={this.setRes} actif={this.state.actif}/><br/></>)}
                 </div>
-                <button onClick={this.verif} hidden={!this.state.commencer} >Verifier</button>
+                <button onClick={this.verif} hidden={!this.state.commencer} disabled={this.state.test} >Verifier</button>
                 <Resultat actif={this.state.actif} res={this.state.br}/>
             </div>
         );
