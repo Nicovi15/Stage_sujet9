@@ -5,6 +5,7 @@ import { Checkbox } from 'antd';
 import 'antd/dist/antd.css';
 import { Tabs, Button } from 'antd';
 import AffichUti from "./AffichUti";
+import GestionControle from "./GestionControle";
 const CheckboxGroup = Checkbox.Group;
 const { TabPane } = Tabs;
 
@@ -35,6 +36,7 @@ export default class DashboardAdmin extends Component {
                     </TabPane>
                     <TabPane tab="Gestion des contrôles" key="2">
                         <h2>Gestion des contrôles</h2>
+                        <GestionControle/>
                     </TabPane>
                     <TabPane tab="Résultat des contrôles" key="3">
                         <h2>Résultat des contrôles</h2>
