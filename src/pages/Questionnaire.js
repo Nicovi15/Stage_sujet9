@@ -121,7 +121,7 @@ export default class Questionnaire extends Component {
         console.log(this.state);
 
         axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/ajoutquestionnaire.php",{
-            num_uti : this.props.user.num,
+            num_uti : this.props.user.num_uti,
             theme : this.props.id,
             dif : this.props.dif,
             score : br,

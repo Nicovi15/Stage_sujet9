@@ -215,12 +215,13 @@ export default class AjoutControle extends Component {
                                 </select>
                             </td>
                             <td>
-                                <select name="nb_br" value={this.state.nb_br} style={{width: 120}}
+                                <select name="difficulte" value={this.state.difficulte} style={{width: 120}}
                                         onChange={this.handleChange}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
+                                    <option value="4">5</option>
                                 </select>
                             </td>
                             <td>

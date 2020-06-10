@@ -5,6 +5,7 @@ import '../design/dashboardAdmin.scss'
 import { Tabs, Button } from 'antd';
 import AffichUti from "./AffichUti";
 import GestionControle from "./GestionControle";
+import AffichResCon from "./AffichResCon";
 const CheckboxGroup = Checkbox.Group;
 const { TabPane } = Tabs;
 
@@ -38,7 +39,7 @@ export default class DashboardAdmin extends Component {
                         <GestionControle/>
                     </TabPane>
                     <TabPane tab="Résultat des contrôles" key="3">
-                        <h2>Résultat des contrôles</h2>
+                        <AffichResCon />
                     </TabPane>
                 </Tabs>
             </div>

@@ -12,8 +12,7 @@ const CheckboxGroup = Checkbox.Group;
 const { Option } = Select;
 
 
-export default class AffichGenCon extends Component {
-
+export default class TabRes extends Component {
 
     constructor(props) {
         super(props);
@@ -119,7 +118,9 @@ export default class AffichGenCon extends Component {
 
     async componentDidMount(){
         var controles=[];
-        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getcontrolesavenir.php")
+        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getresbyid.php",{
+            num_cont : this.props.num_cont,
+        })
             .then(res => {
                 // console.log(res);
                 // console.log(res.data);
@@ -152,30 +153,27 @@ export default class AffichGenCon extends Component {
 
         return (
             <div id={"affichGen"}>
-                <h1>Liste des contrôles</h1>
+                <h1>Résultats du contrôle N°{this.props.num_cont}</h1>
 
                 <table border="1px" >
                     <thead  >
                     <tr>
-                        <th>Num Controles</th>
-                        <th>Thème</th>
-                        <th>Difficulté</th>
-                        <th>Durée</th>
-                        <th>Date</th>
-                        <th>Supprimer</th>
+                        <th>Num Uti</th>
+                        <th>Pseudo</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Score</th>
                     </tr>
 
                     </thead>
                     <tbody>
 
                     {this.state.controles.map(cont => <tr>
-                        <td>{cont.num_cont}</td>
-                        <td>{cont.theme}</td>
-                        <td>{cont.difficulte}</td>
-                        <td>{cont.temps}</td>
-                        <td>{cont.datetime}</td>
-                        <td><Button onClick={()=>this.handleDeleteB(cont.num_cont)}>Supprimer</Button></td>
-
+                        <td>{cont.num_uti}</td>
+                        <td>{cont.pseudo}</td>
+                        <td>{cont.nom}</td>
+                        <td>{cont.prenom}</td>
+                        <td>{cont.score}/10</td>
                     </tr>)}
                     </tbody>
 

@@ -7,12 +7,13 @@ import AffichQuest from "./AffichQuest";
 import { Radio } from 'antd';
 import { Checkbox } from 'antd';
 import '../design/affichGen.scss'
+import AffichConPas from "./AffichConPas";
 
 const CheckboxGroup = Checkbox.Group;
 const { Option } = Select;
 
 
-export default class AffichGenCon extends Component {
+export default class AffichResCon extends Component {
 
 
     constructor(props) {
@@ -119,7 +120,7 @@ export default class AffichGenCon extends Component {
 
     async componentDidMount(){
         var controles=[];
-        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getcontrolesavenir.php")
+        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getcontrolespass.php")
             .then(res => {
                 // console.log(res);
                 // console.log(res.data);
@@ -152,7 +153,7 @@ export default class AffichGenCon extends Component {
 
         return (
             <div id={"affichGen"}>
-                <h1>Liste des contrôles</h1>
+                <h1>Résultat des contrôles</h1>
 
                 <table border="1px" >
                     <thead  >
@@ -162,21 +163,20 @@ export default class AffichGenCon extends Component {
                         <th>Difficulté</th>
                         <th>Durée</th>
                         <th>Date</th>
-                        <th>Supprimer</th>
+                        <th>Résultat</th>
                     </tr>
 
                     </thead>
                     <tbody>
 
-                    {this.state.controles.map(cont => <tr>
-                        <td>{cont.num_cont}</td>
-                        <td>{cont.theme}</td>
-                        <td>{cont.difficulte}</td>
-                        <td>{cont.temps}</td>
-                        <td>{cont.datetime}</td>
-                        <td><Button onClick={()=>this.handleDeleteB(cont.num_cont)}>Supprimer</Button></td>
-
-                    </tr>)}
+                    {this.state.controles.map(cont => <AffichConPas key={cont}
+                                                                    num_cont={cont.num_cont}
+                                                                    theme={cont.theme}
+                                                                    duree={cont.temps}
+                                                                    difficulte={cont.difficulte}
+                                                                    date = {cont.datetime}
+                        />
+                        )}
                     </tbody>
 
                 </table>

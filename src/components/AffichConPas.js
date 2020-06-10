@@ -4,63 +4,26 @@ import 'antd/dist/antd.css';
 import axios from "axios";
 import { Select, Button } from 'antd';
 import AffichRep from "./AffichRep";
-import ModifQuestion from "./ModifQuestion";
+import TabRes from "./TabRes";
 const { Option } = Select;
-
-function Brep(props) {
-
-    if (!props.rep) {
-        return <Button onClick={props.onClick}>Afficher les reps.</Button>
-    } else
-        return <Button onClick={props.onClick}>Cacher les reps.</Button>
-}
 
 function Bmodif(props) {
 
     if (!props.modif) {
-        return <Button onClick={props.onClick}>Modifier</Button>
+        return <Button onClick={props.onClick}>Afficher</Button>
     } else
         return <> <Button onClick={props.onClick}>Annuler</Button> </>
 }
 
 function Modif(props){
     if(props.modif)
-        return <ModifQuestion
-            num_quest ={props.num_quest}
-            libelle={props.libelle}
-            nb_bonnerep={props.nb_bonnerep}
-            nb_mauvaiserep={props.nb_mauvaiserep}
-            difficulte = {props.difficulte}
-            theme = {props.theme}
-            reloadQuest={props.reloadQuest}
+        return <TabRes
+            num_cont={props.num_cont}
         />;
     else return <></>;
 }
 
-function ListeRep(props){
-    if(props.afficheRep)
-        return<table border="1px">
-            <tr>
-                <td>Num Rep</td>
-                <td>Libelle</td>
-                <td>Valeur</td>
-                <td>Modifier</td>
-            </tr>
-            {props.reponses.map(rep => <AffichRep key={rep.num_rep}
-                                                           num_rep={rep.num_rep}
-                                                           libelle={rep.libelle}
-                                                           valeur={rep.valeur}
-                                                           num_quest={props.num_quest}
-                                                           reloadRep={props.reloadRep}
-
-
-            />)}
-        </table>;
-    else return <></>
-}
-
-
-export default class AffichQuest extends Component {
+export default class AffichConPas extends Component {
 
 
     constructor(props) {
@@ -130,7 +93,7 @@ export default class AffichQuest extends Component {
     }
 
     async componentDidMount(){
-        var reponses=[];
+        var reponses=[];/*
         await axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getreponses.php",{
             num_quest : this.props.num_quest
         })
@@ -143,7 +106,7 @@ export default class AffichQuest extends Component {
                 this.setState({reponses},);
                 console.log(this.state);
             })
-        //console.log(this.state.theme);
+        //console.log(this.state.theme);*/
     }
 
     afficheRep(){
@@ -162,35 +125,18 @@ export default class AffichQuest extends Component {
         return (
             <>
                 <tr>
-                    <td>{this.props.num_quest}</td>
-                    <td>{this.props.libelle}</td>
-                    <td>{this.props.nb_bonnerep}</td>
-                    <td>{this.props.nb_mauvaiserep}</td>
-                    <td>{this.props.difficulte}</td>
-                    <td>{this.props.num_theme}</td>
+                    <td>{this.props.num_cont}</td>
                     <td>{this.props.theme}</td>
-                    <td>
-
-                        <ListeRep afficheRep={this.state.afficheRep}
-                                  reponses={this.state.reponses}
-                                  num_quest={this.props.num_quest}
-                                  reloadRep={this.reloadRep}
-                        />
-                        <Brep rep={this.state.afficheRep} onClick={this.afficheRep} />
-                    </td>
+                    <td>{this.props.difficulte}</td>
+                    <td>{this.props.duree}</td>
+                    <td>{this.props.date}</td>
                     <td><Bmodif modif={this.state.modifier} onClick={this.handleChangeModif}/></td>
-                    <td><Button onClick={this.handleDeleteB}>Supprimer</Button></td>
+
                 </tr>
                 <tr>
                     <Modif
                         modif={this.state.modifier}
-                        num_quest ={this.props.num_quest}
-                        libelle={this.props.libelle}
-                        nb_bonnerep={this.props.nb_bonnerep}
-                        nb_mauvaiserep={this.props.nb_mauvaiserep}
-                        difficulte = {this.props.difficulte}
-                        theme = {this.props.theme}
-                        reloadQuest={this.props.reloadQuest}
+                        num_cont={this.props.num_cont}
                     />
                 </tr>
             </>
