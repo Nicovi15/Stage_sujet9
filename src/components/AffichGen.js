@@ -43,7 +43,7 @@ export default class AffichGen extends Component {
         var questions=[];
         console.log(this.state.checkedList);
         axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getquestions2.php",{
-            list : this.state.checkedValues,
+            list : this.state.checkedList,
             checkAll: this.state.checkAll,
         })
             .then(res => {
