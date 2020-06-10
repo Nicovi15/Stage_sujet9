@@ -12,6 +12,7 @@ import Questionnaire from "./pages/Questionnaire";
 import Cours from "./pages/Cours";
 import Accueil from "./pages/Accueil";
 import TaskDetails from "./components/TaskDetails";
+import TaskDetails2 from "./components/TaskDetails2";
 import GestionQ from "./pages/GestionQ";
 import {Container} from "react-bootstrap";
 import BarreNavigation from "./components/BarreNavigation";
@@ -115,6 +116,7 @@ class App extends Component {
                         />
                         <Route path="/menu" component={Menu}/>
                         <Route path="/questionnaire/:id/:dif" render={props=> (<TaskDetails user={this.state.user}/>)}/>
+                        <Route path="/controle/:id" render={props=> (<TaskDetails2 user={this.state.user}/>)}/>
                         <Route path="/cours" component={Cours}/>
                         <Route path="/erreur" component={Erreur}/>
                     </Switch>

@@ -9,6 +9,7 @@ import QCMQuestion from "../components/QCMQuestion";
 import {HashRouter as Router, Link, Route, Switch} from "react-router-dom";
 import Questionnaire from "./Questionnaire";
 import TaskDetails from "../components/TaskDetails";
+import SelecCont from "../components/SelecCont";
 const CheckboxGroup = Checkbox.Group;
 const { TabPane } = Tabs;
 export default class Menu extends Component {
@@ -83,8 +84,11 @@ export default class Menu extends Component {
                                 <Route path="/:id/:dif" children={<Questionnaire />} />
                             </Switch></Router></li><br/><br/>
                         </ul>
-
                     </TabPane>)}
+                    <TabPane tab="Contrôles" key="Contrôle">
+                        <h2>Contrôles</h2>
+                        <SelecCont/>
+                    </TabPane>
                 </Tabs>
           </div>
         );
