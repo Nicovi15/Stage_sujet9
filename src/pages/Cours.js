@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import DropZone from'../components/DropZone'
+import AfficheCours from '../components/AfficheCours'
 export default class Cours extends Component {
 
 
@@ -15,6 +16,9 @@ export default class Cours extends Component {
             <div>
                 <h1>C'est la page où se trouve les cours</h1>
                 <DropZone/>
+                <br/>
+                <AfficheCours/>
+
             </div>
         );
     }
