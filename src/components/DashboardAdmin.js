@@ -29,7 +29,7 @@ export default class DashboardAdmin extends Component {
         return (
             <div id={"dashboardA"}>
 
-                <Tabs defaultActiveKey="1" >
+                <Tabs id={"TabA"} defaultActiveKey="1"  >
                     <TabPane tab="Utilisateurs" key="1">
                         <h2>Gestion des utilisateurs</h2>
                         <AffichUti/>

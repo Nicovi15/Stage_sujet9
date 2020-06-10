@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Redirect} from 'react-router-dom'
 import HistoQCM from "../components/HistoQCM";
 import DashboardAdmin from "../components/DashboardAdmin";
+import '../design/dashboard.scss'
 
 
 function DashboardContent(props) {
@@ -25,9 +26,9 @@ export default class Dashboard extends Component {
         }
         //<h1>Status:{this.props.loggedInStatus}</h1>
         return (
-            <div>
-                <h1>Dashboard</h1>
-                <h2>Bienvenue {this.props.user.pseudo}</h2>
+            <div id={"dash"}>
+
+                <h2 id={"bienv"}> Bienvenue {this.props.user.pseudo} </h2>
                 <DashboardContent user={this.props.user} />
 
             </div>

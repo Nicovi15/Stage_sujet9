@@ -1,0 +1,25 @@
+#questHaut {
+  width: 80%;
+  margin: auto;
+
+  h1 {
+    text-align: center;
+  }
+
+  h2 {
+    text-align: center;
+  }
+  Bstart{
+    button {
+      display: flex;
+      margin: auto;
+    }
+  }
+  #qcmQ{
+    margin: auto;
+    width: 300px;
+    overflow: auto;
+    max-height: calc(100vh - 140px - 150px );
+  }
+
+}

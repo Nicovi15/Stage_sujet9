@@ -3,7 +3,7 @@ import axios from "axios";
 import 'antd/dist/antd.css';
 import AffichQuest from "../components/AffichQuest";
 import {Checkbox} from "antd";
-import AjoutQuestion from "./AjoutQuestion";
+import '../design/qcm.scss'
 
 
 function shuffle(array) {
@@ -127,15 +127,18 @@ export default class QCMQuestion extends Component {
 
     render() {
         return (
-            <div>
+            <div id={"qcm"}>
                 <p>N°{this.props.index+1}) {this.state.info.libelle}</p>
                 <Resultat actif={this.props.actif} res={this.state.res}/>
-                <Checkbox.Group
-                    options={this.state.reponses}
-                    onChange={this.onChange}
-                    disabled={!this.props.actif}
-                />
-                <Correction actif={this.props.actif} res={this.state.res} reponses={this.state.reponses}/>
+                <div id = {"chbox"}>
+                    <Checkbox.Group
+                                    options={this.state.reponses}
+                                    onChange={this.onChange}
+                                    disabled={!this.props.actif}
+                    />
+                    <Correction actif={this.props.actif} res={this.state.res} reponses={this.state.reponses}/>
+                </div>
+
             </div>
         );
     }

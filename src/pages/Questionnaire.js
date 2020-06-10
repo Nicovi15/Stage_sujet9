@@ -3,6 +3,7 @@ import axios from "axios";
 import AffichQuest from "../components/AffichQuest";
 import QCMQuestion from "../components/QCMQuestion";
 import {useParams} from 'react-router-dom';
+import '../design/questionnaire.scss'
 import {Button} from 'antd';
 
 
@@ -10,13 +11,15 @@ function Resultat(props) {
     if (!props.actif) {
         return <h6>Résultat : {props.res}/10</h6>
     }
-    return <></>;
+    return null;
 }
 
 function Bstart(props){
     if(!props.start)
-        return <Button onClick={props.oc}>Commencer</Button>;
-    else return <></>;
+        return(
+        <Button  onClick={props.oc}>Commencer</Button>)
+
+    else return null;
 }
 
 export default class Questionnaire extends Component {
@@ -142,11 +145,11 @@ export default class Questionnaire extends Component {
 
     render() {
         return (
-            <div>
+            <div id={"questHaut"}>
                 <h1>Questionnaire {this.props.id}</h1>
                 <h2>Difficulte {this.props.dif}</h2>
-                <Bstart start={this.state.commencer} oc={this.loadQuestion}/>
-                <div>
+                <div id={"Bstart"}><Bstart  start={this.state.commencer} oc={this.loadQuestion}/></div>
+                <div id={"qcmQ"}>
                     {this.state.qchoisies.map(question => <><QCMQuestion info={question.question} index={question.index} setRes={this.setRes} actif={this.state.actif}/><br/></>)}
                 </div>
                 <button onClick={this.verif} hidden={!this.state.commencer} disabled={this.state.test} >Verifier</button>

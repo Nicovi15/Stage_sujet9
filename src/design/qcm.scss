@@ -1,0 +1,18 @@
+#qcm{
+  margin: auto ;
+  width: 290px;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 240px - 150px );
+  overflow: auto;
+  p{
+    text-align: center;
+    margin: auto;
+    padding-top: 10px;
+  }
+  #chbox{
+
+    margin: auto;
+  }
+
+}
