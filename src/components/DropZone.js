@@ -1,7 +1,59 @@
 import React, {Component} from 'react'
+import ReactDOM from 'react-dom';
 import axios from 'axios'
-
+import {Button} from 'antd'
+import { PoweroffOutlined } from '@ant-design/icons';
+import 'antd/dist/antd.css';
 class DropZone extends Component {
+
+    state = {
+        loadings: [],
+    };
+
+    enterLoading = index => {
+        this.setState(({ loadings }) => {
+            const newLoadings = [...loadings];
+            newLoadings[index] = true;
+
+            return {
+                loadings: newLoadings,
+            };
+        });
+        setTimeout(() => {
+            this.setState(({ loadings }) => {
+                const newLoadings = [...loadings];
+                newLoadings[index] = false;
+
+                return {
+                    loadings: newLoadings,
+                };
+            });
+        }, 6000);
+    };  state = {
+        loadings: [],
+    };
+
+    enterLoading = index => {
+        this.setState(({ loadings }) => {
+            const newLoadings = [...loadings];
+            newLoadings[index] = true;
+
+            return {
+                loadings: newLoadings,
+            };
+        });
+        setTimeout(() => {
+            this.setState(({ loadings }) => {
+                const newLoadings = [...loadings];
+                newLoadings[index] = false;
+
+                return {
+                    loadings: newLoadings,
+                };
+            });
+        }, 6000);
+    };
+
 
     UPLOAD_ENDPOINT = 'https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/upload.php';
     constructor(props) {
@@ -13,6 +65,9 @@ class DropZone extends Component {
         this.onChange = this.onChange.bind(this)
         this.uploadFile = this.uploadFile.bind(this)
     }
+
+
+
     async onSubmit(e){
         e.preventDefault()
         let res = await this.uploadFile(this.state.file);
@@ -36,11 +91,18 @@ class DropZone extends Component {
     }
 
     render() {
+        const { loadings } = this.state;
         return (
             <form onSubmit={ this.onSubmit }>
                 <h1> React File Upload Example</h1>
                 <input type="file" onChange={ this.onChange } />
-                <button type="submit">Upload File</button>
+
+                <Button type="primary"  htmlType="submit"
+                        icon={<PoweroffOutlined />}
+                        loading={loadings[1]}
+                        onClick={() => this.enterLoading(1)}>
+                    Upload File
+                </Button>
             </form>
         )
     }

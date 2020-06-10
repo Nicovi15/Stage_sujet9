@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
-import axios from 'axios';
-import { Radio } from 'antd';
 import { Checkbox } from 'antd';
 import 'antd/dist/antd.css';
+import '../design/dashboardAdmin.scss'
 import { Tabs, Button } from 'antd';
 import AffichUti from "./AffichUti";
 import GestionControle from "./GestionControle";
@@ -27,8 +26,8 @@ export default class DashboardAdmin extends Component {
 
     render() {
         return (
-            <div>
-                <h1></h1>
+            <div id={"dashboardA"}>
+
                 <Tabs defaultActiveKey="1" >
                     <TabPane tab="Utilisateurs" key="1">
                         <h2>Gestion des utilisateurs</h2>
