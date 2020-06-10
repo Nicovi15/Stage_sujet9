@@ -181,6 +181,8 @@ export default class AffichQuest extends Component {
                     <td><Button onClick={this.handleDeleteB}>Supprimer</Button></td>
                 </tr>
                 <tr>
+
+                    <td colSpan={10} >
                     <Modif
                         modif={this.state.modifier}
                         num_quest ={this.props.num_quest}
@@ -191,6 +193,8 @@ export default class AffichQuest extends Component {
                         theme = {this.props.theme}
                         reloadQuest={this.props.reloadQuest}
                     />
+                    </td>
+
                 </tr>
             </>
         );

@@ -134,10 +134,11 @@ export default class AffichConPas extends Component {
 
                 </tr>
                 <tr>
+                    <td colSpan={6}>
                     <Modif
                         modif={this.state.modifier}
                         num_cont={this.props.num_cont}
-                    />
+                    /></td>
                 </tr>
             </>
         );
