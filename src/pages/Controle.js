@@ -21,8 +21,6 @@ function Bstart(props){
 
 export default class Controle extends Component {
 
-
-
     constructor(props) {
         super(props);
         this.state={
@@ -35,6 +33,8 @@ export default class Controle extends Component {
             dif:null,
             theme:null,
             duree:null,
+            th:"",
+
         };
 
 
@@ -62,6 +62,7 @@ export default class Controle extends Component {
         })};
     }
 
+
     async loadQuestion(){
         if(this.props.id != null) {
             var controle = [];
@@ -81,21 +82,6 @@ export default class Controle extends Component {
                     console.log(this.state);
                 })
             console.log(controle.num_theme + controle.difficulte);
-
-            await axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getquestions3.php", {
-                theme: "1",
-                dif: "1",
-            })
-                .then(res => {
-                    // console.log(res);
-                    // console.log(res.data);
-                    res.data.map(donne => {
-                        questions.push(donne);
-                    });
-                    this.setState({questions},);
-                    //console.log(this.state);
-                })
-
             var theme = [];
             await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~cazzoli2u/quizzuml/getTheme.php")
                 .then(res => {
@@ -106,6 +92,22 @@ export default class Controle extends Component {
                     });
                     this.setState({theme});
                 })
+            this.setState({th : this.state.theme[controle.num_theme-1],
+                dif : parseInt(controle.difficulte),});
+            await axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getquestions3.php", {
+                theme: this.state.theme[controle.num_theme-1],
+                dif: parseInt(controle.difficulte),
+            })
+                .then(res => {
+                     console.log(res);
+                    // console.log(res.data);
+                    res.data.map(donne => {
+                        questions.push(donne);
+                    });
+                    this.setState({questions},);
+                    //console.log(this.state);
+                })
+
             var max = 10;
             if (questions.length < max) max = questions.length;
             for (var i = 0; i < max; i++) {
@@ -124,7 +126,7 @@ export default class Controle extends Component {
             this.setState({commencer: true});
 
 
-            console.log(this.state);
+            console.log("yes"+this.state);
         }
     }
 
@@ -161,8 +163,8 @@ export default class Controle extends Component {
     render() {
         return (
             <div>
-                <h1>Controle de  {this.props.id}</h1>
-                <h2>Difficulte {this.props.dif}</h2>
+                <h1>Controle de  {this.state.th}</h1>
+                <h2>Difficulte {this.state.dif}</h2>
                 <Bstart start={this.state.commencer} oc={this.loadQuestion}/>
                 <div>
                     {this.state.qchoisies.map(question => <><QCMQuestion info={question.question} index={question.index} setRes={this.setRes} actif={this.state.actif}/><br/></>)}
