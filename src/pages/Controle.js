@@ -43,7 +43,7 @@ function Timer(props) {
     }
     else if(!props.hidden){
         console.log("value " +props.value )
-        return <Countdown title="Countdown" value={Date.now() + props.value * 1000 * 60} onFinish={props.onFinish}  />
+        return <Countdown title="Temps restant :" value={Date.now() + props.value * 1000 * 60} onFinish={props.onFinish}  />
     }
     else return <></>
 }
