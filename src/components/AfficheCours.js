@@ -2,6 +2,14 @@ import React, {Component} from 'react'
 import axios from 'axios';
 
 class AfficheCours extends Component {
+
+constructor() {
+        super();
+        this.state = {
+            cours:[],
+        }
+    }
+
   async componentDidMount(){
         var cours=[];
         await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/getCours.php")
@@ -48,17 +56,17 @@ class AfficheCours extends Component {
                     </tr>
 
                     </thead>
-                    <tbody>
+<tbody>
 
 
 
-                        {this.state.cours.map(cours => <AfficheCours key={cours.num_cours}
-                                                                           num_cours={cours.num_cours}
-                                                                           libelle={cours.nom_fichier}
-                                                                           url_fichier={cours.url_fichier}
-                                                                           num_theme={cours.num_theme}
-                                                                           theme={cours.theme}
-                                                                           />)}
+                        {this.state.cours.map(cours => <tr>
+                            <td>{cours.num_cours}</td>
+                            <td><a href={cours.url_fichier}>{cours.nom_fichier}</a></td>
+                             <td><a href={cours.url_fichier}>lien</a></td>
+                            <td>{cours.num_theme}</td>
+                            <td>{cours.theme}</td>
+                        </tr>)}
 
 
 
