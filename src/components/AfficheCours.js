@@ -3,7 +3,7 @@ import axios from 'axios';
 
 class AfficheCours extends Component {
 
-    constructor() {
+constructor() {
         super();
         this.state = {
             cours:[],
@@ -14,8 +14,8 @@ class AfficheCours extends Component {
         var cours=[];
         await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/getCours.php")
             .then(res => {
-                 console.log("yes");
-                 console.log(res.data);
+                 console.log(res);
+                // console.log(res.data);
                 res.data.map(donne =>{
                     cours.push(donne);
                 });
@@ -56,14 +56,14 @@ class AfficheCours extends Component {
                     </tr>
 
                     </thead>
-                    <tbody>
+<tbody>
 
 
 
                         {this.state.cours.map(cours => <tr>
                             <td>{cours.num_cours}</td>
-                            <td>{cours.nom_fichier}</td>
-                            <td><a href={cours.url_fichier}>lien</a></td>
+                            <td><a href={cours.url_fichier}>{cours.nom_fichier}</a></td>
+                             <td><a href={cours.url_fichier}>lien</a></td>
                             <td>{cours.num_theme}</td>
                             <td>{cours.theme}</td>
                         </tr>)}
