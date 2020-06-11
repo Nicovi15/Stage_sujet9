@@ -47,17 +47,21 @@ class DropZone extends Component {
                 success: true,
                 echec : false,
             })
+            axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/ajoutcours.php",
+                {
+                    url : res.data.url_fichier,
+                    theme : "UML"
+                },
+                {withCredentials: true}
+            ).then(response => {
+            })
         } else if (res.data.status === "error" && (!(res.data.status === "success"))) {
-
             this.setState({
                 success: false,
                 echec: true,
             })
-
-
         }
         console.log("status",res.data.status);
-
     }
 
     onChange(e) {
