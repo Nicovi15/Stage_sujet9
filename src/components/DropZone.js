@@ -77,9 +77,10 @@ class DropZone extends Component {
                 success: true,
                 echec : false,
             })
-            axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/ajoutcours.php",
+            axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/ajoutCours.php",
                 {
                     url : res.data.url_fichier,
+                    name : res.data.file_name,
                     theme : this.state.theme
                 },
                 {withCredentials: true}
@@ -91,7 +92,7 @@ class DropZone extends Component {
                 echec: true,
             })
         }
-        console.log("theme", this.state.theme)
+        console.log("theme", res.data.file_name)
         console.log("status",res.data.status);
     }
 
