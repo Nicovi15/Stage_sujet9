@@ -11,6 +11,7 @@
   }
 
   table{
+
     max-width: 100%;
     display: block;
 
@@ -29,6 +30,7 @@
     thead {
 
       border-color: grey ;
+
       tr{
         border-color: grey;
 
@@ -44,7 +46,7 @@
       th{
         border-left: none;
         top: 0px;
-
+        z-index: 10;
 
       }
 
