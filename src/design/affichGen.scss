@@ -11,14 +11,15 @@
   }
 
   table{
-    width: 100%;
+    max-width: 100%;
     display: block;
 
     border-radius: 7px;
     border-left: none;
     border-right: none;
     border-bottom: none;
-    max-height: calc(100vh - 240px - 150px );
+
+    max-height: 400px;
 
     background-color: white;
     margin:auto;

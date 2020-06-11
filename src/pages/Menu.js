@@ -10,6 +10,7 @@ import {HashRouter as Router, Link, Route, Switch} from "react-router-dom";
 import Questionnaire from "./Questionnaire";
 import TaskDetails from "../components/TaskDetails";
 import SelecCont from "../components/SelecCont";
+import '../design/menuQ.scss'
 const CheckboxGroup = Checkbox.Group;
 const { TabPane } = Tabs;
 export default class Menu extends Component {
@@ -62,8 +63,8 @@ export default class Menu extends Component {
 
     render() {
         return (
-            <div>
-                <h1>C'est la page où se trouve les menus des questionnaires</h1>
+            <div id={"menuQ"}>
+
                 <Tabs defaultActiveKey="1" >
                     {this.state.theme.map(the => <TabPane tab={the} key={the}>
                         <h2>Questionnaire {the}</h2>

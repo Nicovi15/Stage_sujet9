@@ -3,12 +3,16 @@
   width: 290px;
   display: flex;
   flex-direction: column;
-  max-height: calc(100vh - 240px - 150px );
+  border-bottom: solid 1px black;
+  padding-bottom: 10px;
   overflow: auto;
   p{
-    text-align: center;
-    margin: auto;
+    max-width: 290px;
+    //text-align: center;
+    word-wrap: break-word;
+
     padding-top: 10px;
+
   }
   #chbox{
 
