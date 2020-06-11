@@ -31,6 +31,7 @@ class App extends Component {
 
         this.handleLogin = this.handleLogin.bind(this);
         this.handleLogout = this.handleLogout.bind(this);
+        this.updateUser = this.updateUser.bind(this);
     }
 
     checkLoginStatus() {
@@ -66,6 +67,30 @@ class App extends Component {
             loggedInStatus: "NOT_LOGGED_IN",
             user: {},
         });
+    }
+
+    updateUser(){
+        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getuserinfo.php",
+            {
+                num_uti : this.state.user.num_uti
+            },
+            {withCredentials: true}
+        ).then(response => {
+            if ( response.data.error ) {
+                //console.log(response.data);
+                this.setState({
+                    echec : true,
+                });
+            }
+            else {
+                console.log(response.data);
+                if(response.data.status === "Succes"){
+                    this.setState({
+                        user : response.data.user,
+                    });
+                }
+            }
+        })
     }
 
 

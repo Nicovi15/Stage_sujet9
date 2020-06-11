@@ -29,6 +29,7 @@ export default class Dashboard extends Component {
             <div id={"dash"}>
 
                 <h2 id={"bienv"}> Bienvenue {this.props.user.pseudo} </h2>
+                <h3>Vous êtes actuellement niveau {this.props.user.niveau} ({this.props.user.exp}%)</h3>
                 <DashboardContent user={this.props.user} />
 
             </div>

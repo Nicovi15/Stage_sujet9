@@ -155,6 +155,7 @@ export default class AffichUti extends Component {
                     <Checkbox.Group
                         options={this.state.promo}
                         onChange={this.onChange}
+                        value={this.state.checkedList}
                     />
                     <button onClick={this.affiState}>Rechercher</button>
                 </div>

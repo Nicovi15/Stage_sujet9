@@ -134,7 +134,7 @@ export default class AffichQuest extends Component {
 
                 </tr>
                 <tr>
-                    <td colSpan={7}>
+                    <td colSpan={8}>
                     <Histo
                         user={this.props.user} modif={this.state.modifier}
                     />

@@ -8,10 +8,10 @@ import { Radio } from 'antd';
 import { Checkbox } from 'antd';
 import '../design/affichGen.scss'
 import AffichHistoQ from "./AffichHistoQ";
-
+import CanvasJSReact from '../assets/canvasjs.react';
 const CheckboxGroup = Checkbox.Group;
 const { Option } = Select;
-
+var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 export default class HistoQCM extends Component {
 
@@ -24,8 +24,10 @@ export default class HistoQCM extends Component {
             theme:[],
             difficulte:[1,2,3],
             checkedValues: [],
+            checkedList: [],
             indeterminate: true,
             checkAll: false,
+            dataPoints : [],
         }
         this.onChange = this.onChange.bind(this);
         this.reloadHisto2 = this.reloadHisto2.bind(this);
@@ -39,11 +41,11 @@ export default class HistoQCM extends Component {
     }
 
     reloadHisto2 (){
+        var dataPoints=[];
         var questionnaires=[];
-        console.log(this.state.checkedList);
         axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/gethistoeleve.php",{
             num_uti : this.props.user.num_uti,
-            list : this.state.checkedValues,
+            list : this.state.checkedList,
             checkAll: this.state.checkAll,
         })
             .then(res => {
@@ -51,35 +53,34 @@ export default class HistoQCM extends Component {
                 // console.log(res.data);
                 res.data.map(donne =>{
                     questionnaires.push(donne);
+                    dataPoints.push({x:new Date(donne.date),
+                        y: parseFloat(donne.score),
+                        theme : donne.theme,
+                        dif : donne.difficulte,
+                    })
                 });
                 this.setState({questionnaires},);
+                this.setState({dataPoints},);
                 console.log(this.state);
             })
     }
 
 
 
-    onChange(checkedValues) {
+    onChange = checkedList => {
         this.setState({
-            indeterminate: !!checkedValues.length && checkedValues.length < this.state.theme.length,
-            checkAll: checkedValues.length === this.state.theme.length,
-            checkedValues,
+            checkedList,
+            indeterminate: !!checkedList.length && checkedList.length < this.state.theme.length,
+            checkAll: checkedList.length === this.state.theme.length,
         });
-        //this.reloadQuest2();
-
-
-    }
+    };
 
     onCheckAllChange = e => {
-
         this.setState({
             checkedList: e.target.checked ? this.state.theme : [],
             indeterminate: false,
             checkAll: e.target.checked,
         });
-
-        //console.log(this.state);
-        //console.log(this.state.checkedValues);
     };
 
     chargerQuest(){
@@ -98,10 +99,11 @@ export default class HistoQCM extends Component {
                 this.setState({theme});
             })
 
+        var dataPoints=[];
         var questionnaires=[];
         await axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/gethistoeleve.php",{
             num_uti : this.props.user.num_uti,
-            list : this.state.checkedValues,
+            list : this.state.checkedList,
             checkAll: true,
         })
             .then(res => {
@@ -109,12 +111,16 @@ export default class HistoQCM extends Component {
                 // console.log(res.data);
                 res.data.map(donne =>{
                     questionnaires.push(donne);
+                    dataPoints.push({x:new Date(donne.date),
+                        y: parseFloat(donne.score),
+                        theme : donne.theme,
+                        dif : donne.difficulte,
+                    })
                 });
                 this.setState({questionnaires},);
+                this.setState({dataPoints},);
                 console.log(this.state);
             })
-
-
         //console.log(this.state.theme);
     }
 
@@ -124,7 +130,29 @@ export default class HistoQCM extends Component {
             //Affichage de la redirection
             return <Redirect to='/'/>;
         }
-
+        const options = {
+            animationEnabled: true,
+            exportEnabled: true,
+            theme: "light", // "light1", "dark1", "dark2"
+            title:{
+                text: "Historique des scores"
+            },
+            axisY: {
+                title: "Score",
+                includeZero:true,
+            },
+            axisX: {
+                title: "Date et heure",
+                interval: 2,
+                valueFormatString: "DD MMM YYYY H:m "
+            },
+            data: [{
+                type: "line",
+                yValueFormatString: "#0.00",
+                toolTipContent: "{theme} {dif}: {y}%",
+                dataPoints: this.state.dataPoints,
+            }]
+        }
         return (
             <div id={"affichGen"}>
                 <div id={"selection"}>
@@ -140,11 +168,19 @@ export default class HistoQCM extends Component {
                     <Checkbox.Group
                         options={this.state.theme}
                         onChange={this.onChange}
+                        value={this.state.checkedList}
                     />
                     <button onClick={this.affiState}>Rechercher</button>
                 </div>
                 <br />
 
+                    <CanvasJSChart options = {options}
+                        /* onRef={ref => this.chart = ref} */
+                    />
+                    {/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
+
+                <br />
+                <br />
                 <table border="1px" >
                     <thead  >
                     <tr>
