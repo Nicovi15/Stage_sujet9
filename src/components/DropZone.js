@@ -84,7 +84,7 @@ class DropZone extends Component {
                     theme : this.state.theme
                 },
                 {withCredentials: true}
-            ).then(response => {
+            ).then(response => { console.log("ajoutbdd",response.data)
             })
         } else if (res.data.status === "error" && (!(res.data.status === "success"))) {
             this.setState({
@@ -92,7 +92,7 @@ class DropZone extends Component {
                 echec: true,
             })
         }
-        console.log("theme", res.data.file_name)
+
         console.log("status",res.data.status);
     }
 
