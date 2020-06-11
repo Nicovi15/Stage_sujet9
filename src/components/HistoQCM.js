@@ -149,7 +149,7 @@ export default class HistoQCM extends Component {
             data: [{
                 type: "line",
                 yValueFormatString: "#0.00",
-                toolTipContent: "{theme} {dif}: {y}%",
+                toolTipContent: "{theme} {dif}: {y}/10",
                 dataPoints: this.state.dataPoints,
             }]
         }
