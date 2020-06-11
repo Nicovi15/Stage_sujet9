@@ -1,28 +1,24 @@
-#affichGen{
-
-  margin:auto;
-  overflow: auto;
-  padding-bottom: 50px;
-
-
-  .chbox{
-    margin: auto;
-
-  }
+#affichUti{
+  display: block;
+  padding-bottom: 10px;
+  margin: auto;
 
   table{
 
-    width: 100%;
     display: block;
+    overflow: auto;
+
     border-radius: 7px;
     border-left: none;
     border-right: none;
     border-bottom: none;
+
     max-height: 400px;
+
     background-color: white;
     margin:auto;
 
-    overflow: auto;
+
 
     thead {
 
@@ -31,33 +27,47 @@
       tr{
         border-color: grey;
 
+      }
+      tr:nth-child(1) th{
+        position: sticky;
+
+        background-color: white;
+        text-align: center;
+
 
       }
       th{
-        background-color: white;
         border-left: none;
         top: 0px;
         z-index: 10;
-        position: sticky;
-        text-align: center;
 
       }
-
-
 
       th:nth-child(2){
-        width:30%;
+        width:15%;
+      }
+      th:nth-child(3){
+        width:15%;
       }
 
-
-
+      th:nth-child(4){
+        width:15%;
+      }
+      th:nth-child(5){
+        width:30%;
+      }
+      th:last-child{
+        width:10%;
+      }
 
     }
     tbody{
+      height: 500px;
+      overflow: auto;
       td{
 
         border-top:none;
-       border-color: gray;
+        border-color: gray;
         text-align: center;
         border-left: none ;
 
