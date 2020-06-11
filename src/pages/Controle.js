@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
 import axios from "axios";
-import AffichQuest from "../components/AffichQuest";
 import QCMQuestion from "../components/QCMQuestion";
-import {useParams} from 'react-router-dom';
 import {Button} from 'antd';
 import { Statistic, Row, Col } from 'antd';
 

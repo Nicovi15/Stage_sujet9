@@ -1,11 +1,9 @@
 import React, {Component} from 'react'
 import axios from 'axios';
-import { Radio } from 'antd';
 import { Checkbox } from 'antd';
 import 'antd/dist/antd.css';
 import { Tabs, Button } from 'antd';
 import {FireOutlined , FireFilled} from '@ant-design/icons';
-import QCMQuestion from "../components/QCMQuestion";
 import {HashRouter as Router, Link, Route, Switch} from "react-router-dom";
 import Questionnaire from "./Questionnaire";
 import TaskDetails from "../components/TaskDetails";
@@ -68,7 +66,7 @@ export default class Menu extends Component {
                 <Tabs defaultActiveKey="1" >
                     {this.state.theme.map(the => <TabPane tab={the} key={the}>
                         <h2>Questionnaire {the}</h2>
-                        <ul >
+                        <ul id={"niveau"}>
                             <li> <Router><Link to={"/questionnaire/"+the+"/1"}><Button  icon={<FireFilled style={{ fontSize: '16px', color: '#15DC05' }} />}>Difficulté Niveau 1</Button></Link><Switch>
                                 <Route path="/questionnaire/:id/:dif" children={<TaskDetails/>} />
                             </Switch></Router></li> <br/><br/>
@@ -87,7 +85,7 @@ export default class Menu extends Component {
                         </ul>
                     </TabPane>)}
                     <TabPane tab="Contrôles" key="Contrôle">
-                        <h2>Contrôles</h2>
+
                         <SelecCont/>
                     </TabPane>
                 </Tabs>

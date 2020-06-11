@@ -6,7 +6,7 @@ import { Select, Button, Table } from 'antd';
 import AffichQuest from "./AffichQuest";
 import { Radio } from 'antd';
 import { Checkbox } from 'antd';
-import '../design/affichGen.scss'
+import '../design/selectCont.scss'
 import AffichConPas from "./AffichConPas";
 
 const CheckboxGroup = Checkbox.Group;
@@ -152,7 +152,7 @@ export default class AffichResCon extends Component {
         }
 
         return (
-            <div id={"affichGen"}>
+            <div id={"selectCont"}>
                 <h1>Résultat des contrôles</h1>
 
                 <table border="1px" >

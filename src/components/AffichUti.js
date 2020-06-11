@@ -4,10 +4,9 @@ import 'antd/dist/antd.css';
 import axios from "axios";
 import { Select, Button, Table } from 'antd';
 import AffichQuest from "./AffichQuest";
-import { Radio } from 'antd';
 import AffichU from "./AffichU";
 import { Checkbox } from 'antd';
-import '../design/affichGen.scss'
+import '../design/affichUti.scss'
 
 const CheckboxGroup = Checkbox.Group;
 const { Option } = Select;
@@ -139,7 +138,7 @@ export default class AffichUti extends Component {
         }
 
         return (
-            <div id={"affichGen"}>
+            <div id={"affichUti"}>
                 <h4>Liste des utilisateurs</h4>
 
                 <div id={"selection"}>
