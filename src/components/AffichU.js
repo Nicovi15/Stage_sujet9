@@ -128,6 +128,7 @@ export default class AffichQuest extends Component {
                     <td>{this.props.nom}</td>
                     <td>{this.props.prenom}</td>
                     <td>{this.props.email}</td>
+                    <td>{this.props.promo}</td>
                     <td><Bmodif modif={this.state.modifier} onClick={this.handleChangeModif}/></td>
                     <td><Button onClick={this.handleDeleteB}>Supprimer</Button></td>
 

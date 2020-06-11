@@ -24,6 +24,9 @@ export default class TabRes extends Component {
             checkedValues: [],
             indeterminate: true,
             checkAll: false,
+            note_min : 10,
+            note_max : 0,
+            moyenne : 0,
         }
         this.onChange = this.onChange.bind(this);
         this.reloadQuest2 = this.reloadQuest2.bind(this);
@@ -117,17 +120,33 @@ export default class TabRes extends Component {
     }
 
     async componentDidMount(){
+        var note_min = 10;
+        var note_max = 0;
+        var somme=0;
+        var nb = 0;
+        var moy = 0;
         var controles=[];
         axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getresbyid.php",{
             num_cont : this.props.num_cont,
         })
             .then(res => {
                 // console.log(res);
-                // console.log(res.data);
+                 //console.log(res.data);
                 res.data.map(donne =>{
                     controles.push(donne);
+                    if(donne.score<note_min) note_min = donne.score;
+                    if(donne.score>note_max) note_max = donne.score;
+                    somme += parseFloat(donne.score);
+                    nb++;
                 });
+                console.log(somme);
+                moy = (somme / nb);
                 this.setState({controles},);
+                this.setState({
+                    note_min : note_min,
+                    note_max : note_max,
+                    moyenne : moy,
+                })
                 console.log(this.state);
             })
 
@@ -154,6 +173,7 @@ export default class TabRes extends Component {
         return (
             <div id={"affichGen"}>
                 <h1>Résultats du contrôle N°{this.props.num_cont}</h1>
+                <p>Note min : {this.state.note_min}  Note max : {this.state.note_max}  Moyenne : {this.state.moyenne}</p>
 
                 <table border="1px" >
                     <thead  >

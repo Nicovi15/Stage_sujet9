@@ -21,9 +21,9 @@ export default class AffichUti extends Component {
 
         this.state = {
             utilisateurs : [],
-            theme:[],
+            promo:[],
             difficulte:[1,2,3],
-            checkedValues: [],
+            checkedList: [],
             indeterminate: true,
             checkAll: false,
         }
@@ -41,10 +41,14 @@ export default class AffichUti extends Component {
 
     reloadQuest2 (){
         var utilisateurs=[];
-        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~cazzoli2u/quizzuml/getUtilisateurs.php")
+        console.log(this.state.checkedList);
+        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getutilisateurs.php",{
+            list : this.state.checkedList,
+            checkAll: this.state.checkAll,
+        })
             .then(res => {
-                console.log(res);
-                // console.log(res.data);
+                // console.log(res);
+                console.log(res.data);
                 res.data.map(donne =>{
                     utilisateurs.push(donne);
                 });
@@ -71,34 +75,27 @@ export default class AffichUti extends Component {
 
     onChange2 = checkedList => {
         this.setState({
-            indeterminate: !!checkedList.length && checkedList.length < this.state.theme.length,
-            checkAll: checkedList.length === this.state.theme.length,
+            indeterminate: !!checkedList.length && checkedList.length < this.state.promo.length,
+            checkAll: checkedList.length === this.state.promo.length,
             checkedList,
         });
         console.log(this.state.checkedList);
     };
 
-    onChange(checkedValues) {
+    onChange = checkedList => {
         this.setState({
-            indeterminate: !!checkedValues.length && checkedValues.length < this.state.theme.length,
-            checkAll: checkedValues.length === this.state.theme.length,
-            checkedValues,
+            checkedList,
+            indeterminate: !!checkedList.length && checkedList.length < this.state.promo.length,
+            checkAll: checkedList.length === this.state.promo.length,
         });
-        //this.reloadQuest2();
-
-
-    }
+    };
 
     onCheckAllChange = e => {
-
         this.setState({
-            checkedList: e.target.checked ? this.state.theme : [],
+            checkedList: e.target.checked ? this.state.promo : [],
             indeterminate: false,
             checkAll: e.target.checked,
         });
-
-        //console.log(this.state);
-        //console.log(this.state.checkedValues);
     };
 
     chargerQuest(){
@@ -107,10 +104,13 @@ export default class AffichUti extends Component {
 
     async componentDidMount(){
         var utilisateurs=[];
-        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~cazzoli2u/quizzuml/getUtilisateurs.php")
+        await axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getutilisateurs.php",{
+            list : this.state.checkedList,
+            checkAll: true,
+        })
             .then(res => {
-                console.log(res);
-                // console.log(res.data);
+                // console.log(res);
+                console.log(res.data);
                 res.data.map(donne =>{
                     utilisateurs.push(donne);
                 });
@@ -118,15 +118,15 @@ export default class AffichUti extends Component {
                 console.log(this.state);
             })
 
-        var theme=[];
-        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~cazzoli2u/quizzuml/getTheme.php")
+        var promo=[];
+        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getpromo.php")
             .then(res => {
                 // console.log(res);
                 // console.log(res.data);
                 res.data.map(donne =>{
-                    theme.push(donne.libelle);
+                    promo.push(donne.libelle);
                 });
-                this.setState({theme});
+                this.setState({promo});
             })
         //console.log(this.state.theme);
     }
@@ -142,7 +142,7 @@ export default class AffichUti extends Component {
             <div id={"affichGen"}>
                 <h4>Liste des utilisateurs</h4>
 
-                {/*<div id={"selection"}>
+                <div id={"selection"}>
                     <div className="site-checkbox-all-wrapper">
                         <Checkbox  class={"chbox"}
                                    indeterminate={this.state.indeterminate}
@@ -153,12 +153,12 @@ export default class AffichUti extends Component {
                         </Checkbox>
                     </div>
                     <Checkbox.Group
-                        options={this.state.theme}
+                        options={this.state.promo}
                         onChange={this.onChange}
                     />
                     <button onClick={this.affiState}>Rechercher</button>
                 </div>
-                <br />*/}
+                <br />
 
                 <table border="1px" >
                     <thead  >
@@ -168,6 +168,7 @@ export default class AffichUti extends Component {
                         <th>Nom</th>
                         <th>Prénom</th>
                         <th>Email</th>
+                        <th>Promo</th>
                         <th>Historiques QCM</th>
                         <th>Supprimer</th>
                     </tr>
@@ -183,6 +184,7 @@ export default class AffichUti extends Component {
                                                                        nom={uti.nom}
                                                                        prenom={uti.prenom}
                                                                        email={uti.email}
+                                                                       promo={uti.promo}
                                                                        user={uti}
                                                                        reloadQuest={this.reloadQuest2}/>)}
 
