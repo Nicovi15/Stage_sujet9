@@ -1,5 +1,5 @@
 #questHaut {
-  width: 50vh;
+  width: 45vh;
   margin: auto;
 
   h1 {
@@ -24,7 +24,7 @@
     Button {
       display: flex;
       margin: auto;
-      width: 50vh;
+      width: 48vh;
     }
   }
 
@@ -32,7 +32,7 @@
   #qcmQ{
     background-color: rgba(255,255,255, .6); ;
     margin: auto;
-    width: 50vh;
+    width: 45vh;
     overflow: auto;
     //min-height: 450px;
     max-height: 90%;
@@ -43,7 +43,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
     flex-direction: row;
-    width: 50vh;
+    width: 45vh;
     margin: auto;
     Button{
       width: 100%;
