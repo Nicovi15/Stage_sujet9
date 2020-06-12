@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import { Checkbox } from 'antd';
 import 'antd/dist/antd.css';
 import '../design/dashboardAdmin.scss'
 import { Tabs, Button } from 'antd';
@@ -7,8 +6,6 @@ import AffichUti from "./AffichUti";
 import GestionControle from "./GestionControle";
 import AffichResCon from "./AffichResCon";
 import axios from "axios";
-import AffichQuest from "./AffichQuest";
-const CheckboxGroup = Checkbox.Group;
 const { TabPane } = Tabs;
 
 

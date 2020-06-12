@@ -2,14 +2,9 @@ import React, {Component} from 'react'
 import {Redirect} from "react-router-dom";
 import 'antd/dist/antd.css';
 import axios from "axios";
-import { Select, Button, Table } from 'antd';
-import AffichQuest from "./AffichQuest";
 import AffichU from "./AffichU";
 import { Checkbox } from 'antd';
 import '../design/affichUti.scss'
-
-const CheckboxGroup = Checkbox.Group;
-const { Option } = Select;
 
 
 export default class AffichUti extends Component {
@@ -96,10 +91,6 @@ export default class AffichUti extends Component {
             checkAll: e.target.checked,
         });
     };
-
-    chargerQuest(){
-
-    }
 
     async componentDidMount(){
         var utilisateurs=[];

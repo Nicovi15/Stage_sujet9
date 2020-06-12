@@ -13,12 +13,10 @@
     border-right: none;
     border-bottom: none;
 
-    max-height: 400px;
+    max-height: 90%;
 
     background-color: white;
     margin:auto;
-
-
 
     thead {
 
@@ -64,6 +62,10 @@
     tbody{
       height: 500px;
       overflow: auto;
+
+      tr{
+      }
+
       td{
 
         border-top:none;
@@ -81,4 +83,8 @@
 
 
   }
+}
+
+#tabhisto{
+  max-height: 1px;
 }

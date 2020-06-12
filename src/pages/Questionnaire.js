@@ -1,15 +1,13 @@
 import React, {Component} from 'react'
 import axios from "axios";
-import AffichQuest from "../components/AffichQuest";
 import QCMQuestion from "../components/QCMQuestion";
-import {useParams} from 'react-router-dom';
 import '../design/questionnaire.scss'
-import {Button} from 'antd';
+import {Button, Progress} from 'antd';
 
 
 function Resultat(props) {
     if (!props.actif) {
-        return <h6>Résultat : {props.res}/10</h6>
+        return <h5>Résultat : {props.res}/10</h5>
     }
     return null;
 }
@@ -34,6 +32,8 @@ export default class Questionnaire extends Component {
             br: 0,
             commencer: false,
             test: false,
+            messageNiv : "",
+            exp : 0,
         };
 
 
@@ -59,9 +59,15 @@ export default class Questionnaire extends Component {
             })
         }
         ;
+        this.props.update();
     }
 
     async loadQuestion() {
+        if (this.props.user.niveau < this.props.dif) {
+            //Affichage de la redirection
+            return false;
+        }
+
         if (this.props.dif != null) {
             var questions = [];
             var qchoi = [];
@@ -138,7 +144,26 @@ export default class Questionnaire extends Component {
                 // console.log(res.data);
 
             });
+
         this.setState({test: true,});
+        if(this.props.dif === this.props.user.niveau){
+            var points = br * 3;
+            axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/ajoutexp.php", {
+                num_uti: this.props.user.num_uti,
+                points : points,
+            })
+                .then(res => {
+                    console.log(res);
+                    this.setState({messageNiv : "Vous avez gagné "+points+" points d'expérience et vous êtes maintenant Niveau " + res.data.niveau /*+ " ("+res.data.exp+"%)"*/});
+                    this.setState({exp : res.data.exp})
+                    // console.log(res.data);
+                    this.props.update();
+                });
+            console.log("meme niveau");
+        }
+        else {
+            this.setState({messageNiv : "Vous ne gagnez des points qu'en faisant des questionnaires de votre niveau."})
+        }
     }
 
     async componentDidMount() {
@@ -155,7 +180,7 @@ export default class Questionnaire extends Component {
                 <h1>Questionnaire {this.props.id}</h1>
                 <h2>Difficulte {this.props.dif}</h2>
 
-                <div id={"Bstart"}>
+                <div id={"verifRes"}>
                     <Bstart start={this.state.commencer} oc={this.loadQuestion}/>
                 </div>
 
@@ -167,6 +192,8 @@ export default class Questionnaire extends Component {
                     <Button onClick={this.verif} hidden={!this.state.commencer}
                             disabled={this.state.test}>Verifier</Button>
                     <Resultat actif={this.state.actif} res={this.state.br}/>
+                    <h5>{this.state.messageNiv}</h5>
+                    <Progress id={"bar"} hidden={!((this.state.messageNiv!="")&&(this.state.messageNiv!="Vous ne gagnez des points qu'en faisant des questionnaires de votre niveau."))} percent={this.state.exp} status={"active"}  />
                 </div>
             </div>
 

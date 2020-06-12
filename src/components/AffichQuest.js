@@ -5,7 +5,6 @@ import axios from "axios";
 import { Select, Button } from 'antd';
 import AffichRep from "./AffichRep";
 import ModifQuestion from "./ModifQuestion";
-const { Option } = Select;
 
 function Brep(props) {
 

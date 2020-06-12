@@ -2,16 +2,13 @@ import React, {Component} from 'react'
 import {Redirect} from "react-router-dom";
 import 'antd/dist/antd.css';
 import axios from "axios";
-import { Select, Button, Table } from 'antd';
-import AffichQuest from "./AffichQuest";
-import { Radio } from 'antd';
 import { Checkbox } from 'antd';
 import '../design/affichGen.scss'
 import AffichHistoQ from "./AffichHistoQ";
 import CanvasJSReact from '../assets/canvasjs.react';
-const CheckboxGroup = Checkbox.Group;
-const { Option } = Select;
+import '../design/affichUti.scss'
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+
 
 export default class HistoQCM extends Component {
 
@@ -83,9 +80,6 @@ export default class HistoQCM extends Component {
         });
     };
 
-    chargerQuest(){
-
-    }
 
     async componentDidMount(){
         var theme=[];
@@ -154,7 +148,7 @@ export default class HistoQCM extends Component {
             }]
         }
         return (
-            <div id={"affichGen"}>
+            <div id={"affichGen2"}>
                 <div id={"selection"}>
                     <div className="site-checkbox-all-wrapper">
                         <Checkbox class={"chbox"}
@@ -181,7 +175,8 @@ export default class HistoQCM extends Component {
 
                 <br />
                 <br />
-                <table border="1px" >
+                <div id={"divtabhisto"}>
+                <table border="1px"  >
                     <thead  >
                     <tr>
                         <th>N° Questionnaire</th>
@@ -212,6 +207,7 @@ export default class HistoQCM extends Component {
                     </tbody>
 
                 </table>
+                </div>
 
             </div>
         );

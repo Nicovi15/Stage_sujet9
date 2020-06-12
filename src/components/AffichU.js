@@ -2,19 +2,9 @@ import React, {Component} from 'react'
 import {Redirect} from "react-router-dom";
 import 'antd/dist/antd.css';
 import axios from "axios";
-import { Select, Button } from 'antd';
-import AffichRep from "./AffichRep";
-import ModifQuestion from "./ModifQuestion";
+import { Button } from 'antd';
 import HistoQCM from "./HistoQCM";
-const { Option } = Select;
 
-function Brep(props) {
-
-    if (!props.rep) {
-        return <Button onClick={props.onClick}>Afficher les reps.</Button>
-    } else
-        return <Button onClick={props.onClick}>Cacher les reps.</Button>
-}
 
 function Bmodif(props) {
 
@@ -26,10 +16,10 @@ function Bmodif(props) {
 
 function Histo(props){
     if(props.modif)
-        return <><h3>Historique des QCM de {props.user.pseudo} ({props.user.prenom}  {props.user.nom})</h3>
+        return <div id={"content"}><h3>Historique des QCM de {props.user.pseudo} ({props.user.prenom}  {props.user.nom})</h3>
             <HistoQCM user={props.user}
         />
-        <br/></>;
+        <br/></div>;
     else return <></>;
 }
 
@@ -104,8 +94,6 @@ export default class AffichQuest extends Component {
         }
     }
 
-    async componentDidMount(){
-    }
 
     afficheRep(){
         this.setState({

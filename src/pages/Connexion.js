@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
-import {HashRouter as Router, Link, Redirect, Route, Switch} from 'react-router-dom';
+import {Link, Redirect, Route,} from 'react-router-dom';
 import {Button} from 'react-bootstrap'
-//import 'antd/dist/antd.css';
-//import { Button } from 'antd';
 import axios from "axios";
 
 import "../design/connexion.scss"

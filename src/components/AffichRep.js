@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import {Redirect} from "react-router-dom";
 import 'antd/dist/antd.css';
-import axios from "axios";
-import { Select, Button } from 'antd';
+
+import { Button } from 'antd';
 import ModifRep from "./ModifRep";
-const { Option } = Select;
+
 
 
 function Bmodif(props) {

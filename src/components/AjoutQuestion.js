@@ -2,10 +2,8 @@ import React, {Component} from 'react'
 import {Redirect} from "react-router-dom";
 import 'antd/dist/antd.css';
 import axios from "axios";
-import {Select, Button} from 'antd';
 import '../design/ajoutQ.scss'
 
-const {Option} = Select;
 
 
 function ListeChampBR(props) {
@@ -196,8 +194,6 @@ export default class AjoutQuestion extends Component {
             echec: false,
         })
     }
-
-    handleChangeB
 
     render() {
         if (this.props.loggedInStatus === "NOT_LOGGED_IN") {

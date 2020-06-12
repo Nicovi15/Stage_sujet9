@@ -2,14 +2,11 @@ import React, {Component} from 'react'
 import {Redirect} from "react-router-dom";
 import 'antd/dist/antd.css';
 import axios from "axios";
-import { Select, Button, Table } from 'antd';
-import AffichQuest from "./AffichQuest";
-import { Radio } from 'antd';
-import { Checkbox } from 'antd';
+import {  Button } from 'antd';
+
 import '../design/selectCont.scss'
 
-const CheckboxGroup = Checkbox.Group;
-const { Option } = Select;
+
 
 
 export default class AffichGenCon extends Component {
@@ -53,16 +50,6 @@ export default class AffichGenCon extends Component {
     }
 
 
-
-    onChange2 = checkedList => {
-        this.setState({
-            indeterminate: !!checkedList.length && checkedList.length < this.state.theme.length,
-            checkAll: checkedList.length === this.state.theme.length,
-            checkedList,
-        });
-        console.log(this.state.checkedList);
-    };
-
     onChange(checkedValues) {
         this.setState({
             indeterminate: !!checkedValues.length && checkedValues.length < this.state.theme.length,
@@ -101,21 +88,6 @@ export default class AffichGenCon extends Component {
         }
     }
 
-    onCheckAllChange = e => {
-
-        this.setState({
-            checkedList: e.target.checked ? this.state.theme : [],
-            indeterminate: false,
-            checkAll: e.target.checked,
-        });
-
-        //console.log(this.state);
-        //console.log(this.state.checkedValues);
-    };
-
-    chargerQuest(){
-
-    }
 
     async componentDidMount(){
         var controles=[];

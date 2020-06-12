@@ -3,13 +3,14 @@ import axios from "axios";
 import QCMQuestion from "../components/QCMQuestion";
 import {Button} from 'antd';
 import { Statistic, Row, Col } from 'antd';
+import '../design/questionnaire.scss'
 
 const { Countdown } = Statistic;
 
 
 function Resultat(props) {
     if (!props.actif) {
-        return <h6>Vos réponses ont été enregistrées.</h6>
+        return <h5>Vos réponses ont été enregistrées.</h5>
     }
     return <></>;
 }
@@ -203,17 +204,21 @@ export default class Controle extends Component {
 
     render() {
         return (
-            <div>
+            <div id={"questHaut"}>
                 <h1>Controle N°{this.props.id} {this.state.th} </h1>
                 <h2>Difficulte {this.state.dif}</h2>
+                <div id={"verifRes"}>
                 <Bstart start={this.state.commencer} statut={this.state.statut} oc={this.loadQuestion}/>
                 <Timer hidden={!this.state.commencer}  statut={this.state.statut}  value={this.state.duree}  actif={this.state.actif} onFinish={this.verif}/>
-                <div>
+                </div>
+                <div id={"qcmQ"}>
                     {this.state.qchoisies.map(question => <><QCMQuestion info={question.question} index={question.index} setRes={this.setRes} actif={true}/><br/></>)}
                 </div>
+                <div id={"verifRes"}>
                 <Bverif onClick={this.verif} hidden={!this.state.commencer} disabled={this.state.test} statut={this.state.statut} />
                 {/*<button onClick={this.verif} hidden={!this.state.commencer} disabled={this.state.test} >Verifier</button>*/}
                 <Resultat actif={this.state.actif} res={this.state.br}/>
+                </div>
             </div>
         );
     }
