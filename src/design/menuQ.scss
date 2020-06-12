@@ -1,7 +1,7 @@
 #menuQ{
   padding-top: 20px;
   width:80%;
-  margin-left: 10%;
+  margin: auto;
   overflow: auto;
   text-align: center;
 
@@ -9,10 +9,16 @@
   #niveau {
 
     padding-top: 20px;
+    margin: auto;
 
     li{
-      display: block;
+      display: flex;
+      margin: auto;
+      margin-left: -35px;
+      justify-content: center;
+
     }
+
   }
 
 
@@ -22,9 +28,9 @@
     text-align: center;
     padding-bottom: 40px;
     flex-direction: row;
-    width: 40%;
     margin: auto;
     Button{
+      display: block;
       width: 100%;
     }
   }
