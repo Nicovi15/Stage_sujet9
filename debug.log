@@ -1,3 +1,10 @@
 [0606/125634.180:WARNING:minidump_to_upload_parameters.cc(36)] duplicate key guid, discarding value 0a815852-1563-4798-a656-3e616f5e3dee
 [0606/125635.090:ERROR:filesystem_win.cc(148)] DeleteFile C:\Users\basti\AppData\Local\Microsoft\Edge\User Data\Crashpad\reports\c4d3db42-8bfc-4c78-8758-4e63a4bea8bd.dmp: Le processus ne peut pas accéder au fichier car ce fichier est utilisé par un autre processus. (0x20)
 [0608/165812.285:ERROR:settings.cc(320)] Settings magic is not 1129342067
+[0611/231815.626:ERROR:process_reader_win.cc(127)] NtOpenThread: {Accès refusé} Un processus a demandé l’accès a un objet, mais il ne bénéficie pas des autorisations nécessaires. (0xc0000022)
+[0611/231815.626:ERROR:process_reader_win.cc(127)] NtOpenThread: {Accès refusé} Un processus a demandé l’accès a un objet, mais il ne bénéficie pas des autorisations nécessaires. (0xc0000022)
+[0611/231815.631:ERROR:exception_snapshot_win.cc(99)] thread ID 4320 not found in process
+[0611/231815.631:ERROR:exception_snapshot_win.cc(99)] thread ID 22880 not found in process
+[0611/231815.634:ERROR:process_reader_win.cc(127)] NtOpenThread: {Accès refusé} Un processus a demandé l’accès a un objet, mais il ne bénéficie pas des autorisations nécessaires. (0xc0000022)
+[0611/231815.634:ERROR:exception_snapshot_win.cc(99)] thread ID 30852 not found in process
+[0611/231815.876:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: Tentative d’accès à un processus en cours d’arrêt. (0xc000010a)

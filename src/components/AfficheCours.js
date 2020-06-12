@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios';
+import { Checkbox } from 'antd';
+import 'antd/dist/antd.css';
 
 class AfficheCours extends Component {
 
@@ -7,8 +9,44 @@ constructor() {
         super();
         this.state = {
             cours:[],
+
+                        theme:[],
+                        checkedList: [],
+                        indeterminate: true,
+                        checkAll: false,
+
         }
     }
+
+        onChange = checkedList => {
+            this.setState({
+                checkedList,
+                indeterminate: !!checkedList.length && checkedList.length < this.state.theme.length,
+                checkAll: checkedList.length === this.state.theme.length,
+            });
+        };
+
+        onCheckAllChange = e => {
+            this.setState({
+                checkedList: e.target.checked ? this.state.theme : [],
+                indeterminate: false,
+                checkAll: e.target.checked,
+            });
+        };
+
+        reloadCours (){
+                var questions=[];
+                axios.get("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/reloadCours.php")
+                    .then(res => {
+                        // console.log(res);
+                        // console.log(res.data);
+                        res.data.map(donne =>{
+                            questions.push(donne);
+                        });
+                        this.setState({questions},);
+                        console.log(this.state);
+                    })
+            }
 
   async componentDidMount(){
         var cours=[];
@@ -42,7 +80,23 @@ constructor() {
 
         return (
             <div id={"affichCours"}>
-
+                                <div id={"selection"}>
+                                    <div className="site-checkbox-all-wrapper">
+                                        <Checkbox  class={"chbox"}
+                                                   indeterminate={this.state.indeterminate}
+                                                   onChange={this.onCheckAllChange}
+                                                   checked={this.state.checkAll}
+                                        >
+                                            Tout selectionner
+                                        </Checkbox>
+                                    </div>
+                                    <Checkbox.Group
+                                        options={this.state.theme}
+                                        value={this.state.checkedList}
+                                        onChange={this.onChange}
+                                    />
+                                    <button onClick={this.affiState}>Rechercher</button>
+                                </div>
 
                 <table border="1px" >
                     <thead  >
