@@ -17,7 +17,7 @@ function Bmodif(props) {
 function Histo(props){
     if(props.modif)
         return <div id={"content"}><h3>Historique des QCM de {props.user.pseudo} ({props.user.prenom}  {props.user.nom})</h3>
-            <HistoQCM user={props.user}
+            <HistoQCM user={props.user} usera={props.usera}
         />
         <br/></div>;
     else return <></>;
@@ -124,7 +124,7 @@ export default class AffichQuest extends Component {
                 <tr>
                     <td colSpan={8}>
                     <Histo
-                        user={this.props.user} modif={this.state.modifier}
+                        user={this.props.user} modif={this.state.modifier} usera={this.props.usera}
                     />
                     </td>
                 </tr>

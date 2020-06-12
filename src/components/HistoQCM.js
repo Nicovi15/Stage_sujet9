@@ -174,8 +174,8 @@ export default class HistoQCM extends Component {
                     <button onClick={this.affiState}>Rechercher</button>
                 </div>
                 <br />
-                <button onClick={this.afficheGraph} hidden={!(this.props.user.admin === "1")}> Afficher/Cacher Graphique</button>
-                <div hidden={(this.props.user.admin === "1") && (this.state.afficheGraph)}>
+                <button onClick={this.afficheGraph} hidden={!(this.props.usera.admin === "1")}> Afficher/Cacher Graphique</button>
+                <div hidden={(this.props.usera.admin === "1") && (this.state.afficheGraph)}>
                     <CanvasJSChart options = {options}
                         /* onRef={ref => this.chart = ref} */
                     />

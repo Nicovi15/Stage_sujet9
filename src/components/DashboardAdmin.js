@@ -187,7 +187,7 @@ export default class DashboardAdmin extends Component {
                 <Tabs id={"TabA"} defaultActiveKey="1"  >
                     <TabPane tab="Utilisateurs" key="1">
                         <h2>Gestion des utilisateurs</h2>
-                        <AffichUti promo={this.state.promo}/>
+                        <AffichUti promo={this.state.promo} usera={this.props.user}/>
                     </TabPane>
                     <TabPane tab="Promo" key="2">
                         <h2>Gestion des Promos</h2>

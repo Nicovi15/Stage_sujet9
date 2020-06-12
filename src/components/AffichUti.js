@@ -177,6 +177,7 @@ export default class AffichUti extends Component {
                                                                        email={uti.email}
                                                                        promo={uti.promo}
                                                                        user={uti}
+                                                                       usera={this.props.usera}
                                                                        reloadQuest={this.reloadQuest2}/>)}
 
 

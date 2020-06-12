@@ -9,7 +9,7 @@ import '../design/dashboard.scss'
 function DashboardContent(props) {
     if(props.user.admin === "1")return <><DashboardAdmin user={props.user}/></>
     else return <div id={"content"} ><h3>Historique des QCM</h3>
-        <HistoQCM user={props.user}/></div>
+        <HistoQCM user={props.user} usera={props.user}/></div>
 }
 
 export default class Dashboard extends Component {
