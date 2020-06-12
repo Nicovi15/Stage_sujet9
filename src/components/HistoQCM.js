@@ -25,10 +25,12 @@ export default class HistoQCM extends Component {
             indeterminate: true,
             checkAll: false,
             dataPoints : [],
+            afficheGraph : true,
         }
         this.onChange = this.onChange.bind(this);
         this.reloadHisto2 = this.reloadHisto2.bind(this);
         this.affiState = this.affiState.bind(this);
+        this.afficheGraph = this.afficheGraph.bind(this);
 
     }
 
@@ -118,6 +120,11 @@ export default class HistoQCM extends Component {
         //console.log(this.state.theme);
     }
 
+    afficheGraph(){
+        this.setState({afficheGraph : !this.state.afficheGraph});
+        console.log(this.state);
+    }
+
 
     render() {
         if (this.props.loggedInStatus === "NOT_LOGGED_IN") {
@@ -167,12 +174,13 @@ export default class HistoQCM extends Component {
                     <button onClick={this.affiState}>Rechercher</button>
                 </div>
                 <br />
-
+                <button onClick={this.afficheGraph} hidden={!(this.props.user.admin === "1")}> Afficher/Cacher Graphique</button>
+                <div hidden={(this.props.user.admin === "1") && (this.state.afficheGraph)}>
                     <CanvasJSChart options = {options}
                         /* onRef={ref => this.chart = ref} */
                     />
                     {/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
-
+                </div>
                 <br />
                 <br />
                 <div id={"divtabhisto"}>
