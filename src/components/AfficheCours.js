@@ -5,18 +5,29 @@ import 'antd/dist/antd.css';
 
 class AfficheCours extends Component {
 
+
+
 constructor() {
         super();
         this.state = {
             cours:[],
-
-                        theme:[],
-                        checkedList: [],
-                        indeterminate: true,
-                        checkAll: false,
+            theme:[],
+            checkedList: [],
+            indeterminate: true,
+            checkAll: false,
 
         }
+
+        this.reloadCours = this.reloadCours.bind(this);
+        this.onChange = this.onChange.bind(this);
+        this.affiState = this.affiState.bind(this);
+
     }
+
+        affiState (){
+            console.log(this.state);
+            this.reloadCours();
+        }
 
         onChange = checkedList => {
             this.setState({
@@ -35,15 +46,15 @@ constructor() {
         };
 
         reloadCours (){
-                var questions=[];
-                axios.get("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/reloadCours.php")
+                var cours=[];
+                axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/reloadCours.php")
                     .then(res => {
-                        // console.log(res);
-                        // console.log(res.data);
+                        console.log(res);
+                         console.log(res.data);
                         res.data.map(donne =>{
-                            questions.push(donne);
+                            cours.push(donne);
                         });
-                        this.setState({questions},);
+                        this.setState({cours},);
                         console.log(this.state);
                     })
             }
@@ -99,7 +110,7 @@ constructor() {
                                 </div>
 
                 <table border="1px" >
-                    <thead  >
+                    <thead>
                     <tr>
                         <th>Num cours</th>
                         <th>Nom_fichier</th>
@@ -110,9 +121,8 @@ constructor() {
                     </tr>
 
                     </thead>
-<tbody>
 
-
+                    <tbody>
 
                         {this.state.cours.map(cours => <tr>
                             <td>{cours.num_cours}</td>
@@ -121,10 +131,6 @@ constructor() {
                             <td>{cours.num_theme}</td>
                             <td>{cours.theme}</td>
                         </tr>)}
-
-
-
-
 
                 </tbody>
 
