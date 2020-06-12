@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import axios from "axios";
 import 'antd/dist/antd.css';
-import AffichQuest from "../components/AffichQuest";
 import {Checkbox} from "antd";
 import '../design/qcm.scss'
 

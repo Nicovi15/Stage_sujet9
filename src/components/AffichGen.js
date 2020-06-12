@@ -2,14 +2,10 @@ import React, {Component} from 'react'
 import {Redirect} from "react-router-dom";
 import 'antd/dist/antd.css';
 import axios from "axios";
-import { Select, Button, Table } from 'antd';
 import AffichQuest from "./AffichQuest";
-import { Radio } from 'antd';
 import { Checkbox } from 'antd';
 import '../design/affichGen.scss'
 
-const CheckboxGroup = Checkbox.Group;
-const { Option } = Select;
 
 
 export default class AffichGen extends Component {
@@ -26,7 +22,7 @@ export default class AffichGen extends Component {
             checkedList: [],
             indeterminate: true,
             checkAll: false,
-        }
+        };
         this.reloadQuest = this.reloadQuest.bind(this);
         this.onChange = this.onChange.bind(this);
         this.reloadQuest2 = this.reloadQuest2.bind(this);
@@ -98,9 +94,6 @@ export default class AffichGen extends Component {
    });
  };
 
-    chargerQuest(){
-
-    }
 
     async componentDidMount(){
         var questions=[];
@@ -113,7 +106,7 @@ export default class AffichGen extends Component {
                 });
                 this.setState({questions},);
                 console.log(this.state);
-            })
+            });
 
         var theme=[];
         await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~cazzoli2u/quizzuml/getTheme.php")

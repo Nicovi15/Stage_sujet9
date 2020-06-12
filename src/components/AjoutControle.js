@@ -3,77 +3,11 @@ import {Redirect} from "react-router-dom";
 import 'antd/dist/antd.css';
 import { DatePicker } from 'antd';
 import axios from "axios";
-import {Select, Button} from 'antd';
+import {Select} from 'antd';
 import '../design/ajoutQ.scss'
-import Moment from 'react-moment';
 import 'moment-timezone';
 const { RangePicker } = DatePicker;
 const {Option} = Select;
-
-
-
-function ListeChampBR(props) {
-    if (props.nbr == 1)
-        return <p>1 : <input type="text" name="BRep1" placeholder="Entrez une réponse"
-                             value={props.value.BRep1} onChange={props.onChange} required/></p>;
-    else if (props.nbr == 2)
-        return <><p>1 : <input type="text" name="BRep1" placeholder="Entrez une réponse"
-                               value={props.value.BRep1} onChange={props.onChange} required/></p>
-            <p>2 : <input type="text" name="BRep2" placeholder="Entrez une réponse"
-                          value={props.value.BRep2} onChange={props.onChange} required/></p>
-        </>
-    else if (props.nbr == 3)
-        return <><p>1 : <input type="text" name="BRep1" placeholder="Entrez une réponse"
-                               value={props.value.BRep1} onChange={props.onChange} required/></p>
-            <p>2 : <input type="text" name="BRep2" placeholder="Entrez une réponse"
-                          value={props.value.BRep2} onChange={props.onChange} required/></p>
-            <p>3 : <input type="text" name="BRep3" placeholder="Entrez une réponse"
-                          value={props.value.BRep3} onChange={props.onChange} required/></p>
-        </>
-    else if (props.nbr == 4)
-        return <><p>1 : <input type="text" name="BRep1" placeholder="Entrez une réponse"
-                               value={props.value.BRep1} onChange={props.onChange} required/></p>
-            <p>2 : <input type="text" name="BRep2" placeholder="Entrez une réponse"
-                          value={props.value.BRep2} onChange={props.onChange} required/></p>
-            <p>3 : <input type="text" name="BRep3" placeholder="Entrez une réponse"
-                          value={props.value.BRep3} onChange={props.onChange} required/></p>
-            <p>4 : <input type="text" name="BRep4" placeholder="Entrez une réponse"
-                          value={props.value.BRep4} onChange={props.onChange} required/></p>
-        </>
-    else return <></>
-
-}
-
-function ListeChampMR(props) {
-    if (props.nbr == 1)
-        return <p>1 : <input type="text" name="MRep1" placeholder="Entrez une réponse"
-                             value={props.value.MRep1} onChange={props.onChange} required/></p>;
-    else if (props.nbr == 2)
-        return <><p>1 : <input type="text" name="MRep1" placeholder="Entrez une réponse"
-                               value={props.value.MRep1} onChange={props.onChange} required/></p>
-            <p>2 : <input type="text" name="MRep2" placeholder="Entrez une réponse"
-                          value={props.value.MRep2} onChange={props.onChange} required/></p>
-        </>
-    else if (props.nbr == 3)
-        return <><p>1 : <input type="text" name="MRep1" placeholder="Entrez une réponse"
-                               value={props.value.MRep1} onChange={props.onChange} required/></p>
-            <p>2 : <input type="text" name="MRep2" placeholder="Entrez une réponse"
-                          value={props.value.MRep2} onChange={props.onChange} required/></p>
-            <p>3 : <input type="text" name="MRep3" placeholder="Entrez une réponse"
-                          value={props.value.MRep3} onChange={props.onChange} required/></p>
-        </>
-    else if (props.nbr == 4)
-        return <><p>1 : <input type="text" name="MRep1" placeholder="Entrez une réponse"
-                               value={props.value.MRep1} onChange={props.onChange} required/></p>
-            <p>2 : <input type="text" name="MRep2" placeholder="Entrez une réponse"
-                          value={props.value.MRep2} onChange={props.onChange} required/></p>
-            <p>3 : <input type="text" name="MRep3" placeholder="Entrez une réponse"
-                          value={props.value.MRep3} onChange={props.onChange} required/></p>
-            <p>4 : <input type="text" name="MRep4" placeholder="Entrez une réponse"
-                          value={props.value.MRep4} onChange={props.onChange} required/></p>
-        </>
-    else return <></>
-}
 
 function Resultat(props) {
     const reussite = props.reussite;
@@ -221,7 +155,7 @@ export default class AjoutControle extends Component {
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
-                                    <option value="4">5</option>
+                                    <option value="5">5</option>
                                 </select>
                             </td>
                             <td>

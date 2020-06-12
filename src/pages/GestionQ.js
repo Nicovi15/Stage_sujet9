@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
-import {HashRouter as Router, Link, Redirect} from "react-router-dom";
+import { Redirect} from "react-router-dom";
 import AjoutQuestion from "../components/AjoutQuestion";
 import AffichGen from "../components/AffichGen";
-import {Menu} from "antd";
 import {Button} from "antd";
 import 'antd/dist/antd.css';
 import "../design/gestionQ.scss"

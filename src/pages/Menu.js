@@ -1,15 +1,13 @@
 import React, {Component} from 'react'
 import axios from 'axios';
-import { Checkbox } from 'antd';
 import 'antd/dist/antd.css';
 import { Tabs, Button } from 'antd';
-import {FireOutlined , FireFilled} from '@ant-design/icons';
+import {FireFilled} from '@ant-design/icons';
 import {HashRouter as Router, Link, Route, Switch} from "react-router-dom";
 import Questionnaire from "./Questionnaire";
 import TaskDetails from "../components/TaskDetails";
 import SelecCont from "../components/SelecCont";
 import '../design/menuQ.scss'
-const CheckboxGroup = Checkbox.Group;
 const { TabPane } = Tabs;
 export default class Menu extends Component {
 
@@ -42,21 +40,6 @@ export default class Menu extends Component {
          //console.log(this.state.theme);
      }
 
-     onChange2 = checkedList => {
-        this.setState({
-          checkedList,
-          indeterminate: !!checkedList.length && checkedList.length < this.state.theme.length,
-          checkAll: checkedList.length === this.state.theme.length,
-        });
-      };
-
-      onCheckAllChange = e => {
-        this.setState({
-          checkedList: e.target.checked ? this.state.theme : [],
-          indeterminate: false,
-          checkAll: e.target.checked,
-        });
-      };
 
       testDis(b){
           if(parseInt(this.props.user.niveau) < b)

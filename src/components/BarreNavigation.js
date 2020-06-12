@@ -1,12 +1,11 @@
 import React, {Component} from "react";
-import {HashRouter as Router, Link, Route, Redirect} from "react-router-dom";
+import {HashRouter as Router, Link, } from "react-router-dom";
 import 'antd/dist/antd.css';
 import {Menu} from 'antd';
 import {
     HomeOutlined,
     BookOutlined,
     DashboardOutlined,
-    SettingOutlined,
     LoginOutlined,
     CheckCircleOutlined,
     FormOutlined,
@@ -15,15 +14,7 @@ import {
 import axios from "axios";
 import '../design/barreNavigation.scss'
 
-const {SubMenu} = Menu;
 
-function Resultat(props) {
-    const reussite = props.reussite;
-    if (reussite === "LOGGED_IN") {
-        return <h6>Connecté</h6>
-    } else
-        return (null);
-}
 
 function Menaff(props) {
 

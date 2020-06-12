@@ -2,8 +2,6 @@ import React, {Component} from 'react'
 import {Redirect} from "react-router-dom";
 import 'antd/dist/antd.css';
 import axios from "axios";
-import { Select, Button } from 'antd';
-const { Option } = Select;
 
 function Resultat(props) {
     const reussite = props.reussite;

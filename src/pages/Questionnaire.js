@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
 import axios from "axios";
-import AffichQuest from "../components/AffichQuest";
 import QCMQuestion from "../components/QCMQuestion";
-import {Redirect, useParams} from 'react-router-dom';
 import '../design/questionnaire.scss'
 import {Button} from 'antd';
 
