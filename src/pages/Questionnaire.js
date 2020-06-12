@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import axios from "axios";
 import QCMQuestion from "../components/QCMQuestion";
 import '../design/questionnaire.scss'
-import {Button} from 'antd';
+import {Button, Progress} from 'antd';
 
 
 function Resultat(props) {
@@ -33,6 +33,7 @@ export default class Questionnaire extends Component {
             commencer: false,
             test: false,
             messageNiv : "",
+            exp : 0,
         };
 
 
@@ -153,7 +154,8 @@ export default class Questionnaire extends Component {
             })
                 .then(res => {
                     console.log(res);
-                    this.setState({messageNiv : "Vous avez gagné "+points+" d'expérience et vous êtes maintenant niveau " + res.data.niveau + " ("+res.data.exp+"%)"})
+                    this.setState({messageNiv : "Vous avez gagné "+points+" points d'expérience et vous êtes maintenant Niveau " + res.data.niveau /*+ " ("+res.data.exp+"%)"*/});
+                    this.setState({exp : res.data.exp})
                     // console.log(res.data);
                     this.props.update();
                 });
@@ -191,6 +193,7 @@ export default class Questionnaire extends Component {
                             disabled={this.state.test}>Verifier</Button>
                     <Resultat actif={this.state.actif} res={this.state.br}/>
                     <h5>{this.state.messageNiv}</h5>
+                    <Progress id={"bar"} hidden={!((this.state.messageNiv!="")&&(this.state.messageNiv!="Vous ne gagnez des points qu'en faisant des questionnaires de votre niveau."))} percent={this.state.exp} status={"active"}  />
                 </div>
             </div>
 
