@@ -130,6 +130,7 @@ export default class AffichGen extends Component {
 
         return (
             <div id={"affichGen"}>
+
                 <h1>Liste des questions</h1>
 
                 <div id={"selection"}>

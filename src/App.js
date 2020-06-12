@@ -142,7 +142,7 @@ class App extends Component {
                         <Route path="/menu" render={props=>(<Menu  {... props} user={this.state.user}/>)}/>
                         <Route path="/questionnaire/:id/:dif" render={props=> (<TaskDetails user={this.state.user} update={this.updateUser}/>)}/>
                         <Route path="/controle/:id" render={props=> (<TaskDetails2 user={this.state.user}/>)}/>
-                        <Route path="/cours" component={Cours}/>
+                        <Route path="/cours" render={props=>(<Cours  {... props} user={this.state.user}/>)}/>
                         <Route path="/erreur" component={Erreur}/>
                     </Switch>
                 </Router>
