@@ -9,35 +9,51 @@
   h2 {
     text-align: center;
   }
+
+  h5 {
+    text-align: center;
+  }
+
   Bstart{
-    button {
+    Button {
       display: flex;
       margin: auto;
+      width: 40%;
     }
   }
+
+
   #qcmQ{
     background-color: rgba(255,255,255, .6); ;
     margin: auto;
-    width: 300px;
+    width: 50%;
     overflow: auto;
     //min-height: 450px;
-    max-height: 510px;
+    max-height: 90%;
+
   }
 
   #verifRes{
     padding-top: 10px;
     padding-bottom: 10px;
     flex-direction: row;
-    width: 300px;
+    width: 40%;
     margin: auto;
     Button{
-      width: 150px;
+      width: 100%;
     }
     h6{
       justify-content: flex-end;
       margin-right: 0;
       display: flex;
     }
+  }
+
+  Resultat{
+
+    margin: auto;
+    text-align: center;
+
   }
 
 }

@@ -1,5 +1,6 @@
 #dash{
 
+  width: 100%;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -7,7 +8,7 @@
 
     padding-top: 15px;
     margin-bottom: 10px;
-    font-size: 18px;
+    font-size: 60px;
     margin: auto;
     display: inline-flex;
     text-align: center;
@@ -21,6 +22,33 @@
     transition-duration: 500ms ;
     border-bottom: solid 1.6px #1890FF;
     cursor: default;
+
+  }
+
+  #infoniveau{
+    margin: auto;
+    text-align: center;
+  }
+
+  #content{
+    text-align: center;
+    width: 80%;
+    margin: auto;
+    padding-top: 20px;
+    background-color: rgba(255,255,255,.5);
+
+    #divtabhisto{
+      max-height: 400px;
+
+      table{
+        width: 80%;
+        margin: auto;
+        max-height: 400px;
+      }
+
+
+    }
+
 
   }
 }

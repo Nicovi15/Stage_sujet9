@@ -1,9 +1,9 @@
 #menuQ{
   padding-top: 20px;
   width:80%;
-  margin: auto;
+  margin-left: 10%;
   overflow: auto;
-
+  text-align: center;
 
 
   #niveau {
@@ -12,6 +12,20 @@
 
     li{
       display: block;
+    }
+  }
+
+
+
+  #bu{
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 40px;
+    flex-direction: row;
+    width: 40%;
+    margin: auto;
+    Button{
+      width: 100%;
     }
   }
 

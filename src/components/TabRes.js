@@ -171,7 +171,8 @@ export default class TabRes extends Component {
         }
 
         return (
-            <div id={"affichGen"}>
+            <div id={"content"}>
+            <div id={"affichGen3"}>
                 <h1>Résultats du contrôle N°{this.props.num_cont}</h1>
                 <p>Note min : {this.state.note_min}  Note max : {this.state.note_max}  Moyenne : {this.state.moyenne}</p>
 
@@ -199,6 +200,7 @@ export default class TabRes extends Component {
 
                 </table>
 
+            </div>
             </div>
         );
     }

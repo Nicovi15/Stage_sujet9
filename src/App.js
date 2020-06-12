@@ -70,7 +70,7 @@ class App extends Component {
     }
 
     updateUser(){
-        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getuserinfo.php",
+        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getinfouser.php",
             {
                 num_uti : this.state.user.num_uti
             },
@@ -139,8 +139,8 @@ class App extends Component {
                                           loggedInStatus={this.state.loggedInStatus}/>
                             )}
                         />
-                        <Route path="/menu" component={Menu}/>
-                        <Route path="/questionnaire/:id/:dif" render={props=> (<TaskDetails user={this.state.user}/>)}/>
+                        <Route path="/menu" render={props=>(<Menu  {... props} user={this.state.user}/>)}/>
+                        <Route path="/questionnaire/:id/:dif" render={props=> (<TaskDetails user={this.state.user} update={this.updateUser}/>)}/>
                         <Route path="/controle/:id" render={props=> (<TaskDetails2 user={this.state.user}/>)}/>
                         <Route path="/cours" component={Cours}/>
                         <Route path="/erreur" component={Erreur}/>

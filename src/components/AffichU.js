@@ -26,10 +26,10 @@ function Bmodif(props) {
 
 function Histo(props){
     if(props.modif)
-        return <><h3>Historique des QCM de {props.user.pseudo} ({props.user.prenom}  {props.user.nom})</h3>
+        return <div id={"content"}><h3>Historique des QCM de {props.user.pseudo} ({props.user.prenom}  {props.user.nom})</h3>
             <HistoQCM user={props.user}
         />
-        <br/></>;
+        <br/></div>;
     else return <></>;
 }
 

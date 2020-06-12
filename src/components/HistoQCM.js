@@ -9,9 +9,11 @@ import { Checkbox } from 'antd';
 import '../design/affichGen.scss'
 import AffichHistoQ from "./AffichHistoQ";
 import CanvasJSReact from '../assets/canvasjs.react';
+import '../design/affichUti.scss'
 const CheckboxGroup = Checkbox.Group;
 const { Option } = Select;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+
 
 export default class HistoQCM extends Component {
 
@@ -154,7 +156,7 @@ export default class HistoQCM extends Component {
             }]
         }
         return (
-            <div id={"affichGen"}>
+            <div id={"affichGen2"}>
                 <div id={"selection"}>
                     <div className="site-checkbox-all-wrapper">
                         <Checkbox class={"chbox"}
@@ -181,7 +183,8 @@ export default class HistoQCM extends Component {
 
                 <br />
                 <br />
-                <table border="1px" >
+                <div id={"divtabhisto"}>
+                <table border="1px"  >
                     <thead  >
                     <tr>
                         <th>N° Questionnaire</th>
@@ -212,6 +215,7 @@ export default class HistoQCM extends Component {
                     </tbody>
 
                 </table>
+                </div>
 
             </div>
         );

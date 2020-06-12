@@ -20,7 +20,7 @@ class TaskDetails extends React.Component {
     }
 
     render() {
-        return <Questionnaire id={this.state.id} dif={this.state.dif} user={this.props.user} />;
+        return <Questionnaire id={this.state.id} dif={this.state.dif} user={this.props.user} update={this.props.update}/>;
     }
 }
 
