@@ -10,30 +10,30 @@ const {Option} = Select;
 
 function ListeChampBR(props) {
     if (props.nbr == 1)
-        return <p><input type="text" name="BRep1" placeholder="Entrez la réponse "
+        return <p>1 : <input type="text" name="BRep1" placeholder="Entrez une réponse"
                                                 value={props.value.BRep1} onChange={props.onChange} required/></p>;
     else if (props.nbr == 2)
-        return <><p><input type="text" name="BRep1" placeholder="Entrez la réponse 1"
+        return <><p>1 : <input type="text" name="BRep1" placeholder="Entrez une réponse"
                                                   value={props.value.BRep1} onChange={props.onChange} required/></p>
-            <p><input type="text" name="BRep2" placeholder="Entrez la réponse 2"
+            <p>2 : <input type="text" name="BRep2" placeholder="Entrez une réponse"
                                              value={props.value.BRep2} onChange={props.onChange} required/></p>
         </>
     else if (props.nbr == 3)
-        return <><p><input type="text" name="BRep1" placeholder="Entrez la réponse 1"
+        return <><p>1 : <input type="text" name="BRep1" placeholder="Entrez une réponse"
                                                   value={props.value.BRep1} onChange={props.onChange} required/></p>
-            <p><input type="text" name="BRep2" placeholder="Entrez la réponse 2"
+            <p>2 : <input type="text" name="BRep2" placeholder="Entrez une réponse"
                                              value={props.value.BRep2} onChange={props.onChange} required/></p>
-            <p><input type="text" name="BRep3" placeholder="Entrez la réponse 3"
+            <p>3 : <input type="text" name="BRep3" placeholder="Entrez une réponse"
                                              value={props.value.BRep3} onChange={props.onChange} required/></p>
         </>
     else if (props.nbr == 4)
-        return <><p><input type="text" name="BRep1" placeholder="Entrez la réponse 1"
+        return <><p>1 : <input type="text" name="BRep1" placeholder="Entrez une réponse"
                                                   value={props.value.BRep1} onChange={props.onChange} required/></p>
-            <p><input type="text" name="BRep2" placeholder="Entrez la réponse 2"
+            <p>2 : <input type="text" name="BRep2" placeholder="Entrez une réponse"
                                              value={props.value.BRep2} onChange={props.onChange} required/></p>
-            <p><input type="text" name="BRep3" placeholder="Entrez la réponse 3"
+            <p>3 : <input type="text" name="BRep3" placeholder="Entrez une réponse"
                                              value={props.value.BRep3} onChange={props.onChange} required/></p>
-            <p><input type="text" name="BRep4" placeholder="Entrez la réponse 4"
+            <p>4 : <input type="text" name="BRep4" placeholder="Entrez une réponse"
                                              value={props.value.BRep4} onChange={props.onChange} required/></p>
         </>
     else return <></>
@@ -42,30 +42,30 @@ function ListeChampBR(props) {
 
 function ListeChampMR(props) {
     if (props.nbr == 1)
-        return <p><input type="text" name="MRep1" placeholder="Entrez la réponse"
+        return <p>1 : <input type="text" name="MRep1" placeholder="Entrez une réponse"
                                                    value={props.value.MRep1} onChange={props.onChange} required/></p>;
     else if (props.nbr == 2)
-        return <><p><input type="text" name="MRep1" placeholder="Entrez la réponse 1"
+        return <><p>1 : <input type="text" name="MRep1" placeholder="Entrez une réponse"
                                                      value={props.value.MRep1} onChange={props.onChange} required/></p>
-            <p><input type="text" name="MRep2" placeholder="Entrez la réponse 2"
+            <p>2 : <input type="text" name="MRep2" placeholder="Entrez une réponse"
                                                 value={props.value.MRep2} onChange={props.onChange} required/></p>
         </>
     else if (props.nbr == 3)
-        return <><p><input type="text" name="MRep1" placeholder="Entrez la réponse 1"
+        return <><p>1 : <input type="text" name="MRep1" placeholder="Entrez une réponse"
                                                      value={props.value.MRep1} onChange={props.onChange} required/></p>
-            <p><input type="text" name="MRep2" placeholder="Entrez la réponse 2"
+            <p>2 : <input type="text" name="MRep2" placeholder="Entrez une réponse"
                                                 value={props.value.MRep2} onChange={props.onChange} required/></p>
-            <p><input type="text" name="MRep3" placeholder="Entrez la réponse 3"
+            <p>3 : <input type="text" name="MRep3" placeholder="Entrez une réponse"
                                                 value={props.value.MRep3} onChange={props.onChange} required/></p>
         </>
     else if (props.nbr == 4)
-        return <><p><input type="text" name="MRep1" placeholder="Entrez la réponse 1"
+        return <><p>1 : <input type="text" name="MRep1" placeholder="Entrez une réponse"
                                                      value={props.value.MRep1} onChange={props.onChange} required/></p>
-            <p><input type="text" name="MRep2" placeholder="Entrez la réponse 2"
+            <p>2 : <input type="text" name="MRep2" placeholder="Entrez une réponse"
                                                 value={props.value.MRep2} onChange={props.onChange} required/></p>
-            <p><input type="text" name="MRep3" placeholder="Entrez la réponse 3"
+            <p>3 : <input type="text" name="MRep3" placeholder="Entrez une réponse"
                                                 value={props.value.MRep3} onChange={props.onChange} required/></p>
-            <p><input type="text" name="MRep4" placeholder="Entrez la réponse 4"
+            <p>4 : <input type="text" name="MRep4" placeholder="Entrez une réponse"
                                                 value={props.value.MRep4} onChange={props.onChange} required/></p>
         </>
     else return <></>
