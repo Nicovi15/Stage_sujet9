@@ -2,6 +2,12 @@ import React, {Component} from 'react'
 import axios from 'axios';
 import { Checkbox, Button, Table } from 'antd';
 import 'antd/dist/antd.css';
+import '../design/affichCours.scss'
+
+ function DashboardContent(props) {
+    if(props.user.admin === "1")return <Button onClick={()=>this.handleDeleteB(cours.num_cours)}>Supprimer</Button>
+    else return null
+}
 
 
 class AfficheCours extends Component {
@@ -66,6 +72,24 @@ constructor() {
                         })
                 }
 
+                            reloadCours2 (){
+                                    var cours=[];
+                                    console.log(this.state.checkedList);
+                                    axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/getCours.php",{
+                                        list : this.state.checkedList,
+                                        checkAll: this.state.checkAll,
+                                    })
+                                        .then(res => {
+                                            // console.log(res);
+                                             console.log(res.data);
+                                            res.data.map(donne =>{
+                                                cours.push(donne);
+                                            });
+                                            this.setState({cours},);
+                                            console.log(this.state);
+                                        })
+                                }
+
   async componentDidMount(){
         var cours=[];
         await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/getCours.php")
@@ -92,6 +116,33 @@ constructor() {
         //console.log(this.state.theme);
     }
 
+        handleDeleteB(num_cours){
+            if(window.confirm(("Voulez vraiment supprimer le cours n°" + num_cours+" ?"))){
+                axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/supprCours.php",
+                    {
+                        num_cours : num_cours,
+                    },
+                    {withCredentials: true}
+                ).then(response => {
+                    if ( response.data.error ) {
+                        console.log(response.data.error)
+                        this.setState({
+                            echec : true,
+                        })
+                    }
+                    else {
+                        console.log(response.data);
+                        if(response.data.status === "Succes") console.log("yes "+response.data);
+                        //this.handleSuccessfulAuth(response.data.user);
+                        //this.props.history.push("/");
+                        this.reloadCours2();
+                    }
+                });
+
+
+            }
+        }
+
 
     render() {
 
@@ -116,25 +167,22 @@ constructor() {
                                     <Button onClick={this.affiState}>Rechercher</Button>
                                 </div>
 
-                <table border="1px" >
+                <table border-bottom="1px" id={"TabC"} >
                     <thead>
                     <tr>
-                        <th>Nom_fichier</th>
-
-                        <th>Thème</th>
-
+                        <th></th>
+                        <th></th>
+                        <th></th>
                     </tr>
-
                     </thead>
 
                     <tbody>
 
-                        {this.state.cours.map(cours => <tr>
-
-                            <td><a href={cours.url_fichier} target="_blank">{cours.nom_fichier}</a></td>
-
-
+                        {this.state.cours.map(cours =>
+                        <tr>
                             <td>{cours.theme}</td>
+                            <td><a href={cours.url_fichier} target="_blank">{cours.nom_fichier}</a></td>
+                            <td><DashboardContent  user={this.props.user}/></td>
                         </tr>)}
 
                 </tbody>

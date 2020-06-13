@@ -27,7 +27,7 @@ export default class Cours extends Component {
     render() {
         return (
             <div>
-                <h1>C'est la page où se trouve les cours</h1>
+
 
                 <DashboardContent user={this.props.user} />
                 <br/>

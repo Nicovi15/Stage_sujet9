@@ -117,7 +117,7 @@ class DropZone extends Component {
         return (
             <div>
                 <form onSubmit={this.onSubmit}>
-                    <h1> React File Upload Example</h1>
+                    <h1> Ajouter un fichier </h1>
                     <input type="file" onChange={this.onChange}/>
                     <ButtonLoad/>
                     <td>
