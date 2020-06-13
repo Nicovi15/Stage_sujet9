@@ -38,7 +38,7 @@ export default class Dashboard extends Component {
                 <h1 id={"bienv"}> Bienvenue {this.props.user.pseudo} </h1>
                 <div id={"infoniveau"}>
                 <h3>Vous êtes actuellement niveau {this.props.user.niveau} {/*({this.props.user.exp}%)*/}</h3>
-                    <Progress percent={this.props.user.exp} status={this.isActive(this.props.user.exp)} style={{width: 500}} />
+                    <Progress percent={this.props.user.exp} status={this.isActive(this.props.user.exp)}  />
                 </div>
                 <DashboardContent user={this.props.user} />
 

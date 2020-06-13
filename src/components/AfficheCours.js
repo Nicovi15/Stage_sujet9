@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import axios from 'axios';
-import { Checkbox, Button } from 'antd';
+import { Checkbox, Button, Table } from 'antd';
 import 'antd/dist/antd.css';
+
 
 class AfficheCours extends Component {
 
@@ -118,10 +119,8 @@ constructor() {
                 <table border="1px" >
                     <thead>
                     <tr>
-                        <th>Num cours</th>
                         <th>Nom_fichier</th>
-                        <th>url_fichier</th>
-                        <th>Num_theme</th>
+
                         <th>Thème</th>
 
                     </tr>
@@ -131,10 +130,10 @@ constructor() {
                     <tbody>
 
                         {this.state.cours.map(cours => <tr>
-                            <td>{cours.num_cours}</td>
-                            <td><a href={cours.url_fichier}>{cours.nom_fichier}</a></td>
-                             <td><a href={cours.url_fichier}>lien</a></td>
-                            <td>{cours.num_theme}</td>
+
+                            <td><a href={cours.url_fichier} target="_blank">{cours.nom_fichier}</a></td>
+
+
                             <td>{cours.theme}</td>
                         </tr>)}
 

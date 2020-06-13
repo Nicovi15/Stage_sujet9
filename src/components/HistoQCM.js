@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Redirect} from "react-router-dom";
 import 'antd/dist/antd.css';
 import axios from "axios";
-import { Checkbox } from 'antd';
+import { Checkbox , Button} from 'antd';
 import '../design/affichGen.scss'
 import AffichHistoQ from "./AffichHistoQ";
 import CanvasJSReact from '../assets/canvasjs.react';
@@ -171,10 +171,10 @@ export default class HistoQCM extends Component {
                         onChange={this.onChange}
                         value={this.state.checkedList}
                     />
-                    <button onClick={this.affiState}>Rechercher</button>
+                    <Button onClick={this.affiState}>Rechercher</Button>
                 </div>
                 <br />
-                <button onClick={this.afficheGraph} hidden={!(this.props.usera.admin === "1")}> Afficher/Cacher Graphique</button>
+                <Button onClick={this.afficheGraph} hidden={!(this.props.usera.admin === "1")}> Afficher/Cacher Graphique</Button>
                 <div hidden={(this.props.usera.admin === "1") && (this.state.afficheGraph)}>
                     <CanvasJSChart options = {options}
                         /* onRef={ref => this.chart = ref} */

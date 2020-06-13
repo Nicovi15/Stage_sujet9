@@ -3,7 +3,7 @@ import {Redirect} from "react-router-dom";
 import 'antd/dist/antd.css';
 import axios from "axios";
 import AffichU from "./AffichU";
-import { Checkbox } from 'antd';
+import { Checkbox, Button } from 'antd';
 import '../design/affichUti.scss'
 
 
@@ -147,7 +147,7 @@ export default class AffichUti extends Component {
                         onChange={this.onChange}
                         value={this.state.checkedList}
                     />
-                    <button onClick={this.affiState}>Rechercher</button>
+                    <Button onClick={this.affiState}>Rechercher</Button>
                 </div>
                 <br />
 
