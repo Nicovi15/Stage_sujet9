@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {HashRouter as Router, Link, Redirect} from "react-router-dom";
-//import AjoutEvent from "../components/AjoutEvent";
+import AjoutEvent from "../components/AjoutEvent";
 import AffichEvent from "../components/AffichEvent";
 import {Button} from "antd";
 import 'antd/dist/antd.css';
@@ -15,7 +15,7 @@ function Bajout(props) {
 
 function Ajout(props){
     if(props.ajout)
-        return <></>;//<AjoutEvent/>;
+        return <AjoutEvent/>;
     else return <></>;
 }
 
