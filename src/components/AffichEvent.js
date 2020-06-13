@@ -82,6 +82,7 @@ export default class AffichEvent extends Component {
                     <tr>
                         <th>Num événement</th>
                         <th>Libelle</th>
+                        <th>Titre</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -89,6 +90,7 @@ export default class AffichEvent extends Component {
                 {this.state.evenements.map(evenements => <AffichDEvent key={evenements.no_ev}
                 no_ev={evenements.no_ev}
                 libelle={evenements.libelle}
+                titre={evenements.titre}
                 reloadEv={this.reloadEv2}/>)}
                 
                 </tbody>

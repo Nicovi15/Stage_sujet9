@@ -3,25 +3,6 @@ import {Redirect} from "react-router-dom";
 import 'antd/dist/antd.css';
 import axios from "axios";
 import { Select, Button } from 'antd';
-import ModifEvent from "./ModifEvent"
-
-function Bmodif(props) {
-
-    if (!props.modif) {
-        return <Button onClick={props.onClick}>Modifier</Button>
-    } else
-        return <> <Button onClick={props.onClick}>Annuler</Button> </>
-}
-
-function Modif(props){
-    if(props.modif)
-        return <ModifEvent
-            no_ev ={props.no_ev}
-            libelle={props.libelle}
-            reloadEv={props.reloadEv}
-        />;
-    else return <></>;
-}
 
 export default class AffichDEvent extends Component{
 
@@ -77,18 +58,10 @@ export default class AffichDEvent extends Component{
                 <tr>
                     <td>{this.props.no_ev}</td>
                     <td>{this.props.libelle}</td>
-                    <td><Bmodif modif={this.state.modifier} onClick={this.handleChangeModif}/></td>
+                    <td>{this.props.titre}</td>
                     <td><Button onClick={this.handleDeleteB}>Supprimer</Button></td>
                 </tr>
                 <tr>
-                    <td colSpan={10} >
-                    <Modif
-                        modif={this.state.modifier}
-                        no_ev ={this.props.no_ev}
-                        libelle={this.props.libelle}
-                        reloadEv={this.props.reloadEv}
-                    />
-                    </td>
                 </tr>
             </>
         );

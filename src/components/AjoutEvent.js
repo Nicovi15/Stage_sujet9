@@ -26,6 +26,7 @@ export default class AjoutEvent extends Component{
 
         this.state = {
             libelle: "",
+            titre :"",
             reussite: false,
             echec: false,
         }
@@ -37,7 +38,8 @@ export default class AjoutEvent extends Component{
         //console.log(this.state)
         axios.post("https://devweb.iutmetz.univ-lorraine.fr/~barros4u/PHP/ajoutEvenements.php",
             {
-                libelle: this.state.libelle
+                libelle: this.state.libelle,
+                titre:this.state.titre
             },
             {withCredentials: true}
         ).then(response => {
@@ -53,6 +55,7 @@ export default class AjoutEvent extends Component{
                 //this.props.history.push("/");
                 this.setState({
                     libelle: "",
+                    titre:"",
                     reussite: true,
                 });
             }
@@ -87,6 +90,7 @@ export default class AjoutEvent extends Component{
                     <thead>
                         <tr>
                             <th>Label :</th>
+                            <th>Titre :</th>
                             <th>Valider</th>
                         </tr>
                     </thead>
@@ -96,6 +100,10 @@ export default class AjoutEvent extends Component{
                         <td>
                             <input type="text" name="libelle" placeholder="Entrez un nom d'événement"
                                    value={this.state.libelle} onChange={this.handleChange} required/>
+                        </td>
+                        <td>
+                            <input type="text" name="titre" placeholder="Entrez un titre"
+                                   value={this.state.titre} onChange={this.handleChange} required/>
                         </td>
                         <td>
                             <button type="submit">Valider l'ajout</button>
