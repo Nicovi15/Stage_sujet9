@@ -70,7 +70,7 @@ export default class AjoutControle extends Component {
             {
                 duree : this.state.duree,
                 datetime : this.state.datetime,
-                difficulte : this.state.difficulte,
+                difficulte : parseInt(this.state.difficulte),
                 theme: this.state.theme,
             },
             {withCredentials: true}
