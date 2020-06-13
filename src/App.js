@@ -119,7 +119,16 @@ class App extends Component {
                             )}
                         />
                         <Route path="/inscription" component={Inscription}/>
-                        <Route path="/accueil" component={Accueil}/>
+                        <Route 
+                            path="/accueil"
+                            render={props =>(
+                                <Accueil {...props}
+                                    handleLogin={this.handleLogin}
+                                    handleLogout={this.handleLogout}
+                                    user={this.state.user}
+                                    loggedInStatus={this.state.loggedInStatus}/>
+                                )}
+                        /> 
                         <Route
                             path="/dashboard"
                             render={props => (
