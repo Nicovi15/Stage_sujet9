@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios';
-import { Checkbox } from 'antd';
+import { Checkbox, Button } from 'antd';
 import 'antd/dist/antd.css';
 
 class AfficheCours extends Component {
@@ -112,7 +112,7 @@ constructor() {
                                         value={this.state.checkedList}
                                         onChange={this.onChange}
                                     />
-                                    <button onClick={this.affiState}>Rechercher</button>
+                                    <Button onClick={this.affiState}>Rechercher</Button>
                                 </div>
 
                 <table border="1px" >
