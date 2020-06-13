@@ -45,19 +45,25 @@ constructor() {
             });
         };
 
-        reloadCours (){
-                var cours=[];
-                axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/reloadCours.php")
-                    .then(res => {
-                        console.log(res);
-                         console.log(res.data);
-                        res.data.map(donne =>{
-                            cours.push(donne);
-                        });
-                        this.setState({cours},);
-                        console.log(this.state);
+
+
+            reloadCours (){
+                    var cours=[];
+                    console.log(this.state.checkedList);
+                    axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/reloadCours.php",{
+                        list : this.state.checkedList,
+                        checkAll: this.state.checkAll,
                     })
-            }
+                        .then(res => {
+                            // console.log(res);
+                             console.log(res.data);
+                            res.data.map(donne =>{
+                                cours.push(donne);
+                            });
+                            this.setState({cours},);
+                            console.log(this.state);
+                        })
+                }
 
   async componentDidMount(){
         var cours=[];
