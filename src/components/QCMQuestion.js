@@ -37,7 +37,10 @@ function Correction(props) {
         if(!props.res) return <div>Correction :
             <ul>
                 {props.reponses.map(rep =>{
+                    console.log(rep.valeur);
+                    if(rep.value.valeur == "bonne")
                     return <li>{rep.label}</li>
+                    else return <></>
                 })}
 
             </ul>
