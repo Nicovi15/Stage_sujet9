@@ -5,7 +5,7 @@ import 'antd/dist/antd.css';
 import '../design/affichCours.scss'
 
  function DashboardContent(props) {
-    if(props.user.admin === "1")return <Button onClick={()=>this.handleDeleteB(cours.num_cours)}>Supprimer</Button>
+    if(props.user.admin === "1")return <Button onClick={()=>props.oc(props.cours.num_cours)}>Supprimer</Button>
     else return null
 }
 
@@ -26,8 +26,10 @@ constructor() {
         }
 
         this.reloadCours = this.reloadCours.bind(this);
+        this.reloadCours2 = this.reloadCours2.bind(this);
         this.onChange = this.onChange.bind(this);
         this.affiState = this.affiState.bind(this);
+        this.handleDeleteB = this.handleDeleteB.bind(this);
 
     }
 
@@ -182,7 +184,7 @@ constructor() {
                         <tr>
                             <td>{cours.theme}</td>
                             <td><a href={cours.url_fichier} target="_blank">{cours.nom_fichier}</a></td>
-                            <td><DashboardContent  user={this.props.user}/></td>
+                            <td><DashboardContent  user={this.props.user} cours={cours} oc={this.handleDeleteB}/></td>
                         </tr>)}
 
                 </tbody>

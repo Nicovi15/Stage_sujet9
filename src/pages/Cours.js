@@ -31,7 +31,7 @@ export default class Cours extends Component {
 
                 <DashboardContent user={this.props.user} />
                 <br/>
-                <AfficheCours/>
+                <AfficheCours user={this.props.user}/>
 
             </div>
         );
