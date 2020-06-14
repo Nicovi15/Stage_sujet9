@@ -51,7 +51,7 @@ export default class Accueil extends Component {
             <>
             <div id={"accueilH"}>
                 <Ajout ajout={this.state.ajoutE} />
-                <Bajout id={"bajout"} user={this.props.user} onClick={this.handleChangeAjouE}/>
+                <Bajout id={"bajout"} user={this.props.user} ajoutE={this.state.ajoutE} onClick={this.handleChangeAjouE}/>
             </div>
             <div id={"accueil"}>
 
