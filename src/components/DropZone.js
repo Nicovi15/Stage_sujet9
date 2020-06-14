@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import axios from 'axios'
+import {Button} from 'antd'
 import 'antd/dist/antd.css';
 import ButtonLoad from "./ButtonLoad";
-
+import '../design/dropzone.scss'
 
 function Success(props) {
     const ajout = props.ajout
@@ -75,16 +76,17 @@ class DropZone extends Component {
         if (res.data.status === "success" && (!(res.data.status === "error"))) {
             this.setState({
                 success: true,
-                echec : false,
+                echec: false,
             })
             axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/ajoutCours.php",
                 {
-                    url : res.data.url_fichier,
-                    name : res.data.file_name,
-                    theme : this.state.theme
+                    url: res.data.url_fichier,
+                    name: res.data.file_name,
+                    theme: this.state.theme
                 },
                 {withCredentials: true}
-            ).then(response => { console.log("ajoutbdd",response.data)
+            ).then(response => {
+                console.log("ajoutbdd", response.data)
             })
         } else if (res.data.status === "error" && (!(res.data.status === "success"))) {
             this.setState({
@@ -93,7 +95,7 @@ class DropZone extends Component {
             })
         }
 
-        console.log("status",res.data.status);
+        console.log("status", res.data.status);
     }
 
     onChange(e) {
@@ -102,7 +104,7 @@ class DropZone extends Component {
 
     async uploadFile(file) {
         const formData = new FormData();
-        formData.append('file', file )
+        formData.append('file', file)
 
         return await axios.post(this.UPLOAD_ENDPOINT, formData, {
             headers: {
@@ -115,17 +117,21 @@ class DropZone extends Component {
     render() {
 
         return (
-            <div>
+            <div id={"drop"}>
                 <form onSubmit={this.onSubmit}>
                     <h1> Ajouter un fichier </h1>
-                    <input type="file" onChange={this.onChange}/>
-                    <ButtonLoad/>
-                    <td>
-                        <select name="theme" value={this.state.theme} style={{width: 120}}
-                                onChange={this.handleChange}>
-                            {this.state.themes.map(theme => <option key={theme} value={theme}>{theme}</option>)}
-                        </select>
-                    </td>
+
+
+                        <input type="file" onChange={this.onChange}/>
+
+
+                    <select name="theme" value={this.state.theme} style={{width: 120}}
+                            onChange={this.handleChange}>
+                        {this.state.themes.map(theme => <option key={theme} value={theme}>{theme}</option>)}
+                    </select><br/>
+                    <ButtonLoad id={"btnload"}/>
+
+
                 </form>
 
                 <Success ajout={this.state.success}/>

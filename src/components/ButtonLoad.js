@@ -35,11 +35,13 @@ class ButtonLoad extends React.Component {
         return (
             <>
                 <Button
-                    type="primary"
+
                     htmlType="submit"
 
                     loading={loadings[1]}
-                    onClick={() => this.enterLoading(1)}
+                    onClick={() => this.enterLoading(0.5)}
+
+                    style={{margin: 'auto' , display: 'flex' }}
                 >
                     <UploadOutlined />
                     Upload
