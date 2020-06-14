@@ -2,12 +2,13 @@ import React, {Component} from 'react'
 import axios from "axios";
 import QCMQuestion from "../components/QCMQuestion";
 import '../design/questionnaire.scss'
-import {Button, Progress} from 'antd';
+import {Button, Menu, Progress} from 'antd';
+import {HashRouter as Router, Link} from "react-router-dom";
 
 
 function Resultat(props) {
     if (!props.actif) {
-        return <h5>Résultat : {props.res}/10</h5>
+        return <div><h5>Résultat : {props.res}/10</h5> <br/> <p>Pour en savoir plus, rendez-vous sur la page des  <Router><Link to="/cours">cours</Link></Router> </p></div>
     }
     return null;
 }
@@ -192,6 +193,7 @@ export default class Questionnaire extends Component {
                     <Button onClick={this.verif} hidden={!this.state.commencer}
                             disabled={this.state.test}>Verifier</Button>
                     <Resultat actif={this.state.actif} res={this.state.br}/>
+
                     <h5>{this.state.messageNiv}</h5>
                     <Progress id={"bar"} hidden={!((this.state.messageNiv!="")&&(this.state.messageNiv!="Vous ne gagnez des points qu'en faisant des questionnaires de votre niveau."))} percent={this.state.exp} status={"active"}  />
                 </div>
