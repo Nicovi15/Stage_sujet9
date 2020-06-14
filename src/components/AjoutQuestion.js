@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Redirect} from "react-router-dom";
 import 'antd/dist/antd.css';
+import {Button } from 'antd'
 import axios from "axios";
 import '../design/ajoutQ.scss'
 
@@ -214,18 +215,18 @@ export default class AjoutQuestion extends Component {
                         <th>Labelle :</th>
                         <th>Nombre de bonnes réponses</th>
                         <th>Bonne réponse</th>
-                        <th>Nombre de mauvaises réponses</th>
-                        <th>Mauvaise réponse</th>
+                        <th>Nombre de mauvaises réponses    </th>
+                        <th> Mauvaise réponse</th>
                         <th>Thème</th>
                         <th>Difficulté</th>
-                        <th>valider</th>
+                        <th></th>
 
                     </tr>
                     </thead>
                     <tbody>
                     <tr >
                         <td>
-                            <input type="text" name="libelle" placeholder="Entrez une question"
+                            <textarea type="text" name="libelle" placeholder="Entrez une question"
                                    value={this.state.libelle} onChange={this.handleChange} required/>
                         </td>
 
@@ -277,7 +278,7 @@ export default class AjoutQuestion extends Component {
                         </td>
 
                         <td>
-                            <button type="submit">Valider l'ajout</button>
+                            <Button htmlType="submit">Valider l'ajout</Button>
                         </td>
 
 
