@@ -77,15 +77,7 @@ export default class AffichEvent extends Component {
         return(
             <div id={"affichEv"}>
                 <h1>Liste des événements</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Num événement</th>
-                        <th>Libelle</th>
-                        <th>Titre</th>
-                    </tr>
-                </thead>
-                <tbody>
+
 
                 {this.state.evenements.map(evenements => <AffichDEvent key={evenements.no_ev}
                 no_ev={evenements.no_ev}
@@ -93,8 +85,7 @@ export default class AffichEvent extends Component {
                 titre={evenements.titre}
                 reloadEv={this.reloadEv2}/>)}
                 
-                </tbody>
-            </table>
+
             </div>
         );
     }

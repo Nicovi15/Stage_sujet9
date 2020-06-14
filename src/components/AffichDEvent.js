@@ -55,14 +55,15 @@ export default class AffichDEvent extends Component{
         }
         return(
             <>
-                <tr>
+
                     <td>{this.props.no_ev}</td>
-                    <td>{this.props.libelle}</td>
-                    <td>{this.props.titre}</td>
-                    <td><Button onClick={this.handleDeleteB}>Supprimer</Button></td>
-                </tr>
-                <tr>
-                </tr>
+
+                    <li>{this.props.titre}</li>
+                <li>{this.props.libelle}</li>
+                    <li><Button onClick={this.handleDeleteB}>Supprimer</Button></li>
+
+
+
             </>
         );
     }
