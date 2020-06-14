@@ -54,7 +54,7 @@ export default class AffichEvent extends Component {
                 console.log(this.state);
             })
     }
-    
+
     async componentDidMount(){
         var evenements=[];
         await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~barros4u/PHP/getEvenements.php")
@@ -83,7 +83,9 @@ export default class AffichEvent extends Component {
                 no_ev={evenements.no_ev}
                 libelle={evenements.libelle}
                 titre={evenements.titre}
-                reloadEv={this.reloadEv2}/>)}
+                reloadEv={this.reloadEv2}
+                user={this.props.user}
+                />)}
             </ul>
 
             </div>

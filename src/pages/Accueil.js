@@ -11,7 +11,7 @@ function Bajout(props){
     if(props.user.admin === "1"){
         if (!props.ajoutE) {
             return <Button onClick={props.onClick}>Ajouter un evenement</Button>
-            
+
         } else
             return <Button onClick={props.onClick}>Annuler</Button>
     }
@@ -55,7 +55,7 @@ export default class Accueil extends Component {
             </div>
             <div id={"accueil"}>
 
-                <AffichEvent/>
+                <AffichEvent user={this.props.user}/>
             </div>
                 </>
         );

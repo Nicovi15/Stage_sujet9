@@ -61,7 +61,7 @@ export default class AffichDEvent extends Component{
 
                     <li id={"titre"} >{this.props.titre}</li>
                     <li id={"contenu"}>{this.props.libelle}</li>
-                    <li id={"suppr"}><Button onClick={this.handleDeleteB}>Supprimer</Button></li>
+                    <li id={"suppr"}><Button onClick={this.handleDeleteB} hidden={this.props.user.admin !== "1"} >Supprimer</Button></li>
                     <li id={"border"}></li>
 
 
