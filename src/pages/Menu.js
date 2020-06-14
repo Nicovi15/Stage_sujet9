@@ -4,7 +4,6 @@ import 'antd/dist/antd.css';
 import { Tabs, Button } from 'antd';
 import {FireFilled} from '@ant-design/icons';
 import {HashRouter as Router, Link, Route, Switch} from "react-router-dom";
-import Questionnaire from "./Questionnaire";
 import TaskDetails from "../components/TaskDetails";
 import SelecCont from "../components/SelecCont";
 import '../design/menuQ.scss'
@@ -59,16 +58,16 @@ export default class Menu extends Component {
                                 <Route path="/questionnaire/:id/:dif" children={<TaskDetails/>} />
                             </Switch></Router></li> <br/><br/>
                             <li> <Router><Link to={"/questionnaire/"+the+"/2"}><Button id={"bu"} disabled={this.testDis(2)}  icon={<FireFilled style={{ fontSize: '16px', color: '#C9C606' }} />}>Difficulté Niveau 2</Button></Link><Switch>
-                                <Route path="/:id/:dif" children={<Questionnaire />} />
+                                <Route path="/:id/:dif" children={<TaskDetails/>} />
                             </Switch></Router></li><br/><br/>
                             <li> <Router><Link to={"/questionnaire/"+the+"/3"}><Button id={"bu"} disabled={this.testDis(3)}  icon={<FireFilled style={{ fontSize: '16px', color: '#FCA801' }} />}>Difficulté Niveau 3</Button></Link><Switch>
-                                <Route path="/:id/:dif" children={<Questionnaire />} />
+                                <Route path="/:id/:dif" children={<TaskDetails/>} />
                             </Switch></Router></li><br/><br/>
                             <li> <Router><Link to={"/questionnaire/"+the+"/4"}><Button id={"bu"} disabled={this.testDis(4)}  icon={<FireFilled style={{ fontSize: '16px', color: '#FC0C01' }} /> }>Difficulté Niveau 4</Button></Link><Switch>
-                                <Route path="/:id/:dif" children={<Questionnaire/>} />
+                                <Route path="/:id/:dif" children={<TaskDetails/>} />
                             </Switch></Router></li><br/><br/>
                             <li> <Router><Link to={"/questionnaire/"+the+"/5"}><Button id={"bu"} disabled={this.testDis(5)}  icon={<FireFilled style={{ fontSize: '16px', color: '#B401FC' }} /> }>Difficulté Niveau 5</Button></Link><Switch>
-                                <Route path="/:id/:dif" children={<Questionnaire />} />
+                                <Route path="/:id/:dif" children={<TaskDetails/>} />
                             </Switch></Router></li><br/><br/>
                         </ul>
                     </TabPane>)}

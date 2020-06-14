@@ -6,11 +6,18 @@ import {Button} from "antd";
 import 'antd/dist/antd.css';
 import "../design/accueil.scss"
 
-function Bajout(props) {
-    if (!props.ajoutE) {
-        return <Button onClick={props.onClick}>Ajouter un evenement</Button>
-    } else
-        return <Button onClick={props.onClick}>Annuler</Button>
+
+function Bajout(props){
+    if(props.user.admin === "1"){
+        if (!props.ajoutE) {
+            return <Button onClick={props.onClick}>Ajouter un evenement</Button>
+            
+        } else
+            return <Button onClick={props.onClick}>Annuler</Button>
+    }
+    else{
+        return <></>
+    }
 }
 
 function Ajout(props){
@@ -43,7 +50,7 @@ export default class Accueil extends Component {
         return (
             <div id={"accueil"}>
                 <Ajout ajout={this.state.ajoutE} />
-                <Bajout ajoutE={this.state.ajoutE} onClick={this.handleChangeAjouE}/>
+                <Bajout user={this.props.user} onClick={this.handleChangeAjouE}/>
                 <AffichEvent/>
             </div>
         );
