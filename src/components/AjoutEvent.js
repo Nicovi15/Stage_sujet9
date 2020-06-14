@@ -1,7 +1,9 @@
 import React, {Component} from 'react'
 import {Redirect} from "react-router-dom";
+import {Button} from 'antd'
 import 'antd/dist/antd.css';
 import axios from "axios";
+import '../design/ajoutEvent.scss'
 
 function Resultat(props) {
     const reussite = props.reussite;
@@ -20,13 +22,13 @@ function Echec(props) {
     }
 }
 
-export default class AjoutEvent extends Component{
+export default class AjoutEvent extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
             libelle: "",
-            titre :"",
+            titre: "",
             reussite: false,
             echec: false,
         }
@@ -34,12 +36,13 @@ export default class AjoutEvent extends Component{
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
+
     handleSubmit(event) {
         //console.log(this.state)
         axios.post("https://devweb.iutmetz.univ-lorraine.fr/~barros4u/PHP/ajoutEvenements.php",
             {
                 libelle: this.state.libelle,
-                titre:this.state.titre
+                titre: this.state.titre
             },
             {withCredentials: true}
         ).then(response => {
@@ -55,13 +58,14 @@ export default class AjoutEvent extends Component{
                 //this.props.history.push("/");
                 this.setState({
                     libelle: "",
-                    titre:"",
+                    titre: "",
                     reussite: true,
                 });
             }
         })
         event.preventDefault();
     }
+
     handleChange(event) {
         //console.log("value ",event.target.value);
         //console.log("name ",event.target.name);
@@ -74,45 +78,31 @@ export default class AjoutEvent extends Component{
         })
     }
 
-    render(){
+    render() {
         if (this.props.loggedInStatus === "NOT_LOGGED_IN") {
             //Affichage de la redirection
             return <Redirect to='/'/>;
         }
 
-        return(
+        return (
             <div id={"ajoutE"}>
                 <h1>Ajout d'un événement</h1>
                 <br/>
-            <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit}>
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Label :</th>
-                            <th>Titre :</th>
-                            <th>Valider</th>
-                        </tr>
-                    </thead>
+                    <p>Titre : <br/>
+                    <input type="text" name="titre" placeholder="Entrez un titre"
+                           value={this.state.titre} onChange={this.handleChange} required/></p>
+                    <br/>
+                    <p>Contenu : <br/>
+                    <textarea type="text" name="libelle" placeholder="Entrez l'événement"
+                              value={this.state.libelle} onChange={this.handleChange} required/></p>
+                    <br/>
+                    <Button htmlType="submit">Valider l'ajout</Button>
 
-                    <tbody>
-                        <tr>
-                        <td>
-                            <input type="text" name="libelle" placeholder="Entrez un nom d'événement"
-                                   value={this.state.libelle} onChange={this.handleChange} required/>
-                        </td>
-                        <td>
-                            <input type="text" name="titre" placeholder="Entrez un titre"
-                                   value={this.state.titre} onChange={this.handleChange} required/>
-                        </td>
-                        <td>
-                            <button type="submit">Valider l'ajout</button>
-                        </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </form>
-            <br/>
+
+                </form>
+                <br/>
                 <Resultat reussite={this.state.reussite}/>
                 <Echec echec={this.state.echec}/>
             </div>

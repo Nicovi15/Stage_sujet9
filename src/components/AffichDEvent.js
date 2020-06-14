@@ -3,6 +3,7 @@ import {Redirect} from "react-router-dom";
 import 'antd/dist/antd.css';
 import axios from "axios";
 import { Select, Button } from 'antd';
+import '../design/affichEvent.scss'
 
 export default class AffichDEvent extends Component{
 
@@ -56,12 +57,12 @@ export default class AffichDEvent extends Component{
         return(
             <>
 
-                    <td>{this.props.no_ev}</td>
 
-                    <li>{this.props.titre}</li>
-                <li>{this.props.libelle}</li>
-                    <li><Button onClick={this.handleDeleteB}>Supprimer</Button></li>
 
+                    <li id={"titre"} >{this.props.titre}</li>
+                    <li id={"contenu"}>{this.props.libelle}</li>
+                    <li id={"suppr"}><Button onClick={this.handleDeleteB}>Supprimer</Button></li>
+                    <li id={"border"}></li>
 
 
             </>

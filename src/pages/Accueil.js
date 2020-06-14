@@ -48,11 +48,16 @@ export default class Accueil extends Component {
             return <Redirect to='/'/>;
         }
         return (
-            <div id={"accueil"}>
+            <>
+            <div id={"accueilH"}>
                 <Ajout ajout={this.state.ajoutE} />
-                <Bajout user={this.props.user} onClick={this.handleChangeAjouE}/>
+                <Bajout id={"bajout"} user={this.props.user} onClick={this.handleChangeAjouE}/>
+            </div>
+            <div id={"accueil"}>
+
                 <AffichEvent/>
             </div>
+                </>
         );
     }
 }

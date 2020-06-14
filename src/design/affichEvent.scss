@@ -1,0 +1,39 @@
+#affichEv{
+  width: 80%;
+  margin: auto;
+  ul{
+
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+
+    li{
+      margin-left: -30px;
+      display: block;
+
+    }
+
+    #titre{
+      font-size: 30px;
+      text-align: center;
+    }
+    #contenu{
+      padding-left: -20px;
+      font-size: 20px;
+      text-align: justify;
+      word-wrap: break-word;
+    }
+    #suppr{
+      padding-top: 20px;
+      padding-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      margin-left: -40px;
+    ;
+    }
+    #border{
+      border-bottom: solid 1px black;
+      padding-bottom: 10px;
+    }
+  }
+}
