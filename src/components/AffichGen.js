@@ -38,7 +38,7 @@ export default class AffichGen extends Component {
     reloadQuest2 (){
         var questions=[];
         console.log(this.state.checkedList);
-        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getquestions2.php",{
+        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getquestions2.php",{
             list : this.state.checkedList,
             checkAll: this.state.checkAll,
         })
@@ -57,7 +57,7 @@ export default class AffichGen extends Component {
 
     reloadQuest (){
         var questions=[];
-        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getquestions.php")
+        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getquestions.php")
             .then(res => {
                 // console.log(res);
                 // console.log(res.data);
@@ -97,7 +97,7 @@ export default class AffichGen extends Component {
 
     async componentDidMount(){
         var questions=[];
-        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getquestions.php")
+        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getquestions.php")
             .then(res => {
                  console.log(res);
                 // console.log(res.data);
@@ -109,7 +109,7 @@ export default class AffichGen extends Component {
             });
 
         var theme=[];
-        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~cazzoli2u/quizzuml/getTheme.php")
+        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getTheme.php")
             .then(res => {
                 // console.log(res);
                 // console.log(res.data);

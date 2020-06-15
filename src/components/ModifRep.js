@@ -52,7 +52,7 @@ export default class ModifRep extends Component {
 
     handleSubmit(event){
         console.log(this.state)
-        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/modifRep.php",
+        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/modifRep.php",
             {
                 num_rep : this.state.num_rep,
                 num_quest : this.state.num_quest,

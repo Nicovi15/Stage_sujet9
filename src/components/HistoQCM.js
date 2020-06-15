@@ -42,7 +42,7 @@ export default class HistoQCM extends Component {
     reloadHisto2 (){
         var dataPoints=[];
         var questionnaires=[];
-        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/gethistoeleve.php",{
+        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/gethistoeleve.php",{
             num_uti : this.props.user.num_uti,
             list : this.state.checkedList,
             checkAll: this.state.checkAll,
@@ -85,7 +85,7 @@ export default class HistoQCM extends Component {
 
     async componentDidMount(){
         var theme=[];
-        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~cazzoli2u/quizzuml/getTheme.php")
+        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getTheme.php")
             .then(res => {
                 // console.log(res);
                 // console.log(res.data);
@@ -97,7 +97,7 @@ export default class HistoQCM extends Component {
 
         var dataPoints=[];
         var questionnaires=[];
-        await axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/gethistoeleve.php",{
+        await axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/gethistoeleve.php",{
             num_uti : this.props.user.num_uti,
             list : this.state.checkedList,
             checkAll: true,

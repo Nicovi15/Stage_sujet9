@@ -47,7 +47,7 @@ export default class DashboardAdmin extends Component {
 
     reloadPromo(){
         var promo=[];
-        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getpromo.php",)
+        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getpromo.php",)
             .then(res => {
                 // console.log(res);
                 console.log(res.data);
@@ -61,7 +61,7 @@ export default class DashboardAdmin extends Component {
 
     handleSubmitPromo(event){
         console.log("yes");
-        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/ajoutpromo.php",
+        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/ajoutpromo.php",
             {
                 promo : this.state.inputpromo,
             },
@@ -84,7 +84,7 @@ export default class DashboardAdmin extends Component {
 
     handleDeleteP(p){
         if(window.confirm(("Voulez vraiment supprimer la promo n°"+p.num_promo+" "+p.libelle+" ?"))){
-            axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/supprpromo.php",
+            axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/supprpromo.php",
                 {
                     num_promo : p.num_promo,
                 },
@@ -102,7 +102,7 @@ export default class DashboardAdmin extends Component {
 
     reloadTheme(){
         var theme=[];
-        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/gettheme.php",)
+        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/gettheme.php",)
             .then(res => {
                 // console.log(res);
                 console.log(res.data);
@@ -115,7 +115,7 @@ export default class DashboardAdmin extends Component {
     }
 
     handleSubmitTheme(event){
-        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/ajouttheme.php",
+        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/ajouttheme.php",
             {
                 theme : this.state.inputTheme,
             },
@@ -138,7 +138,7 @@ export default class DashboardAdmin extends Component {
 
     handleDeleteT(t){
         if(window.confirm(("Voulez vraiment supprimer la thème n°"+t.num_theme+" "+t.libelle+" ?"))){
-            axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/supprtheme.php",
+            axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/supprtheme.php",
                 {
                     num_theme: t.num_theme,
                 },
@@ -156,7 +156,7 @@ export default class DashboardAdmin extends Component {
 
     async componentDidMount(){
         var promo=[];
-        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getpromo.php",)
+        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getpromo.php",)
             .then(res => {
                 // console.log(res);
                 //console.log(res.data);
@@ -167,7 +167,7 @@ export default class DashboardAdmin extends Component {
             })
 
         var theme = [];
-        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/gettheme.php")
+        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/gettheme.php")
             .then(res => {
                 // console.log(res);
                  //console.log(res.data);

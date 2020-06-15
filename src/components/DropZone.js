@@ -24,7 +24,7 @@ function Echec(props) {
 class DropZone extends Component {
 
 
-    UPLOAD_ENDPOINT = 'https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/upload.php';
+    UPLOAD_ENDPOINT = 'https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/upload.php';
 
     constructor(props) {
         super(props);
@@ -55,7 +55,7 @@ class DropZone extends Component {
 
     async componentDidMount() {
         var themes = [];
-        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~cazzoli2u/quizzuml/getTheme.php")
+        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getTheme.php")
             .then(res => {
                 // console.log(res);
                 // console.log(res.data);
@@ -78,7 +78,7 @@ class DropZone extends Component {
                 success: true,
                 echec: false,
             })
-            axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/ajoutCours.php",
+            axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/ajoutCours.php",
                 {
                     url: res.data.url_fichier,
                     name: res.data.file_name,

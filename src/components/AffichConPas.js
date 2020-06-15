@@ -41,7 +41,7 @@ export default class AffichConPas extends Component {
 
     reloadRep(){
         var reponses=[];
-        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getreponses.php",{
+        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getreponses.php",{
             num_quest : this.props.num_quest
         })
             .then(res => {
@@ -65,7 +65,7 @@ export default class AffichConPas extends Component {
     handleDeleteB(){
         console.log(this.props.num_quest)
         if(window.confirm(("Voulez vraiment supprimer la question n°" + this.props.num_quest+" ?"))){
-            axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/supprQuestion.php",
+            axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/supprQuestion.php",
                 {
                     num_quest : this.props.num_quest,
                 },
@@ -92,7 +92,7 @@ export default class AffichConPas extends Component {
 
     async componentDidMount(){
         var reponses=[];/*
-        await axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getreponses.php",{
+        await axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getreponses.php",{
             num_quest : this.props.num_quest
         })
             .then(res => {

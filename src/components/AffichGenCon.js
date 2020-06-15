@@ -37,7 +37,7 @@ export default class AffichGenCon extends Component {
 
     reloadQuest2 (){
         var controles=[];
-        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getcontroles.php")
+        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getcontroles.php")
             .then(res => {
                 // console.log(res);
                 // console.log(res.data);
@@ -63,7 +63,7 @@ export default class AffichGenCon extends Component {
 
     handleDeleteB(num_cont){
         if(window.confirm(("Voulez vraiment supprimer le controle n°" + num_cont+" ?"))){
-            axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/supprCont.php",
+            axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/supprCont.php",
                 {
                     num_cont : num_cont,
                 },
@@ -91,7 +91,7 @@ export default class AffichGenCon extends Component {
 
     async componentDidMount(){
         var controles=[];
-        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getcontrolesavenir.php")
+        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getcontrolesavenir.php")
             .then(res => {
                 // console.log(res);
                 // console.log(res.data);
@@ -103,7 +103,7 @@ export default class AffichGenCon extends Component {
             })
 
         var theme=[];
-        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~cazzoli2u/quizzuml/getTheme.php")
+        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getTheme.php")
             .then(res => {
                 // console.log(res);
                 // console.log(res.data);

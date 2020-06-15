@@ -55,7 +55,7 @@ export default class ModifQuestion extends Component {
 
     async componentDidMount(){
         var themes=[];
-        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~cazzoli2u/quizzuml/getTheme.php")
+        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getTheme.php")
             .then(res => {
                 // console.log(res);
                 // console.log(res.data);
@@ -80,7 +80,7 @@ export default class ModifQuestion extends Component {
 
     handleSubmit(event){
         console.log(this.state)
-        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/modifQuestion.php",
+        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/modifQuestion.php",
             {
                 num_quest : this.state.num_quest,
                 libelle : this.state.libelle,

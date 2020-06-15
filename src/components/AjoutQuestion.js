@@ -120,7 +120,7 @@ export default class AjoutQuestion extends Component {
 
     async componentDidMount() {
         var themes = [];
-        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~cazzoli2u/quizzuml/getTheme.php")
+        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getTheme.php")
             .then(res => {
                 // console.log(res);
                 // console.log(res.data);
@@ -135,7 +135,7 @@ export default class AjoutQuestion extends Component {
 
     handleSubmit(event) {
         //console.log(this.state)
-        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/ajoutQuestion.php",
+        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/ajoutQuestion.php",
             {
                 libelle: this.state.libelle,
                 nb_bonnerep: this.state.nb_br,

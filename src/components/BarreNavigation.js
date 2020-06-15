@@ -163,7 +163,7 @@ export default class BarreNavigation extends Component {
 
 
     handleLogoutClick() {
-        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/deconnexion.php", {withCredentials: true}).then(response => {
+        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/deconnexion.php", {withCredentials: true}).then(response => {
         });
         this.props.handleLogout();
     }

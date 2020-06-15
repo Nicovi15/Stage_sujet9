@@ -59,7 +59,7 @@ constructor() {
             reloadCours (){
                     var cours=[];
                     console.log(this.state.checkedList);
-                    axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/reloadCours.php",{
+                    axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/reloadCours.php",{
                         list : this.state.checkedList,
                         checkAll: this.state.checkAll,
                     })
@@ -77,7 +77,7 @@ constructor() {
                             reloadCours2 (){
                                     var cours=[];
                                     console.log(this.state.checkedList);
-                                    axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/getCours.php",{
+                                    axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getCours.php",{
                                         list : this.state.checkedList,
                                         checkAll: this.state.checkAll,
                                     })
@@ -94,7 +94,7 @@ constructor() {
 
   async componentDidMount(){
         var cours=[];
-        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/getCours.php")
+        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getCours.php")
             .then(res => {
                  console.log(res);
                 // console.log(res.data);
@@ -106,7 +106,7 @@ constructor() {
             })
 
         var theme=[];
-        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~cazzoli2u/quizzuml/getTheme.php")
+        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getTheme.php")
             .then(res => {
                 // console.log(res);
                 // console.log(res.data);
@@ -120,7 +120,7 @@ constructor() {
 
         handleDeleteB(num_cours){
             if(window.confirm(("Voulez vraiment supprimer le cours n°" + num_cours+" ?"))){
-                axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/supprCours.php",
+                axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/supprCours.php",
                     {
                         num_cours : num_cours,
                     },

@@ -36,7 +36,7 @@ export default class TabRes extends Component {
 
     reloadQuest2 (){
         var controles=[];
-        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getcontroles.php")
+        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getcontroles.php")
             .then(res => {
                 // console.log(res);
                 // console.log(res.data);
@@ -62,7 +62,7 @@ export default class TabRes extends Component {
 
     handleDeleteB(num_cont){
         if(window.confirm(("Voulez vraiment supprimer le controle n°" + num_cont+" ?"))){
-            axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/supprCont.php",
+            axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/supprCont.php",
                 {
                     num_cont : num_cont,
                 },
@@ -96,7 +96,7 @@ export default class TabRes extends Component {
         var nb = 0;
         var moy = 0;
         var controles=[];
-        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getresbyid.php",{
+        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getresbyid.php",{
             num_cont : this.props.num_cont,
         })
             .then(res => {
@@ -121,7 +121,7 @@ export default class TabRes extends Component {
             })
 
         var theme=[];
-        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~cazzoli2u/quizzuml/getTheme.php")
+        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getTheme.php")
             .then(res => {
                 // console.log(res);
                 // console.log(res.data);

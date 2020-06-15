@@ -36,7 +36,7 @@ export default class AffichUti extends Component {
     reloadQuest2 (){
         var utilisateurs=[];
         console.log(this.state.checkedList);
-        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getutilisateurs.php",{
+        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getutilisateurs.php",{
             list : this.state.checkedList,
             checkAll: this.state.checkAll,
         })
@@ -55,7 +55,7 @@ export default class AffichUti extends Component {
 
     reloadQuest (){
         var questions=[];
-        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getquestions.php")
+        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getquestions.php")
             .then(res => {
                 // console.log(res);
                 // console.log(res.data);

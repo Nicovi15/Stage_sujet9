@@ -105,7 +105,7 @@ export default class QCMQuestion extends Component {
 
     async componentDidMount(){
         var reponses=[];
-        await axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getreponses.php",{
+        await axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getreponses.php",{
             num_quest : this.props.info.num_quest
         })
             .then(res => {

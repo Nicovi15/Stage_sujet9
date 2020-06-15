@@ -46,7 +46,7 @@ export default class AffichQuest extends Component {
 
     reloadRep(){
         var reponses=[];
-        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getreponses.php",{
+        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getreponses.php",{
             num_quest : this.props.num_quest
         })
             .then(res => {
@@ -69,7 +69,7 @@ export default class AffichQuest extends Component {
 
     handleDeleteB(){
         if(window.confirm(("Voulez vraiment supprimer le compte de " + this.props.prenom+" "+this.props.nom+" ("+this.props.pseudo+") ?"))){
-            axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/supprUti.php",
+            axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/supprUti.php",
                 {
                     num_uti : this.props.num_uti,
                 },

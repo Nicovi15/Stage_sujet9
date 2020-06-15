@@ -121,7 +121,7 @@ export default class SelecCont extends Component {
 
     async componentDidMount(){
         var controles=[];
-        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getcontroles.php")
+        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getcontroles.php")
             .then(res => {
                 // console.log(res);
                 // console.log(res.data);
