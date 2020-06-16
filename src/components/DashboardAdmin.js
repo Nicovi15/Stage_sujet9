@@ -23,6 +23,7 @@ export default class DashboardAdmin extends Component {
             inputTheme : "",
             reussiteTheme : "",
             erreurTheme : "",
+            visible : "oui",
         };
 
     }
@@ -60,7 +61,7 @@ export default class DashboardAdmin extends Component {
             {withCredentials: true}
         ).then(response => {
             if ( response.data.error ) {
-                console.log(response.data.error)
+                //console.log(response.data.error)
                 this.setState({erreurPromo :response.data.error})
             }
             else {
@@ -97,7 +98,7 @@ export default class DashboardAdmin extends Component {
         axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getTheme.php",)
             .then(res => {
                 // console.log(res);
-                console.log(res.data);
+                //console.log(res.data);
                 res.data.map(donne =>{
                     theme.push(donne);
                 });
@@ -107,9 +108,11 @@ export default class DashboardAdmin extends Component {
     }
 
     handleSubmitTheme=event=>{
-        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/ajouttheme.php",
+        //console.log(this.state);
+        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/ajouttheme.php",
             {
                 theme : this.state.inputTheme,
+                visible : this.state.visible,
             },
             {withCredentials: true}
         ).then(response => {
@@ -118,6 +121,7 @@ export default class DashboardAdmin extends Component {
                 this.setState({erreurTheme :response.data.error})
             }
             else {
+                console.log(response);
                 this.setState({
                     reussiteTheme : response.data.succes
                 });
@@ -221,6 +225,12 @@ export default class DashboardAdmin extends Component {
                             <h3>Ajouter un thème</h3>
                             <form onSubmit={this.handleSubmitTheme}>
                                 <p>Nom du thème : <input type="text" name ="inputTheme" placeholder="Entrez le nom du theme" value={this.state.inputTheme} onChange={this.handleChange} required style={{width: 200}} />  </p>
+                                <p>Visible par les étudiants :
+                                    <select name="visible" value={this.state.visible} style={{width: 50}}
+                                            onChange={this.handleChange}>
+                                        <option value="oui">oui</option>
+                                        <option value="non">non</option>
+                                    </select></p>
                                 <button  type="submit">Ajouter un thème</button>
                                 <p>{this.state.erreurTheme}</p>
                                 <p>{this.state.reussiteTheme}</p>
@@ -234,6 +244,7 @@ export default class DashboardAdmin extends Component {
                                 <tr>
                                     <th>Num Thème</th>
                                     <th>Libelle</th>
+                                    <th>Visible par les étudiants</th>
                                     <th>Supprimer</th>
                                 </tr>
                                 </thead>
@@ -241,6 +252,7 @@ export default class DashboardAdmin extends Component {
                                 {this.state.theme.map(t=> <tr>
                                     <td>{t.num_theme}</td>
                                     <td>{t.libelle}</td>
+                                    <td>{t.visible}</td>
                                     <td><Button onClick={()=>this.handleDeleteT(t)}>Supprimer</Button></td>
                                 </tr>)}
 
