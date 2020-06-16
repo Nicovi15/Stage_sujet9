@@ -41,7 +41,7 @@ function Timer(props) {
         return <></>
     }
     else if(!props.hidden){
-        console.log("value " +props.value )
+      //  console.log("value " +props.value )
         return <Countdown title="Temps restant :" value={Date.now() + props.value * 1000 * 60} onFinish={props.onFinish}  />
     }
     else return <></>
@@ -72,7 +72,7 @@ export default class Controle extends Component {
 
     checkid(checkExist){
         if (this.props.dif != null) {
-            console.log("Exists!");
+            //console.log("Exists!");
             clearInterval(checkExist);
         }
         else console.log(this.props.dif)
@@ -116,9 +116,9 @@ export default class Controle extends Component {
                     controle = donne;
                     this.setState({controle: donne},);
                 });
-                console.log(this.state);
+              //  console.log(this.state);
             })
-        console.log(controle.num_theme + controle.difficulte);
+        //console.log(controle.num_theme + controle.difficulte);
         var theme = [];
         await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~cazzoli2u/quizzuml/getTheme.php")
             .then(res => {
@@ -141,7 +141,7 @@ export default class Controle extends Component {
                 dif: parseInt(controle.difficulte),
             })
                 .then(res => {
-                     console.log(res);
+                     //console.log(res);
                     // console.log(res.data);
                     res.data.map(donne => {
                         questions.push(donne);
@@ -181,7 +181,7 @@ export default class Controle extends Component {
         })};
         this.setState({actif : false,
             br : br});
-        console.log(this.state);
+      //  console.log(this.state);
 
         axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/ajoutRescon.php",{
             num_uti : this.props.user.num_uti,
@@ -189,7 +189,7 @@ export default class Controle extends Component {
             score : br,
         })
             .then(res => {
-                console.log(res);
+                //console.log(res);
                 // console.log(res.data);
 
             });

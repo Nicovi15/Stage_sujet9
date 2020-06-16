@@ -29,25 +29,25 @@ export default class AffichUti extends Component {
     }
 
     affiState (){
-        console.log(this.state);
+        //console.log(this.state);
         this.reloadQuest2();
     }
 
     reloadQuest2 (){
         var utilisateurs=[];
-        console.log(this.state.checkedList);
+      //  console.log(this.state.checkedList);
         axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getutilisateurs.php",{
             list : this.state.checkedList,
             checkAll: this.state.checkAll,
         })
             .then(res => {
                 // console.log(res);
-                console.log(res.data);
+                // console.log(res.data);
                 res.data.map(donne =>{
                     utilisateurs.push(donne);
                 });
                 this.setState({utilisateurs},);
-                console.log(this.state);
+                // console.log(this.state);
             })
     }
 
@@ -63,7 +63,7 @@ export default class AffichUti extends Component {
                     questions.push(donne);
                 });
                 this.setState({questions},);
-                console.log(this.state);
+                // console.log(this.state);
             })
     }
 
@@ -73,7 +73,7 @@ export default class AffichUti extends Component {
             checkAll: checkedList.length === this.state.promo.length,
             checkedList,
         });
-        console.log(this.state.checkedList);
+        // console.log(this.state.checkedList);
     };
 
     onChange = checkedList => {
@@ -100,12 +100,12 @@ export default class AffichUti extends Component {
         })
             .then(res => {
                 // console.log(res);
-                console.log(res.data);
+                // console.log(res.data);
                 res.data.map(donne =>{
                     utilisateurs.push(donne);
                 });
                 this.setState({utilisateurs},);
-                console.log(this.state);
+                // console.log(this.state);
             })
 
         var promo=[];

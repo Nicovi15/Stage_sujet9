@@ -123,7 +123,7 @@ export default class AjoutQuestion extends Component {
         this.uploadFile = this.uploadFile.bind(this);
     }
 
-    async componentDidMount() {
+    async componentWillMount() {
         var themes = [];
         await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getTheme.php")
             .then(res => {

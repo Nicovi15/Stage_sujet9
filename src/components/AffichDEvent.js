@@ -24,7 +24,7 @@ export default class AffichDEvent extends Component{
     }
 
     handleDeleteB(){
-        console.log(this.props.no_ev)
+      //  console.log(this.props.no_ev)
         if(window.confirm(("Voulez vraiment supprimer l'événement n°" + this.props.no_ev+" ?"))){
             axios.post("https://devweb.iutmetz.univ-lorraine.fr/~barros4u/PHP/supprEvenements.php",
                 {
@@ -33,13 +33,13 @@ export default class AffichDEvent extends Component{
                 {withCredentials: true}
             ).then(response => {
                 if ( response.data.error ) {
-                    console.log(response.data.error)
+                    //console.log(response.data.error)
                     this.setState({
                         echec : true,
                     })
                 }
                 else {
-                    console.log(response.data);
+              //      console.log(response.data);
                     if(response.data.status === "Succes") console.log("yes "+response.data);
                     //this.handleSuccessfulAuth(response.data.user);
                     //this.props.history.push("/");

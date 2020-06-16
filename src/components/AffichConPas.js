@@ -51,7 +51,7 @@ export default class AffichConPas extends Component {
                     reponses.push(donne);
                 });
                 this.setState({reponses},);
-                console.log(this.state);
+                //console.log(this.state);
             })
     }
 
@@ -63,7 +63,7 @@ export default class AffichConPas extends Component {
     }
 
     handleDeleteB(){
-        console.log(this.props.num_quest)
+    //    console.log(this.props.num_quest)
         if(window.confirm(("Voulez vraiment supprimer la question n°" + this.props.num_quest+" ?"))){
             axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/supprQuestion.php",
                 {
@@ -72,13 +72,13 @@ export default class AffichConPas extends Component {
                 {withCredentials: true}
             ).then(response => {
                 if ( response.data.error ) {
-                    console.log(response.data.error)
+                //    console.log(response.data.error)
                     this.setState({
                         echec : true,
                     })
                 }
                 else {
-                    console.log(response.data);
+                  //  console.log(response.data);
                     if(response.data.status === "Succes") console.log("yes "+response.data);
                     //this.handleSuccessfulAuth(response.data.user);
                     //this.props.history.push("/");

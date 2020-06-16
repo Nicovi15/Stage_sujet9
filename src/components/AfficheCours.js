@@ -34,7 +34,7 @@ constructor() {
     }
 
         affiState (){
-            console.log(this.state);
+          //  console.log(this.state);
             this.reloadCours();
         }
 
@@ -58,37 +58,37 @@ constructor() {
 
             reloadCours (){
                     var cours=[];
-                    console.log(this.state.checkedList);
+                    // console.log(this.state.checkedList);
                     axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/reloadCours.php",{
                         list : this.state.checkedList,
                         checkAll: this.state.checkAll,
                     })
                         .then(res => {
                             // console.log(res);
-                             console.log(res.data);
+                             // console.log(res.data);
                             res.data.map(donne =>{
                                 cours.push(donne);
                             });
                             this.setState({cours},);
-                            console.log(this.state);
+                            // console.log(this.state);
                         })
                 }
 
                             reloadCours2 (){
                                     var cours=[];
-                                    console.log(this.state.checkedList);
+                                    // console.log(this.state.checkedList);
                                     axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getCours.php",{
                                         list : this.state.checkedList,
                                         checkAll: this.state.checkAll,
                                     })
                                         .then(res => {
                                             // console.log(res);
-                                             console.log(res.data);
+                                             // console.log(res.data);
                                             res.data.map(donne =>{
                                                 cours.push(donne);
                                             });
                                             this.setState({cours},);
-                                            console.log(this.state);
+                                            // console.log(this.state);
                                         })
                                 }
 
@@ -96,13 +96,13 @@ constructor() {
         var cours=[];
         await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getCours.php")
             .then(res => {
-                 console.log(res);
+                 // console.log(res);
                 // console.log(res.data);
                 res.data.map(donne =>{
                     cours.push(donne);
                 });
                 this.setState({cours},);
-                console.log(this.state);
+                // console.log(this.state);
             })
 
         var theme=[];

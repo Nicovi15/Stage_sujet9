@@ -4,7 +4,8 @@ import AjoutQuestion from "../components/AjoutQuestion";
 import AffichGen from "../components/AffichGen";
 import {Button} from "antd";
 import 'antd/dist/antd.css';
-import "../design/gestionQ.scss"
+import "../design/gestionQ.scss";
+import axios from "axios";
 
 
 function Bajout(props) {
@@ -18,7 +19,14 @@ function Bajout(props) {
 function Ajout(props){
 
     if(props.ajout)
-        return <AjoutQuestion/>;
+        return <AjoutQuestion reload={props.reload}/>;
+    else return <></>;
+}
+
+function Affiche(props){
+    console.log(props.questions);
+    if(props.questions.length>1)
+        return <AffichGen questions={props.questions}/>;
     else return <></>;
 }
 
@@ -28,16 +36,24 @@ export default class GestionQ extends Component {
 
     constructor(props) {
         super(props);
-
+        this.affichGenElement = React.createRef();
         this.state = {
             ajoutQ: false,
         }
+      }
 
 
-        this.handleChangeAjouQ = this.handleChangeAjouQ.bind(this);
+
+
+
+    actualise=()=>{
+    //  console.log("yoyoy");
+      this.affichGenElement.current.loadQuest();
+    //  console.log(this.state.questions);
+
     }
 
-    handleChangeAjouQ(){
+    handleChangeAjouQ =()=>{
         this.setState({
             ajoutQ : !this.state.ajoutQ,
         })
@@ -53,13 +69,11 @@ export default class GestionQ extends Component {
         return (
             <div id={"gestionQ"}>
 
-                <Ajout ajout={this.state.ajoutQ} />
+                <Ajout ajout={this.state.ajoutQ} reload={this.actualise} />
                 <Bajout ajoutQ={this.state.ajoutQ} onClick={this.handleChangeAjouQ}/>
-                <AffichGen/>
+                <AffichGen ref={this.affichGenElement}/>;
 
             </div>
         );
     }
 }
-
-

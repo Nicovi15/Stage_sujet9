@@ -50,17 +50,17 @@ export default class DashboardAdmin extends Component {
         axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getpromo.php",)
             .then(res => {
                 // console.log(res);
-                console.log(res.data);
+                //console.log(res.data);
                 res.data.map(donne =>{
                     promo.push(donne);
                 });
                 this.setState({promo},);
-                console.log(this.state);
+              //  console.log(this.state);
             })
     }
 
     handleSubmitPromo(event){
-        console.log("yes");
+      //  console.log("yes");
         axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/ajoutpromo.php",
             {
                 promo : this.state.inputpromo,
@@ -176,7 +176,7 @@ export default class DashboardAdmin extends Component {
                 });
                 this.setState({theme},);
             })
-        console.log(this.state);
+        //(this.state);
     }
 
 
