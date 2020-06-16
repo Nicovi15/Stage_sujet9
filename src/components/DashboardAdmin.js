@@ -61,7 +61,7 @@ export default class DashboardAdmin extends Component {
             {withCredentials: true}
         ).then(response => {
             if ( response.data.error ) {
-                console.log(response.data.error)
+                //console.log(response.data.error)
                 this.setState({erreurPromo :response.data.error})
             }
             else {
@@ -98,7 +98,7 @@ export default class DashboardAdmin extends Component {
         axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getTheme.php",)
             .then(res => {
                 // console.log(res);
-                console.log(res.data);
+                //console.log(res.data);
                 res.data.map(donne =>{
                     theme.push(donne);
                 });
@@ -108,7 +108,7 @@ export default class DashboardAdmin extends Component {
     }
 
     handleSubmitTheme=event=>{
-        console.log(this.state);
+        //console.log(this.state);
         axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/ajouttheme.php",
             {
                 theme : this.state.inputTheme,
