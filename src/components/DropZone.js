@@ -87,14 +87,14 @@ class DropZone extends Component {
                 {withCredentials: true}
             ).then(response => {
                 console.log("ajoutbdd", response.data)
-            })
+                this.props.reload();
+            });
         } else if (res.data.status === "error" && (!(res.data.status === "success"))) {
             this.setState({
                 success: false,
                 echec: true,
-            })
+            });
         }
-
         console.log("status", res.data.status);
     }
 

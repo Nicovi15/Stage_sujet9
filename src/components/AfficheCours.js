@@ -25,26 +25,15 @@ constructor() {
 
         }
 
-        this.reloadCours = this.reloadCours.bind(this);
-        this.reloadCours2 = this.reloadCours2.bind(this);
-        this.onChange = this.onChange.bind(this);
-        this.affiState = this.affiState.bind(this);
-        this.handleDeleteB = this.handleDeleteB.bind(this);
-
     }
 
-        affiState (){
-          //  console.log(this.state);
-            this.reloadCours();
-        }
-
-        onChange = checkedList => {
+    onChange = checkedList => {
             this.setState({
                 checkedList,
                 indeterminate: !!checkedList.length && checkedList.length < this.state.theme.length,
                 checkAll: checkedList.length === this.state.theme.length,
             });
-        };
+        }
 
         onCheckAllChange = e => {
             this.setState({
@@ -52,59 +41,52 @@ constructor() {
                 indeterminate: false,
                 checkAll: e.target.checked,
             });
-        };
+        }
 
 
 
-            reloadCours (){
-                    var cours=[];
-                    // console.log(this.state.checkedList);
-                    axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/reloadCours.php",{
-                        list : this.state.checkedList,
-                        checkAll: this.state.checkAll,
-                    })
-                        .then(res => {
-                            // console.log(res);
-                             // console.log(res.data);
-                            res.data.map(donne =>{
-                                cours.push(donne);
-                            });
-                            this.setState({cours},);
-                            // console.log(this.state);
-                        })
-                }
+      reloadCours = () => {
+              var cours=[];
+              // console.log(this.state.checkedList);
+              axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/reloadCours.php",{
+                  list : this.state.checkedList,
+                  checkAll: this.state.checkAll,
+              })
+                  .then(res => {
+                      // console.log(res);
+                       // console.log(res.data);
+                      res.data.map(donne =>{
+                          cours.push(donne);
+                      });
+                      this.setState({cours},);
+                      // console.log(this.state);
+                  })
+          }
 
-                            reloadCours2 (){
-                                    var cours=[];
-                                    // console.log(this.state.checkedList);
-                                    axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getCours.php",{
-                                        list : this.state.checkedList,
-                                        checkAll: this.state.checkAll,
-                                    })
-                                        .then(res => {
-                                            // console.log(res);
-                                             // console.log(res.data);
-                                            res.data.map(donne =>{
-                                                cours.push(donne);
-                                            });
-                                            this.setState({cours},);
-                                            // console.log(this.state);
-                                        })
-                                }
+    reloadCours2=()=>{
+            var cours=[];
+            // console.log(this.state.checkedList);
+            axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getCours.php")
+                .then(res => {
+                    // console.log(res);
+                     // console.log(res.data);
+                    res.data.map(donne =>{
+                        cours.push(donne);
+                    });
+                    this.setState({cours},);
+                    // console.log(this.state);
+                })
+        }
+
+
+              affiState= ()=>{
+                  //console.log(this.state);
+                  this.reloadCours();
+              }
+
 
   async componentDidMount(){
-        var cours=[];
-        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getCours.php")
-            .then(res => {
-                 // console.log(res);
-                // console.log(res.data);
-                res.data.map(donne =>{
-                    cours.push(donne);
-                });
-                this.setState({cours},);
-                // console.log(this.state);
-            })
-
+        this.reloadCours2()
         var theme=[];
         await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getTheme.php")
             .then(res => {
@@ -118,7 +100,7 @@ constructor() {
         //console.log(this.state.theme);
     }
 
-        handleDeleteB(num_cours){
+        handleDeleteB =num_cours=>{
             if(window.confirm(("Voulez vraiment supprimer le cours n°" + num_cours+" ?"))){
                 axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/supprCours.php",
                     {
