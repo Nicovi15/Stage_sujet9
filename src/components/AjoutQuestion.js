@@ -118,7 +118,7 @@ export default class AjoutQuestion extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    async componentDidMount() {
+    async componentWillMount() {
         var themes = [];
         await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getTheme.php")
             .then(res => {
@@ -154,12 +154,12 @@ export default class AjoutQuestion extends Component {
             {withCredentials: true}
         ).then(response => {
             if (response.data.error) {
-                console.log(response.data.error)
+                //console.log(response.data.error)
                 this.setState({
                     echec: true,
                 })
             } else {
-                console.log(response.data);
+            //    console.log(response.data);
                 if (response.data.status === "Succes") console.log("yes " + response.data);
                 //this.handleSuccessfulAuth(response.data.user);
                 //this.props.history.push("/");
@@ -179,6 +179,7 @@ export default class AjoutQuestion extends Component {
                     difficulte: 1,
                     reussite: true,
                 });
+                this.props.reload();
             }
         })
         event.preventDefault();

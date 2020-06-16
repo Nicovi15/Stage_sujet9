@@ -88,7 +88,7 @@ export default class AffichQuest extends Component {
                     reponses.push(donne);
                 });
                 this.setState({reponses},);
-                console.log(this.state);
+              //  console.log(this.state);
             })
     }
 
@@ -100,7 +100,7 @@ export default class AffichQuest extends Component {
     }
 
     handleDeleteB(){
-        console.log(this.props.num_quest)
+        //console.log(this.props.num_quest)
         if(window.confirm(("Voulez vraiment supprimer la question n°" + this.props.num_quest+" ?"))){
             axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/supprQuestion.php",
                 {
@@ -139,7 +139,7 @@ export default class AffichQuest extends Component {
                     reponses.push(donne);
                 });
                 this.setState({reponses},);
-                console.log(this.state);
+          //      console.log(this.state);
             })
         //console.log(this.state.theme);
     }

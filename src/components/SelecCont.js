@@ -27,7 +27,7 @@ export default class SelecCont extends Component {
     }
 
     affiState (){
-        console.log(this.state);
+      //  console.log(this.state);
         this.reloadQuest2();
     }
 
@@ -41,7 +41,7 @@ export default class SelecCont extends Component {
                     controles.push(donne);
                 });
                 this.setState({controles},);
-                console.log(this.state);
+                //console.log(this.state);
             })
     }
 
@@ -68,9 +68,9 @@ export default class SelecCont extends Component {
         var dateDeb = new Date(cont.datetime);
         var dateFin = this.addMinutes(dateDeb,cont.temps);
         //console.log("res "+date+" de type "+typeof date)
-        if(date<Date.now()) console.log(date + "est déjà passé");
-        if(date>Date.now())console.log(date + "n'est pas encore passé");
-        console.log("Date + 5 minutes => " + this.addMinutes(date,5));
+      //  if(date<Date.now()) console.log(date + "est déjà passé");
+      //  if(date>Date.now())console.log(date + "n'est pas encore passé");
+      //  console.log("Date + 5 minutes => " + this.addMinutes(date,5));
 
         if(dateFin>dateNow){
             return <tr>

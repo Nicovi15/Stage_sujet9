@@ -23,60 +23,30 @@ export default class AffichGen extends Component {
             indeterminate: true,
             checkAll: false,
         };
-        this.reloadQuest = this.reloadQuest.bind(this);
-        this.onChange = this.onChange.bind(this);
-        this.reloadQuest2 = this.reloadQuest2.bind(this);
-        this.affiState = this.affiState.bind(this);
-
     }
 
-    affiState (){
-        console.log(this.state);
+    affiState= ()=>{
+        //console.log(this.state);
         this.reloadQuest2();
     }
 
-    reloadQuest2 (){
+    reloadQuest2 =()=>{
         var questions=[];
-        console.log(this.state.checkedList);
+      //  console.log(this.state.checkedList);
         axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getquestions2.php",{
             list : this.state.checkedList,
             checkAll: this.state.checkAll,
         })
             .then(res => {
                 // console.log(res);
-                 console.log(res.data);
+              //   console.log(res.data);
                 res.data.map(donne =>{
                     questions.push(donne);
                 });
                 this.setState({questions},);
-                console.log(this.state);
+              //  console.log(this.state);
             })
     }
-
-
-
-    reloadQuest (){
-        var questions=[];
-        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getquestions.php")
-            .then(res => {
-                // console.log(res);
-                // console.log(res.data);
-                res.data.map(donne =>{
-                    questions.push(donne);
-                });
-                this.setState({questions},);
-                console.log(this.state);
-            })
-    }
-
-    // onChange2 = checkedList => {
-    //     this.setState({
-    //         indeterminate: !!checkedList.length && checkedList.length < this.state.theme.length,
-    //         checkAll: checkedList.length === this.state.theme.length,
-    //         checkedList,
-    //     });
-    //     console.log(this.state.checkedList);
-    // };
 
     onChange = checkedList => {
       this.setState({
@@ -94,31 +64,41 @@ export default class AffichGen extends Component {
    });
  };
 
+ async loadQuest(){
+     var questions=[];
+     await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getquestions.php")
+         .then(res => {
+             // console.log(res);
+             // console.log(res.data);
+             res.data.map(donne =>{
+                 questions.push(donne);
+             });
+             //console.log("j'actualise")
+             this.setState({questions});
+             console.log(this.state.questions);
+             //console.log(this.state.questions);
+         })
+ }
 
-    async componentDidMount(){
-        var questions=[];
-        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getquestions.php")
-            .then(res => {
-                 console.log(res);
-                // console.log(res.data);
-                res.data.map(donne =>{
-                    questions.push(donne);
-                });
-                this.setState({questions},);
-                console.log(this.state);
-            });
+async loadTheme(){
+  var theme=[];
+  await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getTheme.php")
+      .then(res => {
+          // console.log(res);
+          // console.log(res.data);
+          res.data.map(donne =>{
+              theme.push(donne.libelle);
+          });
+          this.setState({theme});
+      })
+}
 
-        var theme=[];
-        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getTheme.php")
-            .then(res => {
-                // console.log(res);
-                // console.log(res.data);
-                res.data.map(donne =>{
-                    theme.push(donne.libelle);
-                });
-                this.setState({theme});
-            })
+   componentDidMount(){
+      this.loadQuest();
+      this.loadTheme();
+
         //console.log(this.state.theme);
+
     }
 
 
@@ -169,9 +149,6 @@ export default class AffichGen extends Component {
 
                     </thead>
                     <tbody>
-
-
-
                         {this.state.questions.map(question => <AffichQuest key={question.num_quest}
                                                                            num_quest={question.num_quest}
                                                                            libelle={question.libelle}
