@@ -210,7 +210,7 @@ export default class AjoutQuestion extends Component {
                    });
                }
            })
-       } else if (res.data.status === "error" && (!(res.data.status === "success"))) {
+       } else{
            this.setState({
                success: false,
                echec: true,
@@ -295,7 +295,7 @@ export default class AjoutQuestion extends Component {
                     <thead>
                     <tr>
                         <th>Labelle :</th>
-                        <th>Image (non obligatoire)</th>
+                        <th>Image (optionnel)</th>
                         <th>Nombre de bonnes réponses</th>
                         <th>Bonne réponse</th>
                         <th>Nombre de mauvaises réponses    </th>

@@ -97,7 +97,7 @@ export default class AffichGen extends Component {
 
     async componentDidMount(){
         var questions=[];
-        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getquestions.php")
+        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getquestions.php")
             .then(res => {
                  console.log(res);
                 // console.log(res.data);
@@ -162,6 +162,7 @@ export default class AffichGen extends Component {
                         <th>Difficulté</th>
                         <th>Num Thème</th>
                         <th>Thème</th>
+                        <th>Url_image</th>
                         <th>Réponses</th>
                         <th>Modifier</th>
                         <th>Supprimer</th>
@@ -180,6 +181,7 @@ export default class AffichGen extends Component {
                                                                            difficulte={question.difficulte}
                                                                            num_theme={question.num_theme}
                                                                            theme={question.theme}
+                                                                           url_image={question.url_image}
                                                                            reloadQuest={this.reloadQuest2}/>)}
 
 

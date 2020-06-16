@@ -22,6 +22,15 @@ function Bmodif(props) {
         return <> <Button onClick={props.onClick}>Annuler</Button> </>
 }
 
+function Ilu(props) {
+    if(props.im==="null"){
+        return <></>
+    }
+    else {
+        return <a href={props.im} target="_blank"><img src={props.im} width="100"/></a>
+    }
+}
+
 function Modif(props){
     if(props.modif)
         return <ModifQuestion
@@ -167,6 +176,7 @@ export default class AffichQuest extends Component {
                     <td>{this.props.difficulte}</td>
                     <td>{this.props.num_theme}</td>
                     <td>{this.props.theme}</td>
+                    <td><Ilu im={this.props.url_image}/></td>
                     <td>
 
                         <ListeRep afficheRep={this.state.afficheRep}

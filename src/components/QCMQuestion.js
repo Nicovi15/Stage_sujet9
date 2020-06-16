@@ -32,6 +32,15 @@ function Resultat(props) {
     return <></>;
 }
 
+function Ilu(props){
+    if(props.im==="null"){
+        return <></>
+    }
+    else {
+        return <a href={props.im} target="_blank"><img width="400" src={props.im}/></a>
+    }
+}
+
 function Correction(props) {
     if (!props.actif) {
         if(!props.res) return <div>Correction :
@@ -131,6 +140,7 @@ export default class QCMQuestion extends Component {
         return (
             <div id={"qcm"}>
                 <p>N°{this.props.index+1}) {this.state.info.libelle}</p>
+                <Ilu im={this.state.info.url_image}/>
                 <Resultat actif={this.props.actif} res={this.state.res}/>
                 <div id = {"chbox"}>
                     <Checkbox.Group
