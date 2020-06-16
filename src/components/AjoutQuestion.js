@@ -262,9 +262,10 @@ export default class AjoutQuestion extends Component {
                        file : null,
                    });
                }
-               this.props.reload();
+
            })
        }
+      this.props.reload();
     }
 
     handleChange(event) {
