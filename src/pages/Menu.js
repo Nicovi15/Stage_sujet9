@@ -27,7 +27,7 @@ export default class Menu extends Component {
      }
     async componentDidMount(){
       var theme=[];
-      await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~cazzoli2u/quizzuml/getTheme.php")
+      await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getTheme.php")
          .then(res => {
            // console.log(res);
            // console.log(res.data);
