@@ -66,7 +66,7 @@ export default class AffichGen extends Component {
 
  async loadQuest(){
      var questions=[];
-     await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getquestions.php")
+     await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getquestions.php")
          .then(res => {
              // console.log(res);
              // console.log(res.data);
@@ -158,6 +158,7 @@ async loadTheme(){
                                                                            difficulte={question.difficulte}
                                                                            num_theme={question.num_theme}
                                                                            theme={question.theme}
+                                                                           url_image={question.url_image}
 
                                                                            reloadQuest={this.reloadQuest2}/>)}
 
