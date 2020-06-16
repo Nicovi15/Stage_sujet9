@@ -142,6 +142,7 @@ async loadTheme(){
                         <th>Difficulté</th>
                         <th>Num Thème</th>
                         <th>Thème</th>
+                        <th>Image</th>
                         <th>Réponses</th>
                         <th>Modifier</th>
                         <th>Supprimer</th>
@@ -157,6 +158,7 @@ async loadTheme(){
                                                                            difficulte={question.difficulte}
                                                                            num_theme={question.num_theme}
                                                                            theme={question.theme}
+
                                                                            reloadQuest={this.reloadQuest2}/>)}
 
 
