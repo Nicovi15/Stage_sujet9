@@ -167,7 +167,7 @@ export default class DashboardAdmin extends Component {
             })
 
         var theme = [];
-        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/gettheme.php")
+        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getTheme.php")
             .then(res => {
                 // console.log(res);
                  //console.log(res.data);
