@@ -159,8 +159,7 @@ async loadTheme(){
                                                                            num_theme={question.num_theme}
                                                                            theme={question.theme}
                                                                            url_image={question.url_image}
-
-                                                                           reloadQuest={this.reloadQuest2}/>)}
+                                                                           reloadQuest={this.loadQuest}/>)}
 
 
 

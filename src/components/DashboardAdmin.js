@@ -25,17 +25,9 @@ export default class DashboardAdmin extends Component {
             erreurTheme : "",
         };
 
-        this.handleChange = this.handleChange.bind(this);
-
-        this.handleSubmitPromo = this.handleSubmitPromo.bind(this);
-        this.reloadPromo = this.reloadPromo.bind(this);
-        this.handleDeleteP = this.handleDeleteP.bind(this);
-
-        this.handleSubmitTheme = this.handleSubmitTheme.bind(this);
-        this.reloadTheme = this.reloadTheme.bind(this);
     }
 
-    handleChange(event){
+    handleChange = (event)=>{
         this.setState({
             [event.target.name]: event.target.value,
             reussiteTheme : "",
@@ -45,7 +37,7 @@ export default class DashboardAdmin extends Component {
         })
     }
 
-    reloadPromo(){
+    reloadPromo=()=>{
         var promo=[];
         axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getpromo.php",)
             .then(res => {
@@ -59,7 +51,7 @@ export default class DashboardAdmin extends Component {
             })
     }
 
-    handleSubmitPromo(event){
+    handleSubmitPromo=event=>{
       //  console.log("yes");
         axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/ajoutpromo.php",
             {
@@ -82,7 +74,7 @@ export default class DashboardAdmin extends Component {
 
     }
 
-    handleDeleteP(p){
+    handleDeleteP=p=>{
         if(window.confirm(("Voulez vraiment supprimer la promo n°"+p.num_promo+" "+p.libelle+" ?"))){
             axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/supprpromo.php",
                 {
@@ -100,21 +92,21 @@ export default class DashboardAdmin extends Component {
         }
     }
 
-    reloadTheme(){
+    reloadTheme=()=>{
         var theme=[];
-        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/gettheme.php",)
+        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getTheme.php",)
             .then(res => {
                 // console.log(res);
                 console.log(res.data);
                 res.data.map(donne =>{
                     theme.push(donne);
                 });
-                this.setState({theme},);
+                this.setState({theme});
                 console.log(this.state);
             })
     }
 
-    handleSubmitTheme(event){
+    handleSubmitTheme=event=>{
         axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/ajouttheme.php",
             {
                 theme : this.state.inputTheme,
@@ -133,10 +125,10 @@ export default class DashboardAdmin extends Component {
             }
         })
         event.preventDefault();
-
+        this.reloadTheme();
     }
 
-    handleDeleteT(t){
+    handleDeleteT=t=>{
         if(window.confirm(("Voulez vraiment supprimer la thème n°"+t.num_theme+" "+t.libelle+" ?"))){
             axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/supprtheme.php",
                 {
