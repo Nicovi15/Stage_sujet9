@@ -63,12 +63,6 @@ export default class Menu extends Component {
                             <li> <Router><Link to={"/questionnaire/"+the+"/3"}><Button id={"bu"} disabled={this.testDis(3)}  icon={<FireFilled style={{ fontSize: '16px', color: '#FCA801' }} />}>Difficulté Niveau 3</Button></Link><Switch>
                                 <Route path="/:id/:dif" children={<TaskDetails/>} />
                             </Switch></Router></li><br/><br/>
-                            <li> <Router><Link to={"/questionnaire/"+the+"/4"}><Button id={"bu"} disabled={this.testDis(4)}  icon={<FireFilled style={{ fontSize: '16px', color: '#FC0C01' }} /> }>Difficulté Niveau 4</Button></Link><Switch>
-                                <Route path="/:id/:dif" children={<TaskDetails/>} />
-                            </Switch></Router></li><br/><br/>
-                            <li> <Router><Link to={"/questionnaire/"+the+"/5"}><Button id={"bu"} disabled={this.testDis(5)}  icon={<FireFilled style={{ fontSize: '16px', color: '#B401FC' }} /> }>Difficulté Niveau 5</Button></Link><Switch>
-                                <Route path="/:id/:dif" children={<TaskDetails/>} />
-                            </Switch></Router></li><br/><br/>
                         </ul>
                     </TabPane>)}
                     <TabPane tab="Contrôles" key="Contrôle">
