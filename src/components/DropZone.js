@@ -121,9 +121,7 @@ class DropZone extends Component {
                 <form onSubmit={this.onSubmit}>
                     <h1> Ajouter un fichier </h1>
 
-
                         <input type="file" onChange={this.onChange}/>
-
 
                     <select name="theme" value={this.state.theme} style={{width: 120}}
                             onChange={this.handleChange}>

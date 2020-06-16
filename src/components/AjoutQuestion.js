@@ -91,6 +91,8 @@ function Echec(props) {
 
 export default class AjoutQuestion extends Component {
 
+    UPLOAD_ENDPOINT = 'https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/upload.php';
+
 
     constructor(props) {
         super(props);
@@ -112,10 +114,13 @@ export default class AjoutQuestion extends Component {
             difficulte: 1,
             reussite: false,
             echec: false,
+            file : "null",
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.onChange = this.onChange.bind(this);
+        this.uploadFile = this.uploadFile.bind(this);
     }
 
     async componentWillMount() {
@@ -133,56 +138,132 @@ export default class AjoutQuestion extends Component {
         //console.log(this.state.theme);
     }
 
-    handleSubmit(event) {
-        //console.log(this.state)
-        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/ajoutQuestion.php",
-            {
-                libelle: this.state.libelle,
-                nb_bonnerep: this.state.nb_br,
-                brep1: this.state.BRep1,
-                brep2: this.state.BRep2,
-                brep3: this.state.BRep3,
-                brep4: this.state.BRep4,
-                nb_mauvaiserep: this.state.nb_mr,
-                mrep1: this.state.MRep1,
-                mrep2: this.state.MRep2,
-                mrep3: this.state.MRep3,
-                mrep4: this.state.MRep4,
-                difficulte: this.state.difficulte,
-                theme: this.state.theme,
-            },
-            {withCredentials: true}
-        ).then(response => {
-            if (response.data.error) {
-                //console.log(response.data.error)
-                this.setState({
-                    echec: true,
-                })
-            } else {
-            //    console.log(response.data);
-                if (response.data.status === "Succes") console.log("yes " + response.data);
-                //this.handleSuccessfulAuth(response.data.user);
-                //this.props.history.push("/");
-                this.setState({
-                    libelle: "",
-                    nb_br: "1",
-                    BRep1: "",
-                    BRep2: "",
-                    BRep3: "",
-                    BRep4: "",
-                    nb_mr: "1",
-                    MRep1: "",
-                    MRep2: "",
-                    MRep3: "",
-                    MRep4: "",
-                    theme: "",
-                    difficulte: 1,
-                    reussite: true,
-                });
-                this.props.reload();
+    onChange(e) {
+        this.setState({file: e.target.files[0]})
+    }
+
+    async uploadFile(file) {
+        const formData = new FormData();
+        formData.append('file', file)
+
+        return await axios.post(this.UPLOAD_ENDPOINT, formData, {
+            headers: {
+                'content-type': 'multipart/form-data'
             }
-        })
-        event.preventDefault();
+        });
+    }
+
+   async handleSubmit(event) {
+        event.preventDefault()
+       let res = await this.uploadFile(this.state.file);
+       console.log(res);
+       if (res.data.status === "success" && (!(res.data.status === "error"))) {
+           this.setState({
+               success: true,
+               echec: false,
+           })
+           axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/ajoutQuestion.php",
+               {
+                   libelle: this.state.libelle,
+                   nb_bonnerep: this.state.nb_br,
+                   brep1: this.state.BRep1,
+                   brep2: this.state.BRep2,
+                   brep3: this.state.BRep3,
+                   brep4: this.state.BRep4,
+                   nb_mauvaiserep: this.state.nb_mr,
+                   mrep1: this.state.MRep1,
+                   mrep2: this.state.MRep2,
+                   mrep3: this.state.MRep3,
+                   mrep4: this.state.MRep4,
+                   difficulte: this.state.difficulte,
+                   theme: this.state.theme,
+                   url_image : res.data.url_fichier,
+               },
+               {withCredentials: true}
+           ).then(response => {
+               if (response.data.error) {
+                   console.log(response.data.error)
+                   this.setState({
+                       echec: true,
+                   })
+               } else {
+                   console.log(response.data);
+                   if (response.data.status === "Succes") console.log("yes " + response.data);
+                   //this.handleSuccessfulAuth(response.data.user);
+                   //this.props.history.push("/");
+                   this.setState({
+                       libelle: "",
+                       nb_br: "1",
+                       BRep1: "",
+                       BRep2: "",
+                       BRep3: "",
+                       BRep4: "",
+                       nb_mr: "1",
+                       MRep1: "",
+                       MRep2: "",
+                       MRep3: "",
+                       MRep4: "",
+                       theme: "",
+                       difficulte: 1,
+                       reussite: true,
+                       file : null,
+                   });
+               }
+           })
+       } else if (res.data.status === "error" && (!(res.data.status === "success"))) {
+           this.setState({
+               success: false,
+               echec: true,
+           })
+           axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/ajoutQuestion.php",
+               {
+                   libelle: this.state.libelle,
+                   nb_bonnerep: this.state.nb_br,
+                   brep1: this.state.BRep1,
+                   brep2: this.state.BRep2,
+                   brep3: this.state.BRep3,
+                   brep4: this.state.BRep4,
+                   nb_mauvaiserep: this.state.nb_mr,
+                   mrep1: this.state.MRep1,
+                   mrep2: this.state.MRep2,
+                   mrep3: this.state.MRep3,
+                   mrep4: this.state.MRep4,
+                   difficulte: this.state.difficulte,
+                   theme: this.state.theme,
+                   url_image : "null",
+               },
+               {withCredentials: true}
+           ).then(response => {
+               if (response.data.error) {
+                   console.log(response.data.error)
+                   this.setState({
+                       echec: true,
+                   })
+               } else {
+                   console.log(response.data);
+                   if (response.data.status === "Succes") console.log("yes " + response.data);
+                   //this.handleSuccessfulAuth(response.data.user);
+                   //this.props.history.push("/");
+                   this.setState({
+                       libelle: "",
+                       nb_br: "1",
+                       BRep1: "",
+                       BRep2: "",
+                       BRep3: "",
+                       BRep4: "",
+                       nb_mr: "1",
+                       MRep1: "",
+                       MRep2: "",
+                       MRep3: "",
+                       MRep4: "",
+                       theme: "",
+                       difficulte: 1,
+                       reussite: true,
+                       file : null,
+                   });
+               }
+           })
+       }
     }
 
     handleChange(event) {
@@ -214,13 +295,13 @@ export default class AjoutQuestion extends Component {
                     <thead>
                     <tr>
                         <th>Labelle :</th>
+                        <th>Image (non obligatoire)</th>
                         <th>Nombre de bonnes réponses</th>
                         <th>Bonne réponse</th>
                         <th>Nombre de mauvaises réponses    </th>
                         <th> Mauvaise réponse</th>
                         <th>Thème</th>
                         <th>Difficulté</th>
-                        <th></th>
 
                     </tr>
                     </thead>
@@ -229,6 +310,9 @@ export default class AjoutQuestion extends Component {
                         <td>
                             <textarea type="text" name="libelle" placeholder="Entrez une question"
                                    value={this.state.libelle} onChange={this.handleChange} required/>
+                        </td>
+                        <td>
+                            <input type="file" onChange={this.onChange}/>
                         </td>
 
                         <td>
@@ -273,8 +357,6 @@ export default class AjoutQuestion extends Component {
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
                             </select>
                         </td>
 
