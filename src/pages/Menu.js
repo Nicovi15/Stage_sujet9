@@ -51,6 +51,23 @@ export default class Menu extends Component {
             <div id={"menuQ"}>
 
                 <Tabs defaultActiveKey="1" >
+                    {/*
+                    <TabPane tab ="Tout" key={"Tout"}>
+                        <h2>Questionnaire portant sur toutes les questions</h2>
+                        <ul id={"niveau"}>
+                            <li> <Router><Link to={"/questionnaire/tout/1"}><Button id={"bu"} disabled={this.testDis(1)} icon={<FireFilled style={{ fontSize: '16px', color: '#15DC05' }} />}>Difficulté Niveau 1</Button></Link><Switch>
+                                <Route path="/questionnaire/:id/:dif" children={<TaskDetails/>} />
+                            </Switch></Router></li> <br/><br/>
+                            <li> <Router><Link to={"/questionnaire/tout/2"}><Button id={"bu"} disabled={this.testDis(2)}  icon={<FireFilled style={{ fontSize: '16px', color: '#C9C606' }} />}>Difficulté Niveau 2</Button></Link><Switch>
+                                <Route path="/:id/:dif" children={<TaskDetails/>} />
+                            </Switch></Router></li><br/><br/>
+                            <li> <Router><Link to={"/questionnaire/tout/3"}><Button id={"bu"} disabled={this.testDis(3)}  icon={<FireFilled style={{ fontSize: '16px', color: '#FCA801' }} />}>Difficulté Niveau 3</Button></Link><Switch>
+                                <Route path="/:id/:dif" children={<TaskDetails/>} />
+                            </Switch></Router></li><br/><br/>
+                        </ul>
+
+
+                    </TabPane>*/}
                     {this.state.theme.map(the => <TabPane tab={the} key={the}>
                         <h2>Questionnaire {the}</h2>
                         <ul id={"niveau"}>
