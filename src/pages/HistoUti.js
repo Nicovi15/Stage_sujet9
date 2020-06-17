@@ -177,7 +177,7 @@ export default class HistoQCM extends Component {
                 </div>
                 <br />
                 <Button onClick={this.afficheGraph} > Afficher/Cacher Graphique</Button>
-                <div >
+                <div hidden={ (this.state.afficheGraph)}>
                     <CanvasJSChart options = {options}
                         /* onRef={ref => this.chart = ref} */
                     />
