@@ -3,11 +3,9 @@ import {HashRouter as Router, Link, Redirect} from "react-router-dom";
 import 'antd/dist/antd.css';
 import axios from "axios";
 import { Checkbox , Button} from 'antd';
-import '../design/affichGen.scss'
-import AffichResCon from "../components/AffichResCon";
+import '../design/histoCont.scss'
 import CanvasJSReact from '../assets/canvasjs.react';
 import '../design/affichUti.scss'
-import AffichConPas from "../components/AffichConPas";
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 
@@ -141,12 +139,6 @@ export default class HistoCont extends Component {
         //console.log(this.state.theme);
     }
 
-    exportNote(num_cont){
-        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/exportResCont.php", {num_cont : this.state.num_cont,})
-
-                this.setState({num_cont});
-
-    }
 
     render() {
         if (this.props.loggedInStatus === "NOT_LOGGED_IN") {
@@ -156,7 +148,7 @@ export default class HistoCont extends Component {
 
         return (
             <div id={"content"}>
-                <div id={"affichGen3"}>
+                <div id={"HistoCont"}>
                     <a href={"https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/exportResCont.php?id="+ this.props.match.params.id}><Button
                        >Exporter les notes</Button></a>
                     <h1>Résultats du contrôle N°{ this.props.match.params.id}</h1>
@@ -165,19 +157,14 @@ export default class HistoCont extends Component {
                     <table border="1px" >
                         <thead  >
                         <tr>
-                            <th>Num Uti</th>
-                            <th>Pseudo</th>
                             <th>Nom</th>
                             <th>Prénom</th>
                             <th>Score</th>
                         </tr>
-
                         </thead>
                         <tbody>
 
                         {this.state.controles.map(cont => <tr>
-                            <td>{cont.num_uti}</td>
-                            <td>{cont.pseudo}</td>
                             <td>{cont.nom}</td>
                             <td>{cont.prenom}</td>
                             <td>{cont.score}/10</td>

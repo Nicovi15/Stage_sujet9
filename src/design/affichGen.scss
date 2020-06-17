@@ -1,17 +1,17 @@
-#affichGen{
+#affichGen {
 
-  margin:auto;
+  margin: auto;
   overflow: auto;
   padding-bottom: 50px;
   text-align: center;
 
 
-  .chbox{
+  .chbox {
     margin: auto;
 
   }
 
-  table{
+  table {
 
     text-align: center;
     width: 100%;
@@ -22,19 +22,20 @@
     border-bottom: none;
     max-height: 600px;
     background-color: white;
-    margin:auto;
+    margin: auto;
     overflow: auto;
 
     thead {
 
-      border-color: grey ;
+      border-color: grey;
 
-      tr{
+      tr {
         border-color: grey;
 
 
       }
-      th{
+
+      th {
         background-color: white;
         border-left: none;
         top: 0px;
@@ -44,60 +45,63 @@
 
       }
 
-      th:nth-child(1){
+      th:nth-child(1) {
         width: 5%;
 
       }
-      th:nth-child(2){
+
+      th:nth-child(2) {
         width: 20%;
 
       }
-      th:nth-child(3){
+
+      th:nth-child(3) {
         width: 5%;
       }
-      th:nth-child(4){
+
+      th:nth-child(4) {
         width: 5%;
       }
-      th:nth-child(5){
+
+      th:nth-child(5) {
         width: 5%;
       }
-      th:nth-child(6){
+
+      th:nth-child(6) {
         width: 5%;
       }
-      th:nth-child(7){
+
+      th:nth-child(7) {
         width: 20%;
       }
-      th:nth-child(8){
+
+      th:nth-child(8) {
         width: 15%;
       }
-      th:nth-child(9){
+
+      th:nth-child(9) {
         width: 10%;
       }
-      th:nth-child(10){
+
+      th:nth-child(10) {
         width: 10%;
       }
-
-
-
-
-
-
-
 
     }
-    tbody{
+
+    tbody {
 
 
-      td{
+      td {
 
-        border-top:none;
-       border-color: gray;
+        border-top: none;
+        border-color: gray;
         text-align: center;
-        border-left: none ;
+        border-left: none;
 
       }
 
-      tr:hover{
+      tr:hover {
         background-color: #f5f5f5;
       }
 
@@ -107,19 +111,19 @@
   }
 }
 
-#affichGen2{
+#affichGen2 {
 
-  margin:auto;
+  margin: auto;
   overflow: auto;
   padding-bottom: 50px;
 
 
-  .chbox{
+  .chbox {
     margin: auto;
 
   }
 
-  table{
+  table {
 
     width: 100%;
     border-radius: 7px;
@@ -128,19 +132,20 @@
     border-bottom: none;
     max-height: 1000px;
     background-color: white;
-    margin:auto;
+    margin: auto;
     overflow: auto;
 
     thead {
 
-      border-color: grey ;
+      border-color: grey;
 
-      tr{
+      tr {
         border-color: grey;
 
 
       }
-      th{
+
+      th {
         background-color: white;
         border-left: none;
         top: 0px;
@@ -151,28 +156,26 @@
       }
 
 
-
-      th:nth-child(2){
-        width:30%;
+      th:nth-child(2) {
+        width: 30%;
       }
-
-
 
 
     }
-    tbody{
+
+    tbody {
 
 
-      td{
+      td {
 
-        border-top:none;
+        border-top: none;
         border-color: gray;
         text-align: center;
-        border-left: none ;
+        border-left: none;
 
       }
 
-      tr:hover{
+      tr:hover {
         background-color: #f5f5f5;
       }
 
@@ -183,28 +186,29 @@
 }
 
 
-#affichGen3{
+#affichGen3 {
 
-  table{
+  table {
     padding-left: 32%;
     text-align: center;
     width: 100%;
     display: block;
     max-height: 600px;
     background-color: white;
-    margin:auto;
+    margin: auto;
     overflow: auto;
 
     thead {
 
-      border-color: grey ;
+      border-color: grey;
 
-      tr{
+      tr {
         border-color: grey;
 
 
       }
-      th{
+
+      th {
         background-color: white;
         top: 0px;
         z-index: 10;
@@ -214,27 +218,25 @@
       }
 
 
-
-      th:nth-child(2){
-        width:30%;
+      th:nth-child(2) {
+        width: 30%;
       }
 
 
-
-
     }
-    tbody{
+
+    tbody {
 
 
-      td{
+      td {
 
-        border-top:none;
+        border-top: none;
         border-color: gray;
         text-align: center;
 
       }
 
-      tr:hover{
+      tr:hover {
         background-color: #f5f5f5;
       }
 
