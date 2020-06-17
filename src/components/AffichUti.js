@@ -158,6 +158,7 @@ export default class AffichUti extends Component {
                         <th>Pseudo</th>
                         <th>Nom</th>
                         <th>Prénom</th>
+                        <th>Niveau</th>
                         <th>Email</th>
                         <th>Promo</th>
                         <th>Historiques QCM</th>
@@ -174,6 +175,7 @@ export default class AffichUti extends Component {
                                                                        pseudo={uti.pseudo}
                                                                        nom={uti.nom}
                                                                        prenom={uti.prenom}
+                                                                       niveau={uti.niveau}
                                                                        email={uti.email}
                                                                        promo={uti.promo}
                                                                        user={uti}

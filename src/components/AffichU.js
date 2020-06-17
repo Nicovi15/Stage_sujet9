@@ -115,6 +115,7 @@ export default class AffichQuest extends Component {
                     <td>{this.props.pseudo}</td>
                     <td>{this.props.nom}</td>
                     <td>{this.props.prenom}</td>
+                    <td>{this.props.niveau}</td>
                     <td>{this.props.email}</td>
                     <td>{this.props.promo}</td>
                     <td><Router><Link to={"/histoUti/"+this.props.num_uti}><Button>Afficher</Button></Link></Router></td>
