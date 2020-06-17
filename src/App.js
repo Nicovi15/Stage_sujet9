@@ -120,7 +120,7 @@ class App extends Component {
                             )}
                         />
                         <Route path="/inscription" component={Inscription}/>
-                        <Route 
+                        <Route
                             path="/accueil"
                             render={props =>(
                                 <Accueil {...props}
@@ -129,7 +129,7 @@ class App extends Component {
                                     user={this.state.user}
                                     loggedInStatus={this.state.loggedInStatus}/>
                                 )}
-                        /> 
+                        />
                         <Route
                             path="/dashboard"
                             render={props => (
@@ -149,7 +149,7 @@ class App extends Component {
                                           loggedInStatus={this.state.loggedInStatus}/>
                             )}
                         />
-                        <Route path="/histoUti" render={props=>(<HistoUti  {... props} user={this.state.user}/>)}/>
+                        <Route path="/histoUti/:id" render={props=>(<HistoUti  {... props} user={this.state.user}/>)}/>
                         <Route path="/menu" render={props=>(<Menu  {... props} user={this.state.user}/>)}/>
                         <Route path="/questionnaire/:id/:dif" render={props=> (<TaskDetails user={this.state.user} update={this.updateUser}/>)}/>
                         <Route path="/controle/:id" render={props=> (<TaskDetails2 user={this.state.user}/>)}/>

@@ -117,7 +117,7 @@ export default class AffichQuest extends Component {
                     <td>{this.props.prenom}</td>
                     <td>{this.props.email}</td>
                     <td>{this.props.promo}</td>
-                    <td><Button onClick={<Router><Link to={"/histoUti"}></Link></Router>}>Afficher</Button></td>
+                    <td><Router><Link to={"/histoUti/"+this.props.num_uti}><Button>Afficher</Button></Link></Router></td>
                     <td><Button onClick={this.handleDeleteB}>Supprimer</Button></td>
 
                 </tr>
