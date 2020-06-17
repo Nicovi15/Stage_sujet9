@@ -24,6 +24,9 @@ export default class HistoCont extends Component {
             checkedValues: [],
             indeterminate: true,
             checkAll: false,
+            note_min : 10,
+            note_max : 0,
+            moyenne : 0,
         }
         this.onChange = this.onChange.bind(this);
         this.reloadQuest2 = this.reloadQuest2.bind(this);
@@ -90,16 +93,36 @@ export default class HistoCont extends Component {
         }
     }
 
+
+
     async componentDidMount(){
+        var note_min = 10;
+        var note_max = 0;
+        var somme=0;
+        var nb = 0;
+        var moy = 0;
         var controles=[];
-        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getcontrolespass.php")
+        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getresbyid.php",{
+            num_cont : this.props.num_cont,
+        })
             .then(res => {
                 // console.log(res);
-                // console.log(res.data);
+                //console.log(res.data);
                 res.data.map(donne =>{
                     controles.push(donne);
+                    if(donne.score<note_min) note_min = donne.score;
+                    if(donne.score>note_max) note_max = donne.score;
+                    somme += parseFloat(donne.score);
+                    nb++;
                 });
+                console.log(somme);
+                moy = (somme / nb);
                 this.setState({controles},);
+                this.setState({
+                    note_min : note_min,
+                    note_max : note_max,
+                    moyenne : moy,
+                })
                 console.log(this.state);
             })
 
@@ -124,35 +147,36 @@ export default class HistoCont extends Component {
         }
 
         return (
-            <div id={"selectCont"}>
-                <h1>Résultat des contrôles</h1>
+            <div id={"content"}>
+                <div id={"affichGen3"}>
+                    <h1>Résultats du contrôle N°{this.props.num_cont}</h1>
+                    <p>Note min : {this.state.note_min}  Note max : {this.state.note_max}  Moyenne : {this.state.moyenne}</p>
 
-                <table border="1px" >
-                    <thead  >
-                    <tr>
-                        <th>Num Controles</th>
-                        <th>Thème</th>
-                        <th>Difficulté</th>
-                        <th>Durée</th>
-                        <th>Date</th>
-                        <th>Résultat</th>
-                    </tr>
+                    <table border="1px" >
+                        <thead  >
+                        <tr>
+                            <th>Num Uti</th>
+                            <th>Pseudo</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Score</th>
+                        </tr>
 
-                    </thead>
-                    <tbody>
+                        </thead>
+                        <tbody>
 
-                    {this.state.controles.map(cont => <AffichConPas key={cont}
-                                                                    num_cont={cont.num_cont}
-                                                                    theme={cont.theme}
-                                                                    duree={cont.temps}
-                                                                    difficulte={cont.difficulte}
-                                                                    date = {cont.datetime}
-                        />
-                    )}
-                    </tbody>
+                        {this.state.controles.map(cont => <tr>
+                            <td>{cont.num_uti}</td>
+                            <td>{cont.pseudo}</td>
+                            <td>{cont.nom}</td>
+                            <td>{cont.prenom}</td>
+                            <td>{cont.score}/10</td>
+                        </tr>)}
+                        </tbody>
 
-                </table>
+                    </table>
 
+                </div>
             </div>
         );
     }
