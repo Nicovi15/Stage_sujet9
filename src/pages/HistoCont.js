@@ -91,6 +91,8 @@ export default class HistoCont extends Component {
 
 
         }
+
+
     }
 
 
@@ -139,6 +141,12 @@ export default class HistoCont extends Component {
         //console.log(this.state.theme);
     }
 
+    exportNote(num_cont){
+        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/exportResCont.php", {num_cont : this.state.num_cont,})
+
+                this.setState({num_cont});
+
+    }
 
     render() {
         if (this.props.loggedInStatus === "NOT_LOGGED_IN") {
@@ -149,6 +157,8 @@ export default class HistoCont extends Component {
         return (
             <div id={"content"}>
                 <div id={"affichGen3"}>
+                    <Button
+                        onClick={()=>this.exportNote(this.state.num_cont)}>Exporter les notes</Button>
                     <h1>Résultats du contrôle N°{ this.props.match.params.id}</h1>
                     <p>Note min : {this.state.note_min}  Note max : {this.state.note_max}  Moyenne : {this.state.moyenne}</p>
 
