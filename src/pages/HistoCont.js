@@ -157,8 +157,8 @@ export default class HistoCont extends Component {
         return (
             <div id={"content"}>
                 <div id={"affichGen3"}>
-                    <Button
-                        onClick={()=>this.exportNote(this.state.num_cont)}>Exporter les notes</Button>
+                    <a href={"https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/exportResCont.php?id="+this.state.num_cont}><Button
+                       >Exporter les notes</Button></a>
                     <h1>Résultats du contrôle N°{ this.props.match.params.id}</h1>
                     <p>Note min : {this.state.note_min}  Note max : {this.state.note_max}  Moyenne : {this.state.moyenne}</p>
 
