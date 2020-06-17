@@ -19,6 +19,8 @@ export default class HistoUti extends Component {
         });
     }
 
+    
+
 render(){
     return(
             <h1>Je suis la page d'historique utilisateur + {this.state.id}</h1>
