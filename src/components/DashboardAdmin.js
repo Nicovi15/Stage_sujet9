@@ -182,11 +182,11 @@ export default class DashboardAdmin extends Component {
 
                 <Tabs id={"TabA"} defaultActiveKey="1"  >
                     <TabPane tab="Utilisateurs" key="1">
-                        <h2>Gestion des utilisateurs</h2>
+
                         <AffichUti promo={this.state.promo} usera={this.props.user}/>
                     </TabPane>
                     <TabPane tab="Promo" key="2">
-                        <h2>Gestion des Promos</h2>
+
                         <div>
                             <h3>Ajouter une promo</h3>
                         <form onSubmit={this.handleSubmitPromo}>
@@ -220,7 +220,7 @@ export default class DashboardAdmin extends Component {
 
                     </TabPane>
                     <TabPane tab="Theme" key="3">
-                        <h2>Gestion des Thèmes</h2>
+
                         <div>
                             <h3>Ajouter un thème</h3>
                             <form onSubmit={this.handleSubmitTheme}>
@@ -261,7 +261,7 @@ export default class DashboardAdmin extends Component {
                         </div>
                     </TabPane>
                     <TabPane tab="Gestion des contrôles" key="4">
-                        <h2>Gestion des contrôles</h2>
+
                         <GestionControle/>
                     </TabPane>
                     <TabPane tab="Résultat des contrôles" key="5">

@@ -154,8 +154,6 @@ export default class AffichUti extends Component {
                 <table border="1px" >
                     <thead  >
                     <tr>
-                        <th>Num uti</th>
-                        <th>Pseudo</th>
                         <th>Nom</th>
                         <th>Prénom</th>
                         <th>Niveau</th>

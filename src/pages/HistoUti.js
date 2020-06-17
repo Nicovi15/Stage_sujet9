@@ -157,6 +157,7 @@ export default class HistoUti extends Component {
         }
         return (
             <div id={"affichGen2"}>
+
                 <div id={"selection"}>
                     <div className="site-checkbox-all-wrapper">
                         <Checkbox class={"chbox"}

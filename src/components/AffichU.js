@@ -111,8 +111,6 @@ export default class AffichQuest extends Component {
         return (
             <>
                 <tr>
-                    <td>{this.props.num_uti}</td>
-                    <td>{this.props.pseudo}</td>
                     <td>{this.props.nom}</td>
                     <td>{this.props.prenom}</td>
                     <td>{this.props.niveau}</td>
