@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {HashRouter as Router, Link, Redirect} from "react-router-dom";
-
 import 'antd/dist/antd.css';
 import axios from "axios";
 import { Checkbox , Button} from 'antd';
@@ -11,7 +10,7 @@ import '../design/affichUti.scss'
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 
-export default class HistoQCM extends Component {
+export default class HistoUti extends Component {
 
 
     constructor(props) {

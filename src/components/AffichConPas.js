@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Redirect} from "react-router-dom";
+import {HashRouter as Router, Link, Redirect} from "react-router-dom";
 import 'antd/dist/antd.css';
 import axios from "axios";
 import {Button } from 'antd';
@@ -128,7 +128,7 @@ export default class AffichConPas extends Component {
                     <td>{this.props.difficulte}</td>
                     <td>{this.props.duree}</td>
                     <td>{this.props.date}</td>
-                    <td><Bmodif modif={this.state.modifier} onClick={this.handleChangeModif}/></td>
+                    <td><Router><Link to={"/histoCont/"+this.props.num_cont}><Button>Afficher</Button></Link></Router></td>
 
                 </tr>
                 <tr>
