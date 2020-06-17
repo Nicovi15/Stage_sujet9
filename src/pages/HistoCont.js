@@ -103,7 +103,7 @@ export default class HistoCont extends Component {
         var moy = 0;
         var controles=[];
         axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getresbyid.php",{
-            num_cont : this.props.num_cont,
+            num_cont : this.props.match.params.id,
         })
             .then(res => {
                 // console.log(res);
@@ -149,7 +149,7 @@ export default class HistoCont extends Component {
         return (
             <div id={"content"}>
                 <div id={"affichGen3"}>
-                    <h1>Résultats du contrôle N°{this.props.num_cont}</h1>
+                    <h1>Résultats du contrôle N°{ this.props.match.params.id}</h1>
                     <p>Note min : {this.state.note_min}  Note max : {this.state.note_max}  Moyenne : {this.state.moyenne}</p>
 
                     <table border="1px" >
