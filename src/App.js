@@ -11,6 +11,7 @@ import Menu from "./pages/Menu";
 import Questionnaire from "./pages/Questionnaire";
 import Cours from "./pages/Cours";
 import Accueil from "./pages/Accueil";
+import HistoUti from "./pages/HistoUti"
 import TaskDetails from "./components/TaskDetails";
 import TaskDetails2 from "./components/TaskDetails2";
 import GestionQ from "./pages/GestionQ";
@@ -148,6 +149,7 @@ class App extends Component {
                                           loggedInStatus={this.state.loggedInStatus}/>
                             )}
                         />
+                        <Route path="/histoUti" render={props=>(<HistoUti  {... props} user={this.state.user}/>)}/>
                         <Route path="/menu" render={props=>(<Menu  {... props} user={this.state.user}/>)}/>
                         <Route path="/questionnaire/:id/:dif" render={props=> (<TaskDetails user={this.state.user} update={this.updateUser}/>)}/>
                         <Route path="/controle/:id" render={props=> (<TaskDetails2 user={this.state.user}/>)}/>
