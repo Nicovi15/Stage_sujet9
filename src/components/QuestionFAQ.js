@@ -46,6 +46,31 @@ export default class QuestionFAQ extends Component {
       });
   }
 
+  async updateUser(num_uti){
+      await axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getinfouser.php",
+            {
+                num_uti :num_uti,
+            },
+            {withCredentials: true}
+        ).then(response => {
+            if ( response.data.error ) {
+                //console.log(response.data);
+                this.setState({
+                    echec : true,
+                });
+            }
+            else {
+              //console.log(response.data.user.pseudo);
+                if(response.data.status === "Succes"){
+                    this.setState({
+                        user : response.data.user.pseudo,
+                    });
+                      console.log(this.state.user);
+                }
+            }
+        })
+    }
+
   repondre=(event)=>{
   //  console.log("reponse "+this.state.reponse);
     axios.post("https://devweb.iutmetz.univ-lorraine.fr/~cazzoli2u/quizzuml/AnswerQuestionFAQ.php",

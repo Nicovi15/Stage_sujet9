@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import QuestionFAQ from "../components/QuestionFAQ";
+import QuestionFAQbis from "../components/QuestionFAQbis";
 
 export default class App extends Component {
   constructor() {
@@ -9,20 +10,23 @@ export default class App extends Component {
       this.state = {
           question:[],
           libelle:"",
+          user:"",
+          // questions:[{user:"",libelle:"",}]
+
       };
 
   }
 
   async componentDidMount(){
     await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~cazzoli2u/quizzuml/getQuestionFAQ.php").then(response => {
-
         var question=[];
         response.data.map(quest =>{
           question.push(quest);
+           //console.log("quest"+quest);
         });
         this.setState({question});
       });
-    //  console.log(this.props.user);
+
     }
 
     handleSubmit=(event)=> {
@@ -57,6 +61,7 @@ export default class App extends Component {
 
 
     render() {
+      console.log("reponse"+this.state.reponse);
       let addq;
       if(this.props.user.admin=="1")
         addq=<div></div>;
@@ -70,15 +75,30 @@ export default class App extends Component {
            <div class="form-example">
              <input  type="submit"  value="Envoyer"/>
            </div>
-         </form>;
-        </div>
+         </form>
+        </div>;
       }
         return (
         <div key="page">
           {addq}
           <div key ="FAQ">
-          {this.state.question.map(q=>
-            <QuestionFAQ admin={this.props.user.admin} key ={q.idQuestionFAQ} idQuestion={q.idQuestionFAQ} question={q.libelle} reponse={q.Reponse}/>)}
+          <table border-bottom="1px" id={"TabC"} >
+              <thead>
+              <tr>
+                  <th>Question</th>
+                  <th>Utilisateur</th>
+                  <th>voir réponse</th>
+              </tr>
+              </thead>
+
+          <tbody>
+            {this.state.question.map(q=>
+                                <QuestionFAQbis id={q.idQuestionFAQ} libelle={q.libelle} num_uti={q.num_uti} admin={this.props.user.admin} reponse={q.Reponse}/>
+                              )}
+
+                      </tbody>
+
+                      </table>
         </div>
       </div>
         );
