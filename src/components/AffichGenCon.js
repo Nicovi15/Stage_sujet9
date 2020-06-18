@@ -80,7 +80,7 @@ export default class AffichGenCon extends Component {
                     if(response.data.status === "Succes") console.log("yes "+response.data);
                     //this.handleSuccessfulAuth(response.data.user);
                     //this.props.history.push("/");
-                    this.reloadQuest2();
+                    //this.reloadQuest2();
                 }
             });
 
