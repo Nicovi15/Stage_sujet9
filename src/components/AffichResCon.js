@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Redirect} from "react-router-dom";
 import 'antd/dist/antd.css';
 import axios from "axios";
-import '../design/selectCont.scss'
+import '../design/affichResCon.scss'
 import AffichConPas from "./AffichConPas";
 
 
@@ -121,7 +121,7 @@ export default class AffichResCon extends Component {
         }
 
         return (
-            <div id={"selectCont"}>
+            <div id={"affichResCon"}>
                 <h1>Résultat des contrôles</h1>
 
                 <table border="1px" >
