@@ -1,14 +1,15 @@
 import React, {Component} from 'react'
-import {Redirect} from "react-router-dom";
+import {HashRouter as Router, Link, Redirect} from "react-router-dom";
 import 'antd/dist/antd.css';
 import axios from "axios";
-import '../design/affichResCon.scss'
-import AffichConPas from "./AffichConPas";
+import { Checkbox , Button} from 'antd';
+import '../design/histoCont.scss'
+import CanvasJSReact from '../assets/canvasjs.react';
+import '../design/affichUti.scss'
+var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 
-
-
-export default class AffichResCon extends Component {
+export default class HistoCont extends Component {
 
 
     constructor(props) {
@@ -21,6 +22,9 @@ export default class AffichResCon extends Component {
             checkedValues: [],
             indeterminate: true,
             checkAll: false,
+            note_min : 10,
+            note_max : 0,
+            moyenne : 0,
         }
         this.onChange = this.onChange.bind(this);
         this.reloadQuest2 = this.reloadQuest2.bind(this);
@@ -85,18 +89,40 @@ export default class AffichResCon extends Component {
 
 
         }
+
+
     }
 
+
+
     async componentDidMount(){
+        var note_min = 10;
+        var note_max = 0;
+        var somme=0;
+        var nb = 0;
+        var moy = 0;
         var controles=[];
-        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getcontrolespass.php")
+        axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getresbyid.php",{
+            num_cont : this.props.match.params.id,
+        })
             .then(res => {
                 // console.log(res);
-                // console.log(res.data);
+                //console.log(res.data);
                 res.data.map(donne =>{
                     controles.push(donne);
+                    if(donne.score<note_min) note_min = donne.score;
+                    if(donne.score>note_max) note_max = donne.score;
+                    somme += parseFloat(donne.score);
+                    nb++;
                 });
+                console.log(somme);
+                moy = (somme / nb);
                 this.setState({controles},);
+                this.setState({
+                    note_min : note_min,
+                    note_max : note_max,
+                    moyenne : moy,
+                })
                 console.log(this.state);
             })
 
@@ -121,36 +147,35 @@ export default class AffichResCon extends Component {
         }
 
         return (
-            <div id={"affichResCon"}>
-                <h1>Résultat des contrôles</h1>
+            <div id={"content"}>
+                <div id={"HistoCont"}>
+                    <a href={"https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/exportResCont.php?id="+ this.props.match.params.id}><Button
+                       >Exporter les notes</Button></a>
+                    <h1>Résultats du contrôle N°{ this.props.match.params.id}</h1>
+                    <p>Note min : {this.state.note_min}  Note max : {this.state.note_max}  Moyenne : {this.state.moyenne}</p>
 
-                <table border="1px" >
-                    <thead  >
-                    <tr>
-                        <th>Num Controles</th>
-                        <th>Thème</th>
-                        <th>Difficulté</th>
-                        <th>Durée</th>
-                        <th>Date</th>
-                        <th>Résultat</th>
-                    </tr>
+                    <table border="1px" >
+                        <thead  >
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Score</th>
+                        </tr>
+                        </thead>
+                        <tbody>
 
-                    </thead>
-                    <tbody>
+                        {this.state.controles.map(cont => <tr>
+                            <td>{cont.nom}</td>
+                            <td>{cont.prenom}</td>
+                            <td>{cont.score}/10</td>
+                        </tr>)}
+                        </tbody>
 
-                    {this.state.controles.map(cont => <AffichConPas key={cont}
-                                                                    num_cont={cont.num_cont}
-                                                                    theme={cont.theme}
-                                                                    duree={cont.temps}
-                                                                    difficulte={cont.difficulte}
-                                                                    date = {cont.datetime}
-                        />
-                        )}
-                    </tbody>
+                    </table>
 
-                </table>
-
+                </div>
             </div>
         );
     }
+
 }

@@ -154,10 +154,9 @@ export default class AffichUti extends Component {
                 <table border="1px" >
                     <thead  >
                     <tr>
-                        <th>Num uti</th>
-                        <th>Pseudo</th>
                         <th>Nom</th>
                         <th>Prénom</th>
+                        <th>Niveau</th>
                         <th>Email</th>
                         <th>Promo</th>
                         <th>Historiques QCM</th>
@@ -174,6 +173,7 @@ export default class AffichUti extends Component {
                                                                        pseudo={uti.pseudo}
                                                                        nom={uti.nom}
                                                                        prenom={uti.prenom}
+                                                                       niveau={uti.niveau}
                                                                        email={uti.email}
                                                                        promo={uti.promo}
                                                                        user={uti}

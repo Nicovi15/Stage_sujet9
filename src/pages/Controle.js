@@ -59,10 +59,10 @@ export default class Controle extends Component {
             commencer: false,
             test: false,
             dif:null,
-            theme:null,
             duree:0,
             th:"",
             statut : "",
+            theme : [],
         };
         this.setRes = this.setRes.bind(this);
         this.verif = this.verif.bind(this);
@@ -89,6 +89,7 @@ export default class Controle extends Component {
 
     async loadQuestion(){
         var statut ="";
+        var th = null;
         var controle = [];
         axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/testcont.php",
             {
@@ -120,29 +121,32 @@ export default class Controle extends Component {
             })
         //console.log(controle.num_theme + controle.difficulte);
         var theme = [];
-        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~cazzoli2u/quizzuml/getTheme.php")
+        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/gettheme.php")
             .then(res => {
                 // console.log(res);
-                // console.log(res.data);
+                 console.log(res.data);
                 res.data.map(donne => {
                     theme.push(donne.libelle);
+                    if(donne.num_theme == controle.num_theme) th=donne.libelle;
                 });
                 this.setState({theme});
             })
-        this.setState({th : "de " +this.state.theme[controle.num_theme-1],
+        this.setState({th : "de " +th,
             dif : parseInt(controle.difficulte),
             duree : parseInt(controle.temps),});
         if(statut === "bon") {
             var questions = [];
             var qchoi = [];
             var qchoisies = [];
+            console.log(this.state.theme);
+            console.log("theme choisi : " + th);
             await axios.post("https://devweb.iutmetz.univ-lorraine.fr/~vivier19u/quizzuml/getquestions3.php", {
-                theme: this.state.theme[controle.num_theme-1],
+                theme: th,
                 dif: parseInt(controle.difficulte),
             })
                 .then(res => {
                      //console.log(res);
-                    // console.log(res.data);
+                     console.log(res.data);
                     res.data.map(donne => {
                         questions.push(donne);
                     });

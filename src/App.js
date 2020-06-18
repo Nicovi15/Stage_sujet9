@@ -11,6 +11,8 @@ import Menu from "./pages/Menu";
 import Questionnaire from "./pages/Questionnaire";
 import Cours from "./pages/Cours";
 import Accueil from "./pages/Accueil";
+import HistoUti from "./pages/HistoUti"
+import HistoCont from "./pages/HistoCont"
 import TaskDetails from "./components/TaskDetails";
 import TaskDetails2 from "./components/TaskDetails2";
 import GestionQ from "./pages/GestionQ";

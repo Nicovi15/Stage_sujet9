@@ -4,7 +4,7 @@ import 'antd/dist/antd.css';
 import axios from "axios";
 import { Button } from 'antd';
 import HistoQCM from "./HistoQCM";
-
+import {HashRouter as Router, Link, Route, Switch} from "react-router-dom";
 
 function Bmodif(props) {
 
@@ -111,13 +111,12 @@ export default class AffichQuest extends Component {
         return (
             <>
                 <tr>
-                    <td>{this.props.num_uti}</td>
-                    <td>{this.props.pseudo}</td>
                     <td>{this.props.nom}</td>
                     <td>{this.props.prenom}</td>
+                    <td>{this.props.niveau}</td>
                     <td>{this.props.email}</td>
                     <td>{this.props.promo}</td>
-                    <td><Bmodif modif={this.state.modifier} onClick={this.handleChangeModif}/></td>
+                    <td><Router><Link to={"/histoUti/"+this.props.num_uti} target={"_blank"}><Button>Afficher</Button></Link></Router></td>
                     <td><Button onClick={this.handleDeleteB}>Supprimer</Button></td>
 
                 </tr>
