@@ -17,6 +17,7 @@ import GestionQ from "./pages/GestionQ";
 import {Container} from "react-bootstrap";
 import BarreNavigation from "./components/BarreNavigation";
 import './design/app.scss'
+import FAQ from "./pages/FAQ";
 
 class App extends Component {
 
@@ -119,7 +120,7 @@ class App extends Component {
                             )}
                         />
                         <Route path="/inscription" component={Inscription}/>
-                        <Route 
+                        <Route
                             path="/accueil"
                             render={props =>(
                                 <Accueil {...props}
@@ -128,7 +129,7 @@ class App extends Component {
                                     user={this.state.user}
                                     loggedInStatus={this.state.loggedInStatus}/>
                                 )}
-                        /> 
+                        />
                         <Route
                             path="/dashboard"
                             render={props => (
@@ -148,6 +149,16 @@ class App extends Component {
                                           loggedInStatus={this.state.loggedInStatus}/>
                             )}
                         />
+                        <Route
+                          path="/FAQ"
+                          render={props =>(
+                              <FAQ {...props}
+                                  handleLogin={this.handleLogin}
+                                  handleLogout={this.handleLogout}
+                                  user={this.state.user}
+                                  loggedInStatus={this.state.loggedInStatus}/>
+                              )}
+                      />
                         <Route path="/menu" render={props=>(<Menu  {... props} user={this.state.user}/>)}/>
                         <Route path="/questionnaire/:id/:dif" render={props=> (<TaskDetails user={this.state.user} update={this.updateUser}/>)}/>
                         <Route path="/controle/:id" render={props=> (<TaskDetails2 user={this.state.user}/>)}/>

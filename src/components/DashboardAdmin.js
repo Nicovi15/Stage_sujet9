@@ -7,6 +7,8 @@ import GestionControle from "./GestionControle";
 import AffichResCon from "./AffichResCon";
 import axios from "axios";
 const { TabPane } = Tabs;
+// import { Table } from 'antd';
+// import { ColumnsType } from 'antd/es/table';
 
 
 export default class DashboardAdmin extends Component {
@@ -24,6 +26,7 @@ export default class DashboardAdmin extends Component {
             reussiteTheme : "",
             erreurTheme : "",
             visible : "oui",
+            donneTable:[],
         };
 
     }
@@ -161,6 +164,10 @@ export default class DashboardAdmin extends Component {
                 });
                 this.setState({promo},);
             })
+        promo.map(personne =>{
+          console.log("un gens");
+          console.log(personne);
+        })
 
         var theme = [];
         await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/getTheme.php")

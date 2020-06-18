@@ -269,8 +269,8 @@ export default class AjoutQuestion extends Component {
     }
 
     handleChange(event) {
-        //console.log("value ",event.target.value);
-        //console.log("name ",event.target.name);
+        console.log("value ",event.target.value);
+        console.log("name ",event.target.name);
         this.setState({
             [event.target.name]: event.target.value
         })

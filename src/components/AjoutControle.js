@@ -65,7 +65,7 @@ export default class AjoutControle extends Component {
     }
 
     handleSubmit(event) {
-        console.log(this.state)
+        //console.log(this.state)
         axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/ajoutControle.php",
             {
                 duree : this.state.duree,

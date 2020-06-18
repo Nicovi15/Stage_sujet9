@@ -45,6 +45,9 @@ function Menaff(props) {
                 <Menu.Item key="dashboard2">
                     <Router><Link to="/dashboard"> <DashboardOutlined/> Dashboard</Link></Router>
                 </Menu.Item>
+                <Menu.Item  key="FAQ">
+                  <Router><Link to="/FAQ"><CheckCircleOutlined/>FAQ</Link></Router>
+              </Menu.Item>
 
                 <li className={"spacer"}></li>
 
@@ -90,6 +93,9 @@ function Menaff(props) {
                 <Menu.Item  key="dashboard2">
                     <Router><Link to="/dashboard"> <DashboardOutlined/> Dashboard</Link></Router>
                 </Menu.Item>
+                <Menu.Item  key="FAQ">
+                  <Router><Link to="/FAQ"><CheckCircleOutlined/>FAQ</Link></Router>
+              </Menu.Item>
 
                 <li className={"spacer"}></li>
                 <Menu.Item  key="arche">
@@ -183,7 +189,3 @@ export default class BarreNavigation extends Component {
 
 
 }
-
-
-
-
