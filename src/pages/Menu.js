@@ -71,13 +71,13 @@ export default class Menu extends Component {
                     {this.state.theme.map(the =>{ if(the.visible==="oui") return <><TabPane tab={the.libelle} key={the.libelle}>
                         <h2>Questionnaire {the.libelle}</h2>
                         <ul id={"niveau"}>
-                            <li> <Router><Link to={"/questionnaire/"+the.libelle+"/1"}><Button id={"bu"} disabled={this.testDis(1)} icon={<FireFilled style={{ fontSize: '16px', color: '#15DC05' }} />}>Difficulté Niveau 1</Button></Link><Switch>
+                            <li> <Router><Link to={"/questionnaire/"+the.libelle+"/1"}><Button id={"bu"} disabled={this.testDis(1)} icon={<FireFilled style={{ fontSize: '20px', color: '#00FF00' }} />}>Difficulté Niveau 1</Button></Link><Switch>
                                 <Route path="/questionnaire/:id/:dif" children={<TaskDetails/>} />
                             </Switch></Router></li> <br/><br/>
-                            <li> <Router><Link to={"/questionnaire/"+the.libelle+"/2"}><Button id={"bu"} disabled={this.testDis(2)}  icon={<FireFilled style={{ fontSize: '16px', color: '#C9C606' }} />}>Difficulté Niveau 2</Button></Link><Switch>
+                            <li> <Router><Link to={"/questionnaire/"+the.libelle+"/2"}><Button id={"bu"} disabled={this.testDis(2)}  icon={<FireFilled style={{ fontSize: '20px', color: '#FF7F00' }} />}>Difficulté Niveau 2</Button></Link><Switch>
                                 <Route path="/:id/:dif" children={<TaskDetails/>} />
                             </Switch></Router></li><br/><br/>
-                            <li> <Router><Link to={"/questionnaire/"+the.libelle+"/3"}><Button id={"bu"} disabled={this.testDis(3)}  icon={<FireFilled style={{ fontSize: '16px', color: '#FCA801' }} />}>Difficulté Niveau 3</Button></Link><Switch>
+                            <li> <Router><Link to={"/questionnaire/"+the.libelle+"/3"}><Button id={"bu"} disabled={this.testDis(3)}  icon={<FireFilled style={{ fontSize: '20px', color: '#FF0000' }} />}>Difficulté Niveau 3</Button></Link><Switch>
                                 <Route path="/:id/:dif" children={<TaskDetails/>} />
                             </Switch></Router></li><br/><br/>
                         </ul>
