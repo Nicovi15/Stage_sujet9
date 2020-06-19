@@ -11,7 +11,10 @@ export default class AfficheQFAQ extends Component {
           question:[],
           libelle:"",
           reponse:"",
+          rep:"",
         }
+
+        this.handleChange = this.handleChange.bind(this);
 
 
     }
@@ -32,7 +35,7 @@ export default class AfficheQFAQ extends Component {
 
                 if (response.data.status === "Succes") console.log("yes " + response.data);
                 response.data.map(q=>{
-                    //console.log(q.idQuestionFAQ);
+                    //console.log("yes aa" + q.Reponse);
                     if(q.idQuestionFAQ === this.props.match.params.id ) this.setState({libelle : q.libelle,
                     reponse : q.Reponse})
                   question.push(q);
@@ -45,12 +48,18 @@ export default class AfficheQFAQ extends Component {
         })
     }
 
+    handleChange(event){
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
     repondre=(event)=>{
-    //  console.log("reponse "+this.state.reponse);
-      axios.post("https://devweb.iutmetz.univ-lorraine.fr/~cazzoli2u/quizzuml/AnswerQuestionFAQ.php",
+      console.log("reponse "+this.state.reponse);
+      axios.post("https://devweb.iutmetz.univ-lorraine.fr/~collign87u/quizzuml/php/AnswerQuestionFAQ.php",
           {
-              idQuestion : this.props.idQuestion,
-              reponse : this.state.reponse,
+              idQuestion : this.props.match.params.id,
+              reponse : this.state.rep,
           },
           {withCredentials: true}
       ).then(response => {
@@ -97,19 +106,19 @@ export default class AfficheQFAQ extends Component {
 
     render() {
       let reponse;
-      if("this.state.question.reponse"==null){
+      if(this.state.reponse==null){
         if(this.props.user.admin=="1"){
-          reponse= <form onSubmit={this.repondre}>
+            reponse = <form onSubmit={this.repondre}>
                     <div class="form-example">
                       <label htmlFor="reponse">Veuillez saisir une réponse</label><br/>
-                      <input  name="reponse" type="text" onChange={this.handleChange} required/>
+                      <input  name="rep" type="text" onChange={this.handleChange} required/>
                     </div>
                     <div class="form-example">
                       <input  type="submit"  value="Répondre"/>
                     </div>
                   </form>;
                 }else{
-                  reponse=<div>Pas encore de reponse disponible</div>;
+                  reponse = <div>Pas encore de reponse disponible</div>;
                 }
         }else {
 
@@ -122,6 +131,7 @@ export default class AfficheQFAQ extends Component {
             <p>
                 {this.state.libelle}
             </p>
+                {reponse}
             <p>
                 {this.state.reponse}
             </p>
