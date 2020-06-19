@@ -125,8 +125,8 @@ export default class Inscription extends Component{
                     <p>Pseudonyme : <br/><input type="text" name ="pseudo" placeholder="Entrez un pseudo" value={this.state.pseudo} onChange={this.handleChange} required />  </p>
                     <p>Nom : <br/><input type="text" name ="nom" placeholder="Entrez vote nom" value={this.state.nom} onChange={this.handleChange} required /></p>
                     <p>Prénom : <br/><input type="text" name ="prenom" placeholder="Entrez vote prénom" value={this.state.prenom} onChange={this.handleChange} required /> </p>
-                    <p>Promotion : <br/>
-                    <select name="promo" value={this.state.promo} style={{width: 120}}
+                    <p id={"promo"}>Promotion : <br/>
+                    <select id={"spromo"} name="promo" value={this.state.promo}
                             onChange={this.handleChange}>
                         {this.state.promos.map(promo => <option key={promo} value={promo}>{promo}</option>)}
                     </select>

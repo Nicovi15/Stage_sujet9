@@ -128,7 +128,7 @@ export default class AffichConPas extends Component {
                     <td>{this.props.difficulte}</td>
                     <td>{this.props.duree}</td>
                     <td>{this.props.date}</td>
-                    <td><Router><Link to={"/histoCont/"+this.props.num_cont} target={"_blank"}><Button>Afficher</Button></Link></Router></td>
+                    <td><Router><Link to={"/histoCont/"+this.props.num_cont} ><Button>Afficher</Button></Link></Router></td>
 
                 </tr>
                 <tr>

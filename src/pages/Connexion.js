@@ -104,7 +104,7 @@ export default class Connexion extends Component {
 
         return(
             <div id={"connexion"}>
-                <h1> Se Connecter </h1>
+                <h1> Connexion </h1>
 
                 <form onSubmit={this.handleSubmit}>
                     <p id={"pconnex"}>Login : <br/><input type="text" name ="pseudo" placeholder="Entrez vote pseudo" value={this.state.pseudo} onChange={this.handleChange} required /></p>

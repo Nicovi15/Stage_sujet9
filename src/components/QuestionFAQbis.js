@@ -98,7 +98,7 @@ export default class QuestionFAQbis extends Component {
           <tr>
               <td>{this.props.libelle}</td>
               <td>{this.state.user}</td>
-              <td><Router><Link to={"/afficheQFAQ/"+this.props.id} target={"_blank"}><Button>Afficher</Button></Link></Router></td>
+              <td><Router><Link to={"/afficheQFAQ/"+this.props.id} ><Button>Afficher</Button></Link></Router></td>
           </tr>
 
 
