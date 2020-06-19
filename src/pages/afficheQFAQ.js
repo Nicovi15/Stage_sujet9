@@ -26,18 +26,21 @@ export default class AfficheQFAQ extends Component {
         ).then(response => {
 
             if (response.data.error) {
-                console.log(response.data.error)
+                //console.log(response.data.error)
             } else {
                 //console.log("data"+response.data);
 
                 if (response.data.status === "Succes") console.log("yes " + response.data);
                 response.data.map(q=>{
+                    //console.log(q.idQuestionFAQ);
+                    if(q.idQuestionFAQ === this.props.match.params.id ) this.setState({libelle : q.libelle,
+                    reponse : q.Reponse})
                   question.push(q);
                 })
 
                 this.setState({question});
-                console.log("Les réponse");
-                console.log(this.state.question);
+                //console.log("Les réponse");
+                //console.log(this.state.question);
             }
         })
     }
@@ -116,7 +119,12 @@ export default class AfficheQFAQ extends Component {
           <h1>Question N°{this.props.match.params.id}</h1>
 
             <div>
-            {reponse}
+            <p>
+                {this.state.libelle}
+            </p>
+            <p>
+                {this.state.reponse}
+            </p>
             </div>
         </div>
       )
