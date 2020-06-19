@@ -191,7 +191,7 @@ export default class AffichQuest extends Component {
                 </tr>
                 <tr>
 
-                    <td colSpan={10} >
+                    <td colSpan={11} >
                     <Modif
                         modif={this.state.modifier}
                         num_quest ={this.props.num_quest}

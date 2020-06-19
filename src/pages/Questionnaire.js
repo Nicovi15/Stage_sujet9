@@ -98,6 +98,7 @@ export default class Questionnaire extends Component {
                     this.setState({theme});
                 })
             var max = 10;
+            if(this.props.id == "Général") max = 20;
             if (questions.length < max) max = questions.length;
             for (var i = 0; i < max; i++) {
                 var element = questions[Math.floor(Math.random() * questions.length)];
@@ -122,9 +123,11 @@ export default class Questionnaire extends Component {
 
     verif() {
         var br = 0;
+        var point = 1;
+        if(this.props.id == "Général") point = 0.5;
         {
             this.state.qchoisies.map(question => {
-                if (question.res) br++;
+                if (question.res) br += point;
             })
         }
         ;
