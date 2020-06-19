@@ -48,13 +48,13 @@ function Modif(props){
 function ListeRep(props){
     if(props.afficheRep)
         return<div id={"brep"}>
-            <table >
+            <table id={"tableR"} border="1px" >
             <thead>
             <tr>
-                <td>Num Rep</td>
-                <td>Libelle</td>
-                <td>Valeur</td>
-                <td>Modifier</td>
+                <th>Num Rep</th>
+                <th>Libelle</th>
+                <th>Valeur</th>
+                <th>Modifier</th>
             </tr>
         </thead>
             <tbody>
@@ -70,7 +70,7 @@ function ListeRep(props){
             />)}
 
             </tbody>
-        </table>;
+        </table>
         </div>
     else return null
 }

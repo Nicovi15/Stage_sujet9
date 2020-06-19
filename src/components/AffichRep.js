@@ -23,8 +23,8 @@ function Modif(props){
             libelle = {props.libelle}
             valeur = {props.valeur}
             reloadRep={props.reloadRep}
-        />;
-    else return <></>;
+        />
+    else return <></>
 }
 
 

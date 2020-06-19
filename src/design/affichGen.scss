@@ -16,7 +16,7 @@
     text-align: center;
     width: 100%;
     display: block;
-    min-width: 800px;
+    max-width: 1400px;
 
     max-height: 600px;
     background-color: white;
@@ -96,7 +96,7 @@
         border-left: none;
 
       }
-      #affQ:nth-child(odd){
+      tr:nth-child(even){
         background-color: lightgray;
       }
 
@@ -110,8 +110,32 @@
 
       #brep{
       display: flex;
-      width: 300px;
+
         overflow: no-display;
+        #tableR{
+          z-index: 1;
+          display: block;
+          min-width: 400px;
+          thead{
+
+            tr{
+              th:first-child{
+                width: 20%;
+              }
+              th:nth-child(2){
+                width: 60%;
+              }
+              th:nth-child(3){
+                width: 20%;
+              }
+              th:nth-child(4){
+                width: 20%;
+              }
+
+            }
+          }
+
+        }
 
 
       }
