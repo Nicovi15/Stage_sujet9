@@ -3,7 +3,7 @@ import {HashRouter as Router, Link, Redirect} from "react-router-dom";
 import 'antd/dist/antd.css';
 import axios from "axios";
 import { Checkbox , Button} from 'antd';
-import '../design/affichGen.scss'
+import '../design/histoUti.scss'
 import AffichHistoQ from "../components/AffichHistoQ";
 import CanvasJSReact from '../assets/canvasjs.react';
 import '../design/affichUti.scss'
@@ -156,7 +156,7 @@ export default class HistoUti extends Component {
             }]
         }
         return (
-            <div id={"affichGen2"}>
+            <div id={"histoUti"}>
 
                 <div id={"selection"}>
                     <div className="site-checkbox-all-wrapper">
@@ -186,7 +186,7 @@ export default class HistoUti extends Component {
                 <br />
                 <br />
                 <div id={"divtabhisto"}>
-                <table border="1px"  >
+                <table border="1px" id={"histoUt"} >
                     <thead  >
                     <tr>
                         <th>N° Questionnaire</th>

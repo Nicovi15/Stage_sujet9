@@ -7,8 +7,7 @@ import GestionControle from "./GestionControle";
 import AffichResCon from "./AffichResCon";
 import axios from "axios";
 const { TabPane } = Tabs;
-// import { Table } from 'antd';
-// import { ColumnsType } from 'antd/es/table';
+
 
 
 export default class DashboardAdmin extends Component {
@@ -198,7 +197,7 @@ export default class DashboardAdmin extends Component {
                             <h3>Ajouter une promo</h3>
                         <form onSubmit={this.handleSubmitPromo}>
                             <p>Nom de la promo : <input type="text" name ="inputpromo" placeholder="Entrez le nom de la promo" value={this.state.inputpromo} onChange={this.handleChange} required style={{width: 200}} />  </p>
-                            <button  type="submit">Ajouter une promo</button>
+                            <Button  htmlType="submit">Ajouter une promo</Button>
                             <p>{this.state.erreurPromo}</p>
                             <p>{this.state.reussitePromo}</p>
                         </form>
@@ -206,7 +205,7 @@ export default class DashboardAdmin extends Component {
                         <br/>
                         <h2>Liste des Promos</h2>
                         <div>
-                            <table border="1px" >
+                            <table border="1px" id={"promo"}>
                                 <thead>
                                 <tr>
                                     <th>Num Promo</th>
@@ -238,7 +237,7 @@ export default class DashboardAdmin extends Component {
                                         <option value="oui">oui</option>
                                         <option value="non">non</option>
                                     </select></p>
-                                <button  type="submit">Ajouter un thème</button>
+                                <Button  htmlType="submit">Ajouter un thème</Button>
                                 <p>{this.state.erreurTheme}</p>
                                 <p>{this.state.reussiteTheme}</p>
                             </form>
@@ -246,7 +245,7 @@ export default class DashboardAdmin extends Component {
                         <br/>
                         <h2>Liste des Thèmes</h2>
                         <div>
-                            <table border="1px" >
+                            <table border="1px" id={"theme"}>
                                 <thead>
                                 <tr>
                                     <th>Num Thème</th>

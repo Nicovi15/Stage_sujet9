@@ -1,0 +1,123 @@
+#envoiQ{
+  width: 90%;
+  margin: auto;
+
+  #envoi{
+    display: block;
+    margin: auto;
+    width: 50%;
+
+  }
+}
+
+#pFAQ{
+  width: 80%;
+  margin: auto;
+  padding-top: 20px;
+
+  h2{
+    padding-top: 20px;
+    margin-left: 5%;
+  }
+
+  #TabC{
+
+    display: block;
+    overflow: auto;
+    font-size: 15px;
+    border-radius: 7px;
+    border: 1px solid black;
+
+    border-bottom: none;
+    max-width: 1200px;
+
+    max-height: 500px;
+
+    background-color: white;
+    margin: auto;
+    thead {
+
+
+
+      tr {
+
+        border: 1px solid black;
+
+      }
+
+      tr:nth-child(1) th {
+        position: sticky;
+
+        background-color: white;
+
+
+
+      }
+
+      th {
+        border-left: none;
+        top: 0px;
+        z-index: 10;
+
+      }
+
+      th:first-child {
+        text-align: center;
+        width: 80%;
+
+      }
+
+      th:nth-child(2) {
+        width: 10%;
+        border: 1px solid black;
+      }
+
+      th:nth-child(3) {
+        width: 10%;
+        border: 1px solid black;
+      }
+
+
+    }
+
+    tbody {
+      height: 500px;
+      overflow: auto;
+      tr {
+
+        border: 1px solid black;
+        border-bottom: double;
+
+        td {
+
+          border: 1px solid black;
+
+          border-top: none;
+
+
+          border-left: none;
+
+        }
+        td:first-child{
+          width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          max-width: 0;
+        }
+        td:nth-child(2){
+          text-align: center;
+        }
+        td:nth-child(3){
+          text-align: center;
+        }
+
+
+      }
+      tr:hover {
+        background-color: #f5f5f5;
+      }
+
+    }
+  }
+}

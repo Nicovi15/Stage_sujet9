@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
-import QuestionFAQ from "../components/QuestionFAQ";
+import {Button} from 'antd'
 import QuestionFAQbis from "../components/QuestionFAQbis";
-
+import '../design/FAQ.scss'
 export default class App extends Component {
   constructor() {
       super();
@@ -66,33 +66,36 @@ export default class App extends Component {
       else {
         addq=<div key="addQ">
           <form onSubmit={this.handleSubmit}>
-           <div class="form-example">
+           <div class="form-example" id={"envoiQ"}>
              <label htmlFor="reponse">Posez une question !</label><br/>
-             <input  name="libelle" type="text" value={this.state.reponse} onChange={this.handleChange} required/>
-           </div>
-           <div class="form-example">
-             <input  type="submit"  value="Envoyer"/>
+             <textarea  name="libelle" type="text" value={this.state.reponse} onChange={this.handleChange} required/>
+
+               <Button id={"envoi"} htmlType="submit" >Envoyer</Button>
            </div>
          </form>
         </div>;
       }
         return (
-        <div key="page">
+        <div key="page" id={"pFAQ"}>
           {addq}
           <div key ="FAQ">
+              <h2>Liste des questions</h2>
           <table border-bottom="1px" id={"TabC"} >
               <thead>
               <tr>
                   <th>Question</th>
                   <th>Utilisateur</th>
-                  <th>voir réponse</th>
+                  <th>Réponse</th>
               </tr>
               </thead>
 
           <tbody>
-            {this.state.question.map(q=>
-              <QuestionFAQbis id={q.idQuestionFAQ} libelle={q.libelle} num_uti={q.num_uti} admin={this.props.user.admin} reponse={q.Reponse}/>
-                              )}
+
+              {this.state.question.map(q=>
+                  <QuestionFAQbis id={q.idQuestionFAQ} libelle={q.libelle} num_uti={q.num_uti} admin={this.props.user.admin} reponse={q.Reponse}/>
+              )}
+
+
 
                       </tbody>
 

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import {HashRouter as Router, Link, Redirect} from "react-router-dom";
+import {Button} from 'antd'
 
 // function Formulaire({result,reponse,repondre,handleChange}){
 //   if(result == null)
@@ -118,9 +119,9 @@ export default class QuestionFAQ extends Component {
 
         return (
         <div key="question">
-          <button  onClick={this.Toggle}>
+          <Button  onClick={this.Toggle}>
             {this.props.question}
-          </button>
+          </Button>
           {reponse}
         </div>
 

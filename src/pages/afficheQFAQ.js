@@ -1,6 +1,7 @@
 import {HashRouter as Router, Link, Redirect} from "react-router-dom";
 import React, {Component} from 'react'
 import axios from "axios";
+import '../design/affichQFAQ.scss'
 import {Button } from 'antd';
 
 export default class AfficheQFAQ extends Component {
@@ -111,10 +112,10 @@ export default class AfficheQFAQ extends Component {
             reponse = <form onSubmit={this.repondre}>
                     <div class="form-example">
                       <label htmlFor="reponse">Veuillez saisir une réponse</label><br/>
-                      <input  name="rep" type="text" onChange={this.handleChange} required/>
+                      <textarea  name="rep" type="text" onChange={this.handleChange} required/>
                     </div>
                     <div class="form-example">
-                      <input  type="submit"  value="Répondre"/>
+                        <Button  htmlType="submit" > Répondre</Button>
                     </div>
                   </form>;
                 }else{
@@ -124,15 +125,16 @@ export default class AfficheQFAQ extends Component {
 
         }
       return(
-        <div>
+        <div id={"affichFAQ"}>
           <h1>Question N°{this.props.match.params.id}</h1>
 
-            <div>
-            <p>
+            <div id={"questRep"}>
+            <p id={"quest"}>
                 {this.state.libelle}
             </p>
+
+            <p id={"rep"}>
                 {reponse}
-            <p>
                 {this.state.reponse}
             </p>
             </div>
