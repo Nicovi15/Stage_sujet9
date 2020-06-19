@@ -126,7 +126,7 @@ export default class AffichGenCon extends Component {
             <div id={"selectCont"}>
                 <h1>Liste des contrôles</h1>
 
-                <table border="1px" >
+                <table id={"controle"} border="1px" >
                     <thead  >
                     <tr>
                         <th>Num Controles</th>
