@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-
+import {HashRouter as Router, Link, Redirect} from "react-router-dom";
 
 // function Formulaire({result,reponse,repondre,handleChange}){
 //   if(result == null)

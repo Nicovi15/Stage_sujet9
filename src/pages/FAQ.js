@@ -11,7 +11,6 @@ export default class App extends Component {
           question:[],
           libelle:"",
           user:"",
-          // questions:[{user:"",libelle:"",}]
 
       };
 
@@ -22,7 +21,6 @@ export default class App extends Component {
         var question=[];
         response.data.map(quest =>{
           question.push(quest);
-           //console.log("quest"+quest);
         });
         this.setState({question});
       });
@@ -61,7 +59,7 @@ export default class App extends Component {
 
 
     render() {
-      console.log("reponse"+this.state.reponse);
+      //console.log("reponse"+this.state.reponse);
       let addq;
       if(this.props.user.admin=="1")
         addq=<div></div>;
@@ -93,7 +91,7 @@ export default class App extends Component {
 
           <tbody>
             {this.state.question.map(q=>
-                                <QuestionFAQbis id={q.idQuestionFAQ} libelle={q.libelle} num_uti={q.num_uti} admin={this.props.user.admin} reponse={q.Reponse}/>
+              <QuestionFAQbis id={q.idQuestionFAQ} libelle={q.libelle} num_uti={q.num_uti} admin={this.props.user.admin} reponse={q.Reponse}/>
                               )}
 
                       </tbody>

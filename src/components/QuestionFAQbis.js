@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-
+import {HashRouter as Router, Link, Redirect} from "react-router-dom";
+import {Button } from 'antd';
 export default class QuestionFAQbis extends Component {
   constructor() {
       super();
@@ -93,7 +94,7 @@ export default class QuestionFAQbis extends Component {
           <tr>
               <td>{this.props.libelle}</td>
               <td>{this.state.user}</td>
-              {reponse}
+              <td><Router><Link to={"/afficheQFAQ/"+this.props.id} target={"_blank"}><Button>Afficher</Button></Link></Router></td>
           </tr>
 
 
