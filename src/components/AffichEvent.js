@@ -41,9 +41,9 @@ export default class AffichEvent extends Component {
             })
     }
 
-    reloadEv(){
+    async reloadEv(){
         var evenements=[];
-        axios.get("https://devweb.iutmetz.univ-lorraine.fr/~barros4u/PHP/getEvenements.php")
+        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~barros4u/PHP/getEvenements.php")
             .then(res => {
                 // console.log(res);
                 // console.log(res.data);
@@ -57,16 +57,7 @@ export default class AffichEvent extends Component {
 
     async componentDidMount(){
         var evenements=[];
-        await axios.get("https://devweb.iutmetz.univ-lorraine.fr/~barros4u/PHP/getEvenements.php")
-            .then(res => {
-                 console.log(res);
-                // console.log(res.data);
-                res.data.map(donne =>{
-                    evenements.push(donne);
-                });
-                this.setState({evenements},);
-                console.log(this.state);
-            });
+        this.reloadEv();
         }
 
     render(){

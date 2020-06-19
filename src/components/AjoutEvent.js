@@ -61,6 +61,7 @@ export default class AjoutEvent extends Component {
                     titre: "",
                     reussite: true,
                 });
+                this.props.reload();
             }
         })
         event.preventDefault();

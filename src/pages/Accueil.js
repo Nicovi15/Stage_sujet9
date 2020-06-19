@@ -21,15 +21,17 @@ function Bajout(props){
 }
 
 function Ajout(props){
+  console.log("props"+props.reload);
     if(props.ajout)
-        return <AjoutEvent/>;
+        return <AjoutEvent reload={props.reload}/>;
     else return <></>;
 }
+
 
 export default class Accueil extends Component {
     constructor(props) {
         super(props);
-
+        this.afficheEventElement = React.createRef();
         this.state = {
             ajoutE: false,
         }
@@ -42,6 +44,11 @@ export default class Accueil extends Component {
         })
     }
 
+    reload=()=>{
+    //console.log("j'actualise");
+    this.afficheEventElement.current.reloadEv();
+    }
+
     render() {
         if (this.props.loggedInStatus === "NOT_LOGGED_IN") {
             //Affichage de la redirection
@@ -50,16 +57,14 @@ export default class Accueil extends Component {
         return (
             <>
             <div id={"accueilH"}>
-                <Ajout ajout={this.state.ajoutE} />
+                <Ajout ajout={this.state.ajoutE} reload={this.reload}/>
                 <Bajout id={"bajout"} user={this.props.user} ajoutE={this.state.ajoutE} onClick={this.handleChangeAjouE}/>
             </div>
             <div id={"accueil"}>
 
-                <AffichEvent user={this.props.user}/>
+                <AffichEvent ref={this.afficheEventElement} user={this.props.user}/>
             </div>
                 </>
         );
     }
 }
-
-

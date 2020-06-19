@@ -13,6 +13,7 @@ export default class AffichDEvent extends Component{
         this.state = {
             modifier :false,
         }
+
         this.handleChangeModif = this.handleChangeModif.bind(this);
         this.handleDeleteB = this.handleDeleteB.bind(this);
     }
