@@ -161,6 +161,8 @@ class App extends Component {
                                   loggedInStatus={this.state.loggedInStatus}/>
                               )}
                       />
+                        <Route path="/histoUti/:id" render={props=>(<HistoUti  {... props} user={this.state.user}/>)}/>
+                        <Route path="/histoCont/:id" render={props=>(<HistoCont  {... props} user={this.state.user}/>)}/>
                         <Route path="/menu" render={props=>(<Menu  {... props} user={this.state.user}/>)}/>
                         <Route path="/questionnaire/:id/:dif" render={props=> (<TaskDetails user={this.state.user} update={this.updateUser}/>)}/>
                         <Route path="/controle/:id" render={props=> (<TaskDetails2 user={this.state.user}/>)}/>
