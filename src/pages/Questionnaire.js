@@ -42,6 +42,7 @@ export default class Questionnaire extends Component {
         this.verif = this.verif.bind(this);
         this.checkid = this.checkid.bind(this);
         this.loadQuestion = this.loadQuestion.bind(this);
+        this.reload = this.reload.bind(this);
     }
 
     checkid(checkExist) {
@@ -120,6 +121,19 @@ export default class Questionnaire extends Component {
         }
     }
 
+    reload(){
+        this.setState({
+            questions: [],
+            qchoisies: [],
+            actif: true,
+            br: 0,
+            commencer: false,
+            test: false,
+            messageNiv : "",
+            exp : 0,});
+        this.loadQuestion();
+    }
+
 
     verif() {
         var br = 0;
@@ -196,7 +210,7 @@ export default class Questionnaire extends Component {
                     <Button onClick={this.verif} hidden={!this.state.commencer}
                             disabled={this.state.test}>Verifier</Button>
                     <Resultat actif={this.state.actif} res={this.state.br}/>
-
+                    <Button hidden={!(this.state.messageNiv!="")} onClick={this.reload}>Recommencer</Button>
                     <h5>{this.state.messageNiv}</h5>
                     <Progress id={"bar"} hidden={!((this.state.messageNiv!="")&&(this.state.messageNiv!="Vous ne gagnez des points qu'en faisant des questionnaires de votre niveau."))} percent={this.state.exp} status={"active"}  />
                 </div>
