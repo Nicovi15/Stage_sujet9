@@ -8,11 +8,13 @@
     text-align: center;
     background-color: white;
     max-width: 300px;
-    border-radius: 10px;
+
 
 
     thead{
       tr{
+        background-color: grey;
+        color: white;
         th:first-child{
           width: 33%;
         }
@@ -27,8 +29,8 @@
 
     tbody{
 
-      tr{
-        border-bottom: double;
+      tr:nth-child(even){
+        background-color: lightgray;
       }
 
       tr:hover{
@@ -45,9 +47,11 @@
     overflow-y: auto;
 
     max-width: 500px;
-    border-radius: 10px;
+
     thead{
       tr{
+        background-color: grey;
+        color: white;
         th:first-child{
           width: 20%;
         }
@@ -63,8 +67,8 @@
       }
     }
     tbody{
-      tr{
-        border-bottom: double;
+      tr:nth-child(even){
+        background-color: lightgray;
       }
       tr:hover{
         background-color: #f5f5f5;

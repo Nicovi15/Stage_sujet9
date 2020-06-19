@@ -47,13 +47,18 @@ function Modif(props){
 
 function ListeRep(props){
     if(props.afficheRep)
-        return<table border="1px">
+        return<div id={"brep"}>
+            <table >
+            <thead>
             <tr>
                 <td>Num Rep</td>
                 <td>Libelle</td>
                 <td>Valeur</td>
                 <td>Modifier</td>
             </tr>
+        </thead>
+            <tbody>
+
             {props.reponses.map(rep => <AffichRep key={rep.num_rep}
                                                            num_rep={rep.num_rep}
                                                            libelle={rep.libelle}
@@ -63,8 +68,11 @@ function ListeRep(props){
 
 
             />)}
+
+            </tbody>
         </table>;
-    else return <></>
+        </div>
+    else return null
 }
 
 export default class AffichQuest extends Component {
@@ -168,7 +176,7 @@ export default class AffichQuest extends Component {
 
         return (
             <>
-                <tr>
+                <tr id={"affQ"}>
                     <td>{this.props.num_quest}</td>
                     <td>{this.props.libelle}</td>
                     <td>{this.props.nb_bonnerep}</td>

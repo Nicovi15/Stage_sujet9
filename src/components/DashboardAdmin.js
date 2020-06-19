@@ -205,7 +205,7 @@ export default class DashboardAdmin extends Component {
                         <br/>
                         <h2>Liste des Promos</h2>
                         <div>
-                            <table border="1px" id={"promo"}>
+                            <table  id={"promo"}>
                                 <thead>
                                 <tr>
                                     <th>Num Promo</th>
@@ -245,7 +245,7 @@ export default class DashboardAdmin extends Component {
                         <br/>
                         <h2>Liste des Thèmes</h2>
                         <div>
-                            <table border="1px" id={"theme"}>
+                            <table  id={"theme"}>
                                 <thead>
                                 <tr>
                                     <th>Num Thème</th>

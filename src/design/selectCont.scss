@@ -1,84 +1,78 @@
-#selectCont{
+#selectCont {
   display: block;
 
   margin: auto;
   padding-bottom: 20px;
   max-width: 900px;
-  table{
 
-  display: block;
+  table {
+
+    display: block;
     overflow: auto;
-
-    border-radius: 7px;
-
-    border-right: none;
-    border-bottom: none;
-
     max-height: 400px;
-
     background-color: white;
-    margin:auto;
-
-
+    margin: auto;
 
     thead {
 
-      border-color: grey ;
-
-      tr{
-        border-color: grey;
-
-      }
-      tr:nth-child(1) th{
+      tr:nth-child(1) th {
         position: sticky;
-
-        background-color: white;
+        background-color: grey;
+        color: white;
         text-align: center;
 
 
       }
-      th{
-        border-left: none;
+
+      th {
+
         top: 0px;
         z-index: 10;
 
       }
 
-      th:first-child{
-        width:10%;
+      th:first-child {
+        width: 10%;
       }
 
-      th:nth-child(2){
-        width:30%;
+      th:nth-child(2) {
+        width: 30%;
       }
 
-      th:nth-child(3){
-        width:10%;
+      th:nth-child(3) {
+        width: 10%;
       }
 
-      th:nth-child(4){
-        width:20%;
+      th:nth-child(4) {
+        width: 20%;
       }
-      th:nth-child(5){
-        width:20%;
+
+      th:nth-child(5) {
+        width: 20%;
       }
-      th:last-child{
-        width:10%;
+
+      th:last-child {
+        width: 10%;
       }
 
     }
-    tbody{
+
+    tbody {
       height: 500px;
       overflow: auto;
-      td{
 
-        border-top:none;
-        border-color: gray;
+      td {
+
         text-align: center;
-        border-left: none ;
+        border-left: none;
 
       }
-      tr:hover{
+
+      tr:nth-child(even) {
+        background-color: lightgray;
+      }
+
+      tr:hover {
         background-color: #f5f5f5;
       }
 
@@ -90,38 +84,23 @@
   #controle {
     display: block;
     overflow: auto;
-
-    border-radius: 7px;
-
-    border-right: none;
-    border-bottom: none;
-
     max-height: 400px;
-
     background-color: white;
     margin: auto;
 
 
     thead {
 
-      border-color: grey;
-
-      tr {
-        border-color: grey;
-
-      }
-
       tr:nth-child(1) th {
         position: sticky;
-
-        background-color: white;
+        color: white;
+        background-color: grey;
         text-align: center;
 
 
       }
 
       th {
-        border-left: none;
         top: 0px;
         z-index: 10;
 
@@ -158,12 +137,12 @@
       overflow: auto;
 
       td {
-
-        border-top: none;
-        border-color: gray;
         text-align: center;
-        border-left: none;
 
+      }
+
+      tr:nth-child(even) {
+        background-color: lightgray;
       }
 
       tr:hover {

@@ -131,13 +131,7 @@ export default class AffichConPas extends Component {
                     <td><Router><Link to={"/histoCont/"+this.props.num_cont} ><Button>Afficher</Button></Link></Router></td>
 
                 </tr>
-                <tr>
-                    <td colSpan={6}>
-                    <Modif
-                        modif={this.state.modifier}
-                        num_cont={this.props.num_cont}
-                    /></td>
-                </tr>
+
             </>
         );
     }

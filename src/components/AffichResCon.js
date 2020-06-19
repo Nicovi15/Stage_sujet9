@@ -124,7 +124,7 @@ export default class AffichResCon extends Component {
             <div id={"affichResCon"}>
                 <h1>Résultat des contrôles</h1>
 
-                <table border="1px" >
+                <table  >
                     <thead  >
                     <tr>
                         <th>Num Controles</th>

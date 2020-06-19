@@ -25,8 +25,7 @@
     display: block;
     overflow: auto;
     font-size: 15px;
-    border-radius: 7px;
-    border: 1px solid black;
+
 
     border-bottom: none;
     max-width: 1200px;
@@ -41,14 +40,16 @@
 
       tr {
 
-        border: 1px solid black;
+
 
       }
 
       tr:nth-child(1) th {
         position: sticky;
+        background-color: grey;
+        color: white;
 
-        background-color: white;
+
 
 
 
@@ -58,23 +59,24 @@
         border-left: none;
         top: 0px;
         z-index: 10;
+        text-align: center;
 
       }
 
       th:first-child {
-        text-align: center;
+
         width: 80%;
 
       }
 
       th:nth-child(2) {
         width: 10%;
-        border: 1px solid black;
+
       }
 
       th:nth-child(3) {
         width: 10%;
-        border: 1px solid black;
+
       }
 
 
@@ -85,12 +87,12 @@
       overflow: auto;
       tr {
 
-        border: 1px solid black;
-        border-bottom: double;
+
+
 
         td {
 
-          border: 1px solid black;
+
 
           border-top: none;
 
@@ -104,6 +106,7 @@
           text-overflow: ellipsis;
           white-space: nowrap;
           max-width: 0;
+          padding-left: 10px ;
         }
         td:nth-child(2){
           text-align: center;
@@ -113,6 +116,10 @@
         }
 
 
+      }
+
+      tr:nth-child(even){
+        background-color: lightgray;
       }
       tr:hover {
         background-color: #f5f5f5;

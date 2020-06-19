@@ -8,7 +8,7 @@
     display: block;
     overflow: auto;
 
-    border-radius: 7px;
+
 
     border-right: none;
     border-bottom: none;
@@ -20,22 +20,23 @@
 
     thead {
 
-      border-color: grey ;
+
 
       tr{
-        border-color: grey;
+
 
       }
       tr:nth-child(1) th{
         position: sticky;
 
-        background-color: white;
+        background-color: grey;
+        color: white;
         text-align: center;
 
 
       }
       th{
-        border-left: none;
+
         top: 0px;
         z-index: 10;
 
@@ -67,7 +68,8 @@
       height: 500px;
       overflow: auto;
 
-      tr{
+      tr:nth-child(even){
+        background-color: lightgray;
       }
 
       td{

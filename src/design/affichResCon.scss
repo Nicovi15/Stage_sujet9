@@ -8,14 +8,7 @@
 
     display: block;
     overflow: auto;
-
-    border-radius: 7px;
-
-    border-right: none;
-    border-bottom: none;
-
     max-height: 400px;
-
     background-color: white;
     margin:auto;
 
@@ -23,22 +16,21 @@
 
     thead {
 
-      border-color: grey ;
+
 
       tr{
-        border-color: grey;
+
 
       }
       tr:nth-child(1) th{
         position: sticky;
-
-        background-color: white;
+        background-color: grey;
+        color: white;
         text-align: center;
 
 
       }
       th{
-        border-left: none;
         top: 0px;
         z-index: 10;
 
@@ -70,10 +62,12 @@
     tbody{
       height: 500px;
       overflow: auto;
+
+      tr:nth-child(even){
+        background-color: lightgray;
+      }
       td{
 
-        border-top:none;
-        border-color: gray;
         text-align: center;
         border-left: none ;
 

@@ -16,10 +16,8 @@
     text-align: center;
     width: 100%;
     display: block;
-    border-radius: 7px;
     min-width: 800px;
 
-    border-bottom: none;
     max-height: 600px;
     background-color: white;
     margin: auto;
@@ -27,17 +25,15 @@
 
     thead {
 
-      border-color: grey;
+
 
       tr {
-        border-color: grey;
-
 
       }
 
       th {
-        background-color: white;
-        border-left: none;
+        background-color: grey;
+        color: white;
         top: 0px;
         z-index: 10;
         position: sticky;
@@ -80,7 +76,7 @@
       }
 
       th:nth-child(9) {
-        width: 10%;
+       width: 10%;
       }
 
       th:nth-child(10) {
@@ -100,16 +96,33 @@
         border-left: none;
 
       }
+      #affQ:nth-child(odd){
+        background-color: lightgray;
+      }
 
       tr:hover {
         background-color: #f5f5f5;
       }
+
+      td:nth-child(9){
+
+      }
+
+      #brep{
+      display: flex;
+      width: 300px;
+        overflow: no-display;
+
+
+      }
+
 
     }
 
 
   }
 }
+
 
 #affichGen2 {
 
@@ -174,6 +187,9 @@
         border-left: none;
 
       }
+      tr:nth-child(even){
+        background-color: lightgray;
+      }
 
       tr:hover {
         background-color: #f5f5f5;
@@ -234,6 +250,9 @@
         border-color: gray;
         text-align: center;
 
+      }
+      tr:nth-child(even){
+        background-color: lightgray;
       }
 
       tr:hover {

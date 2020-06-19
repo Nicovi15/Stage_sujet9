@@ -132,7 +132,7 @@ async loadTheme(){
                 </div>
                 <br />
 
-                <table border="1px" >
+                <table >
                     <thead  >
                     <tr>
                         <th>Num question</th>

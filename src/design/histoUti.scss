@@ -8,11 +8,6 @@
   #histoUt {
     display: block;
     overflow: auto;
-
-    border-radius: 7px;
-
-    border-right: none;
-    border-bottom: none;
     max-width: 1000px;
 
     max-height: 500px;
@@ -21,24 +16,25 @@
     margin: auto;
     thead {
 
-      border-color: grey;
+
 
       tr {
-        border-color: grey;
+
 
       }
 
       tr:nth-child(1) th {
         position: sticky;
 
-        background-color: white;
+        background-color: grey;
+        color: white;
         text-align: center;
 
 
       }
 
       th {
-        border-left: none;
+
         top: 0px;
         z-index: 10;
 
@@ -76,11 +72,12 @@
 
       td {
 
-        border-top: none;
-        border-color: gray;
         text-align: center;
-        border-left: none;
 
+
+      }
+      tr:nth-child(even){
+        background-color: lightgray;
       }
 
       tr:hover {

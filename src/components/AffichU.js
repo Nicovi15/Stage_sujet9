@@ -120,13 +120,7 @@ export default class AffichQuest extends Component {
                     <td><Button onClick={this.handleDeleteB}>Supprimer</Button></td>
 
                 </tr>
-                <tr>
-                    <td colSpan={8}>
-                    <Histo
-                        user={this.props.user} modif={this.state.modifier} usera={this.props.usera}
-                    />
-                    </td>
-                </tr>
+
             </>
         );
     }

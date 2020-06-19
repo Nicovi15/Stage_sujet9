@@ -39,6 +39,10 @@
 
     tbody {
 
+      tr:nth-child(even){
+        background-color: lightgray;
+      }
+
       tr:hover {
         background-color: #f5f5f5;
       }

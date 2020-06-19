@@ -151,7 +151,7 @@ export default class AffichUti extends Component {
                 </div>
                 <br />
 
-                <table border="1px" >
+                <table  >
                     <thead  >
                     <tr>
                         <th>Nom</th>

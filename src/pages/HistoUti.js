@@ -186,7 +186,7 @@ export default class HistoUti extends Component {
                 <br />
                 <br />
                 <div id={"divtabhisto"}>
-                <table border="1px" id={"histoUt"} >
+                <table  id={"histoUt"} >
                     <thead  >
                     <tr>
                         <th>N° Questionnaire</th>
