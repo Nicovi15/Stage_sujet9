@@ -23,6 +23,8 @@ export default class AffichGen extends Component {
             indeterminate: true,
             checkAll: false,
         };
+
+        this.loadQuest = this.loadQuest.bind(this);
     }
 
     affiState= ()=>{
