@@ -3,48 +3,101 @@
   margin: auto;
 
   form {
+
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
     overflow-y: auto;
+    #tabl {
+      margin: auto;
+      table {
 
-    table {
-      //border: 1px solid black;
-      width: 100%;
-      display: block;
+        width: 100%;
+        display: block;
 
 
-      thead {
-        text-align: center;
-        //border: 1px solid black;
+        thead {
+          text-align: center;
+          //border: 1px solid black;
 
-      }
-
-      tbody {
-
-        tr :nth-child(3) td{
-          text-align: inherit;
-          //border-color: deeppink;
         }
 
-        tr {
-          //text-align: center;
-          //border: 1px solid black;
-          width: 100%;
+        tbody {
 
+          tr :nth-child(3) td {
+            text-align: inherit;
+            //border-color: deeppink;
+          }
 
-
-          td {
-            padding-right: 25px;
-            padding-left: 25px;
-            vertical-align: top;
+          tr {
             //text-align: center;
-
             //border: 1px solid black;
+            width: 100%;
 
 
+            td {
+              padding-right: 25px;
+              padding-left: 25px;
+              vertical-align: top;
+              //text-align: center;
+
+              //border: 1px solid black;
+
+              textarea {
+                width: 150px;
+              }
+
+              #img {
+                width: 324px;
+              }
+
+              select {
+
+                height: 30px;
+                width: 100%;
+              }
+
+            }
+          }
+
+
+        }
+      }
+    }
+    #butt{
+
+      margin: auto;
+      #nbrep {
+
+        thead {
+          text-align: center;
+          //border: 1px solid black;
+
+        }
+
+        tbody {
+
+          tr :nth-child(3) td {
+            text-align: inherit;
+
+          }
+
+          tr {
+            //text-align: center;
+            //border: 1px solid black;
+            width: 100%;
+
+
+            td {
+              padding-right: 25px;
+              padding-left: 25px;
+              vertical-align: top;
+              //text-align: center;
+            }
             input {
-
+              width: 150px;
               height: 30px;
               //border: 1px solid black;
             }
@@ -54,12 +107,17 @@
               height: 30px;
               width: 100%;
             }
-
           }
+
         }
-
-
       }
+
     }
+    #valid{
+      display: block;
+      width: 250px;
+    }
+
   }
+
 }
