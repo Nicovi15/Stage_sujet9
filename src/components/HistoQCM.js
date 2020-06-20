@@ -184,7 +184,7 @@ export default class HistoQCM extends Component {
                 <br />
                 <br />
                 <div id={"divtabhisto"}>
-                <table border="1px"  >
+                <table  >
                     <thead  >
                     <tr>
                         <th>N° Questionnaire</th>

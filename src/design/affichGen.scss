@@ -151,7 +151,7 @@
 #affichGen2 {
 
   margin: auto;
-  overflow: auto;
+
   padding-bottom: 50px;
 
 
@@ -162,12 +162,10 @@
 
   table {
 
-    width: 100%;
-    border-radius: 7px;
-    border-left: none;
-    border-right: none;
-    border-bottom: none;
-    max-height: 1000px;
+
+    display: block;
+    max-width: 1000px;
+    max-height: 300px;
     background-color: white;
     margin: auto;
     overflow: auto;
@@ -183,8 +181,8 @@
       }
 
       th {
-        background-color: white;
-        border-left: none;
+        background-color: grey;
+        color: white;
         top: 0px;
         z-index: 10;
         position: sticky;
@@ -193,9 +191,22 @@
       }
 
 
+      th:nth-child(1) {
+        width: 10%;
+      }
       th:nth-child(2) {
         width: 30%;
       }
+      th:nth-child(3) {
+        width: 30%;
+      }
+      th:nth-child(4) {
+        width: 20%;
+      }
+      th:nth-child(5) {
+        width: 10%;
+      }
+
 
 
     }
@@ -205,10 +216,9 @@
 
       td {
 
-        border-top: none;
-        border-color: gray;
+
         text-align: center;
-        border-left: none;
+
 
       }
       tr:nth-child(even){

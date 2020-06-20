@@ -37,6 +37,7 @@
       }
       th{
 
+
         top: 0px;
         z-index: 10;
 
@@ -44,6 +45,8 @@
 
       th:first-child{
         width:15%;
+        background-color: grey;
+        color: white;
       }
 
       th:nth-child(2){
